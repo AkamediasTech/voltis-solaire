@@ -1,0 +1,93 @@
+---
+// FeaturesV2.astro - Version Material Design avec cartes élevées
+import ShieldCheckIconV2 from './icons/ShieldCheckIconV2.astro';
+import PercentageIcon from './icons/PercentageIcon.astro';
+import PiggyBankIcon from './icons/PiggyBankIcon.astro';
+
+const features = [
+  {
+    id: 'reduce-bills',
+    iconName: 'piggy-bank',
+    title: "Réduisez vos factures",
+    description: "Jusqu'à 60% d'économies sur votre facture d'électricité en consommant votre propre production."
+  },
+  {
+    id: 'increase-value',
+    iconName: 'trending-up',
+    title: "Valorisez votre bien",
+    description: "Une maison équipée de panneaux solaires se revend plus cher et plus vite (Valeur verte)."
+  },
+  {
+    id: 'green-energy',
+    iconName: 'leaf',
+    title: "Énergie Verte",
+    description: "Participez à la transition énergétique en produisant une énergie propre et locale."
+  },
+  {
+    id: 'warranty',
+    iconName: 'shield-check',
+    title: "Garantie Sérénité",
+    description: "Bénéficiez de la solidité et de l'expertise d'une filiale du groupe EDF. Garantie performance 25 ans."
+  }
+];
+
+const iconSvgs: Record<string, string> = {
+  'piggy-bank': '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z"/><path d="M2 9v1c0 1.1.9 2 2 2h1"/><path d="M16 11h.01"/></svg>',
+  'trending-up': '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+  'leaf': '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 391.399 391.399"><path style="fill:#94C83D;" d="M144.299,377.699l50.4-143.6l-132.4-0.4c-5.6,0-10-4.4-10-10c0-2.4,0.8-4.4,2.4-6.4l0,0c38.8-47.6,77.6-95.2,116.4-142.8c19.2-23.2,38.4-46.8,58-70.8c3.6-4.4,9.6-4.8,14-1.6c3.2,2.8,4.4,7.2,3.2,11.2l-50.8,144l132.4,0.4c5.6,0,10,4.4,10,10c0,2.4-0.8,4.4-2,6l0,0c-37.2,48-76.4,95.2-115.6,142.8c-19.2,23.2-38.4,46.4-58.8,71.2c-3.6,4.4-9.6,4.8-14,1.6C143.899,386.099,142.699,381.699,144.299,377.699"/><path style="fill:#5E9641;" d="M119.499,332.899c4.8,2.8,6.8,8.8,4,13.6c-2.8,4.8-8.8,6.8-13.6,4c-28.8-15.6-52.4-38.4-68.8-66c-16-27.2-25.2-58.4-25.2-91.6c0-41.6,14.4-80.4,38.8-111.2s59.2-53.6,99.6-63.2c5.2-1.2,10.8,2,12,7.6c1.2,5.2-2,10.8-7.6,12c-36,8.4-66.8,28.8-88.4,56s-34.4,62-34.4,98.8c0,29.2,8,57.2,22.4,81.6C73.099,298.899,93.899,319.299,119.499,332.899"/><path style="fill:#5E9641;" d="M273.099,53.699c-4.8-2.8-6.8-8.8-4-13.6c2.8-4.8,8.8-6.8,13.6-4c28.8,15.6,52,38.8,68,65.6c16,27.2,24.8,58.4,24.8,91.2c0,42-14.8,81.2-39.6,112c-24.8,30.8-60,53.6-100.8,62.8c-5.2,1.2-10.8-2.4-12-7.6s2.4-10.8,7.6-12c36.4-8,67.6-28.4,89.6-55.6c22-27.6,35.2-62.4,35.2-99.6c0-29.2-8-56.8-22-80.8C319.099,88.099,298.699,67.699,273.099,53.699"/></svg>',
+  'shield-check': '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>'
+};
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-5xl mx-auto mb-20">
+      <!-- <h2 class="text-3xl md:text-4xl font-bold text-edf-blue mb-4">
+        Pourquoi passer à l'autoconsommation ?
+      </h2> -->
+       <!-- <h2 class="text-3xl md:text-4xl font-bold text-edf-blue mb-4">
+        Pourquoi passer à l'autoconsommation ?
+      </h2> -->
+        <h2 class="text-3xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Pourquoi passer à l' <span class="text-edf-blue">autoconsommation ?</span>
+      </h2>
+      <p class="text-lg text-gray-600">
+        Une solution rentable, écologique et durable pour votre habitation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((feature) => (
+        <div class="relative mt-10 p-8 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group">
+          {/* Icône circulaire positionnée en haut */}
+          <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-400 group-hover:text-edf-orange group-hover:scale-110 transition-all duration-300 border-4 border-gray-50 group-hover:border-orange-50">
+              {feature.iconName === 'shield-check' ? (
+                <ShieldCheckIconV2 class="w-9 h-9" />
+              ) : feature.iconName === 'trending-up' ? (
+                <PercentageIcon class="w-9 h-9" />
+              ) : feature.iconName === 'piggy-bank' ? (
+                <PiggyBankIcon class="w-9 h-9" />
+              ) : (
+                <div class="w-9 h-9" set:html={iconSvgs[feature.iconName]} />
+              )}
+            </div>
+          </div>
+          
+          {/* Contenu de la carte */}
+          <div class="mt-8">
+            <h3 class="text-xl font-bold text-edf-blue mb-3">
+              {feature.title}
+            </h3>
+            <p class="text-gray-500 leading-relaxed text-sm">
+              {feature.description}
+            </p>
+          </div>
+          
+          {/* Ligne décorative en bas */}
+          <div class="mt-6 w-12 h-1 bg-gray-100 rounded-full group-hover:bg-edf-orange transition-colors duration-300"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

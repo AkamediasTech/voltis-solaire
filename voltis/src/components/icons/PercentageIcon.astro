@@ -1,0 +1,82 @@
+---
+// PercentageIcon.astro - Icône de pourcentage avec bâtiments
+interface Props {
+  class?: string;
+}
+
+const { class: className = "w-9 h-9" } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class={className} viewBox="0 0 510 510">
+  <defs>
+    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="328.025" x2="532.955" y1="224.928" y2="372.803">
+      <stop offset="0" stop-color="#91f27f"/>
+      <stop offset="1" stop-color="#4ab172"/>
+    </linearGradient>
+    <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="435.08" x2="207.346" y1="284.273" y2="177.17">
+      <stop offset="0" stop-color="#91f27f" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffed82"/>
+    </linearGradient>
+    <linearGradient id="lg1">
+      <stop offset="0" stop-color="#4ab172" stop-opacity="0"/>
+      <stop offset="1" stop-color="#009145"/>
+    </linearGradient>
+    <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="458.133" x2="216.403" xlink:href="#lg1" y1="218.661" y2="578.976"/>
+    <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="27.983" x2="150.58" y1="350.747" y2="439.212">
+      <stop offset="0" stop-color="#ff7044"/>
+      <stop offset="1" stop-color="#f82814"/>
+    </linearGradient>
+    <linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="93.95" x2="-43.066" y1="384.312" y2="319.874">
+      <stop offset="0" stop-color="#ff7044" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffa325"/>
+    </linearGradient>
+    <linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="119.819" x2="13.92" y1="359.993" y2="517.842">
+      <stop offset="0" stop-color="#f82814" stop-opacity="0"/>
+      <stop offset="1" stop-color="#c0272d"/>
+    </linearGradient>
+    <linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="178.332" x2="338.087" y1="294.331" y2="409.609">
+      <stop offset="0" stop-color="#ffd945"/>
+      <stop offset="1" stop-color="#ffa325"/>
+    </linearGradient>
+    <linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="263.862" x2="89.687" y1="340.542" y2="258.628">
+      <stop offset="0" stop-color="#ffd945" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffed82"/>
+    </linearGradient>
+    <linearGradient id="SVGID_9_" gradientUnits="userSpaceOnUse" x1="291.69" x2="125.862" y1="300.448" y2="547.625">
+      <stop offset="0" stop-color="#ffd945" stop-opacity="0"/>
+      <stop offset="1" stop-color="#b43759"/>
+    </linearGradient>
+    <linearGradient id="SVGID_10_" gradientUnits="userSpaceOnUse" x1="419.147" x2="304.033" xlink:href="#lg1" y1="234.426" y2="147.999"/>
+    <linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="462.359" x2="368.02" xlink:href="#lg1" y1="260.027" y2="207.923"/>
+    <linearGradient id="SVGID_12_" gradientUnits="userSpaceOnUse" x1="482.305" x2="418.533" xlink:href="#lg1" y1="268.354" y2="219.374"/>
+    <linearGradient id="SVGID_13_" gradientUnits="userSpaceOnUse" x1="388.319" x2="420.608" y1="179.857" y2="242.354">
+      <stop offset="0" stop-color="#f8f6fb"/>
+      <stop offset="1" stop-color="#efdcfb"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <g>
+      <path d="m470.59 217.017.01 218.534c.001 7.854-6.367 6.969-14.22 6.968l-113.182-.011c-7.854-.001-14.221.883-14.222-6.971l-.01-218.534c-.001-10.873-8.816-19.688-19.689-19.689-17.539-.002-26.325-21.208-13.924-33.609l90.491-90.491c7.687-7.688 20.152-7.686 27.841.003l90.508 90.508c12.403 12.403 3.622 33.608-13.918 33.606-10.872 0-19.686 8.814-19.685 19.686z" fill="url(#SVGID_1_)"/>
+      <path d="m344.988 426.496-.009-209.491c-.002-19.685-16.018-35.701-35.703-35.703-1.63 0-2.771-.764-3.395-2.269-.623-1.505-.357-2.852.796-4.004l90.491-90.491c.89-.89 1.904-1.076 2.598-1.076s1.708.187 2.598 1.076l90.508 90.508c1.153 1.152 1.42 2.499.797 4.004s-1.764 2.268-3.394 2.268c-19.685-.002-35.698 16.011-35.696 35.696l.009 209.491z" fill="url(#SVGID_2_)"/>
+      <path d="m456.38 442.519c7.854.001 14.221.886 14.22-6.968l-.01-218.534c-.001-10.873 8.812-19.686 19.685-19.685 17.539.002 26.321-21.203 13.917-33.606l-90.508-90.508c-3.845-3.844-8.883-5.767-13.921-5.767l.025 375.063z" fill="url(#SVGID_3_)"/>
+    </g>
+    <g>
+      <path d="m142.191 435.527c0 7.877-6.395 6.992-14.272 6.992h-56.823v-.011h-56.813c-7.888 0-14.283.884-14.283-6.992v-107.815c0-3.697 2.997-6.693 6.693-6.693h128.804c3.697 0 6.693 2.997 6.693 6.693v107.826z" fill="url(#SVGID_4_)"/>
+      <path d="m126.105 327.977.011 98.468-55.021-.011h-55.02v-98.468c0-2.377-.23-4.708-.689-6.958h111.397c-.448 2.25-.678 4.581-.678 6.969z" fill="url(#SVGID_5_)"/>
+      <path d="m142.179 327.977.012 107.55c0 7.877-6.395 6.992-14.272 6.992h-56.823v-16.086l-.012-105.426h64.408c3.776 0 6.702 3.12 6.688 6.896 0 .025-.001.049-.001.074z" fill="url(#SVGID_6_)"/>
+    </g>
+    <g>
+      <path d="m298.941 227.052c3.697 0 6.694 2.997 6.693 6.694l-.011 201.765c0 7.888-6.395 6.992-14.283 7.004h-113.624c-7.888.011-14.283.895-14.283-6.993l.011-201.778c0-3.696 2.997-6.692 6.693-6.692z" fill="url(#SVGID_7_)"/>
+      <path d="m289.549 227.052v199.376h-55.021l-55.021.012.011-199.388z" fill="url(#SVGID_8_)"/>
+      <path d="m298.941 227.052c3.697 0 6.694 2.997 6.693 6.694l-.011 201.765c0 7.888-6.395 6.992-14.283 7.004h-56.812v-16.086l.011-199.377z" fill="url(#SVGID_9_)"/>
+    </g>
+    <g>
+      <path d="m470.606 309.767v23.71l-129.642-129.642c-4.696-3.697-7.532-9.553-7.532-18.164v-24.571c0-17.142 11.252-23.365 25.96-23.365 9.002 0 16.798 2.388 21.437 8.267l89.765 89.765z" fill="url(#SVGID_10_)"/>
+      <path d="m498.082 195.787c-2.331.987-4.96 1.55-7.808 1.55-5.431 0-10.356 2.204-13.916 5.764-3.559 3.559-5.764 8.485-5.764 13.916l.011 159.93-106.241-106.23c-2.802-1.768-4.455-4.834-4.455-7.681 0-1.033.345-2.25.861-3.284l60.75-124.784c1.389-2.951 4.156-4.329 7.279-4.329 3.41 0 7.084 1.814 8.956 4.822z" fill="url(#SVGID_11_)"/>
+      <path d="m470.594 235.766.011 74-50.198-50.199c-4.696-3.697-7.532-9.553-7.532-18.164v-24.571c0-13.204 6.671-19.932 16.465-22.321 2.917-.712 6.12-1.045 9.495-1.045 9.002 0 16.798 2.388 21.437 8.267l10.839 10.839c-.345 1.424-.517 2.916-.517 4.443z" fill="url(#SVGID_12_)"/>
+      <g>
+        <path d="m333.43 185.674v-24.577c0-17.135 11.249-23.365 25.961-23.365 14.539 0 25.961 6.23 25.961 23.365v24.577c0 17.135-11.423 23.365-25.961 23.365-14.712 0-25.961-6.231-25.961-23.365zm34.615-24.578c0-5.711-3.289-8.308-8.654-8.308s-8.481 2.596-8.481 8.308v24.577c0 5.711 3.116 8.308 8.481 8.308s8.654-2.596 8.654-8.308zm70.962-21.288c0 1.039-.173 2.25-.692 3.289l-60.923 124.788c-1.211 2.596-4.5 4.327-7.788 4.327-5.884 0-9.692-4.846-9.692-9.173 0-1.038.346-2.25.865-3.288l60.751-124.788c1.384-2.942 4.154-4.327 7.269-4.327 4.844-.001 10.21 3.634 10.21 9.172zm-26.135 101.596v-24.577c0-17.135 11.25-23.365 25.961-23.365 14.539 0 25.962 6.23 25.962 23.365v24.577c0 17.135-11.424 23.366-25.962 23.366-14.711 0-25.961-6.231-25.961-23.366zm34.616-24.577c0-5.711-3.288-8.308-8.654-8.308-5.365 0-8.48 2.596-8.48 8.308v24.577c0 5.712 3.115 8.308 8.48 8.308 5.366 0 8.654-2.596 8.654-8.308z" fill="url(#SVGID_13_)"/>
+      </g>
+    </g>
+  </g>
+</svg>

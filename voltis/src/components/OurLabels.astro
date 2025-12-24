@@ -1,0 +1,82 @@
+---
+// OurLabelsV2.astro - Version avec cartes enrichies (nom + description)
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Badge + Titre + Sous-titre -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
+        <span class="text-edf-orange text-sm font-semibold">Nos certifications</span>
+      </div>
+      
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Une expertise certifiée <br/>
+        <span class="text-edf-blue">pour votre tranquillité</span>
+      </h2>
+      
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Faites confiance à des professionnels reconnus par les plus hautes instances du secteur.
+      </p>
+    </div>
+
+    <!-- Grille de cartes enrichies -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Carte RGE -->
+      <div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+        <div class="w-50 h-24 rounded-2xl flex items-center justify-center mb-6">
+          <img src="/comprendre-rge.jpg" alt="RGE - Reconnu Garant de l'Environnement" class="w-full h-full object-contain" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">
+          RGE
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Qualification obligatoire pour bénéficier des aides de l'État.
+        </p>
+      </div>
+
+      <!-- Carte QualiPV -->
+      <div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+        <div class="w-50 h-24  rounded-2xl flex items-center justify-center mb-6">
+           <img src="/rge_quali_pv_transparent.png" alt="RGE Quali PV" class="w-full h-full object-contain" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">
+          QualiPV
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Expertise reconnue dans l'installation de panneaux photovoltaïques.
+        </p>
+      </div>
+
+      <!-- Carte Qualibat -->
+      <div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+        <div class="w-50 h-24 rounded-2xl flex items-center justify-center mb-6">
+          <img src="/rge_qualibat_transparent.png" alt="RGE Qualibat" class="w-full h-full object-contain" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">
+          Qualibat
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Certification de qualification dans le bâtiment depuis 1949.
+        </p>
+      </div>
+
+      <!-- Carte EDF -->
+      <div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+         <div class="w-50 h-24 rounded-2xl flex items-center justify-center mb-6">
+          <img src="/edf_logo_transparent.png" alt="EDF" class="w-full h-full object-contain" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">
+          Partenaire EDF
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Installateur agréé du leader français de l'énergie.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

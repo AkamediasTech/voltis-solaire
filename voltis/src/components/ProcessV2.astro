@@ -25,7 +25,7 @@ const steps = [
     num: "04",
     icon: "wrench",
     title: "Installation clé en main",
-    desc: "Pose soignée par des professionnels certifiés, avec une planification rapide après validation."
+    desc: "Installation soignée par des professionnels certifiés, avec une planification rapide après validation."
   }
 ];
 
@@ -44,6 +44,10 @@ type IconKey = keyof typeof iconComponents;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- En-tête centré -->
     <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
+        <span class="text-edf-orange text-sm font-semibold">Notre processus</span>
+      </div>
+      
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
         Du diagnostic à la mise en service :<br />
         <span class="text-edf-blue">nos experts s'occupent de tout</span>

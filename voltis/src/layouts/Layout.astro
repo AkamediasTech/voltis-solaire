@@ -22,7 +22,9 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/cinematic-bulb.webp" fetchpriority="high" />
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /> -->
 </head>
 <body>
   <div class="min-h-screen flex flex-col font-sans text-gray-900 bg-white">

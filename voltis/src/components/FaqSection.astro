@@ -1,0 +1,194 @@
+﻿---
+const faqItems = [
+  {
+    id: 1,
+    question: "Quels sont les avantages de l'autoconsommation ?",
+    answer:
+      "Vous produisez et consommez votre propre electricite, ce qui reduit durablement vos factures et diminue votre dependance aux variations des prix de l'energie.",
+  },
+  {
+    id: 2,
+    question: "Combien de temps dure l'installation ?",
+    answer:
+      "La pose est generalement realisee en 1 a 2 jours selon la configuration du toit et la puissance installee.",
+  },
+  {
+    id: 3,
+    question: "Quelles aides sont disponibles en 2025 ?",
+    answer:
+      "Vous pouvez beneficier de primes a l'autoconsommation et d'aides locales. Nos experts vous accompagnent pour identifier les dispositifs adaptes.",
+  },
+  {
+    id: 4,
+    question: "Mon toit est-il compatible ?",
+    answer:
+      "L'orientation, l'inclinaison et l'absence d'ombrage sont les principaux criteres. Une etude technique gratuite permet de valider la faisabilite.",
+  },
+  {
+    id: 5,
+    question: "Quelle garantie sur les panneaux ?",
+    answer:
+      "Les modules sont garantis 25 ans en performance. L'installation est egalement couverte par des assurances et garanties professionnelles.",
+  },
+  {
+    id: 6,
+    question: "Puis-je suivre ma production ?",
+    answer:
+      "Oui, un systeme de monitoring vous permet de suivre la production en temps reel et d'optimiser votre consommation.",
+  },
+];
+---
+
+<section class="py-20 bg-edf-gray" id="faq">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-edf-orange font-bold tracking-wider uppercase text-sm">Support client</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-edf-blue mt-2">
+          Tout savoir sur le solaire
+        </h2>
+      </div>
+      <button
+        class="mt-4 md:mt-0 bg-edf-blue text-white px-6 py-3 rounded-full hover:bg-edf-lightBlue transition-all shadow-lg text-sm font-semibold cursor-pointer"
+        type="button"
+      >
+        Contacter un expert
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {faqItems.map((item) => (
+        <div
+          class="faq-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group"
+          data-faq-card
+          data-faq-id={item.id}
+        >
+          <button
+            class="w-full text-left p-6 focus:outline-none cursor-pointer"
+            type="button"
+            data-faq-toggle
+            aria-expanded="false"
+            aria-controls={`faq-answer-${item.id}`}
+            id={`faq-question-${item.id}`}
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-4">
+                <div class="faq-badge p-2 rounded-lg transition-colors bg-gray-100 text-edf-blue group-hover:bg-blue-50">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="faq-title font-bold text-lg text-edf-blue">
+                  {item.question}
+                </h3>
+              </div>
+              <div class="faq-icon mt-1 transition-transform duration-300">
+                <svg class="faq-plus" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 4V20M4 12H20"
+                    stroke="#CBD5E1"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <div
+            class="faq-answer grid transition-all duration-300 ease-in-out"
+            id={`faq-answer-${item.id}`}
+            role="region"
+            aria-labelledby={`faq-question-${item.id}`}
+            aria-hidden="true"
+            data-faq-answer
+          >
+            <div class="overflow-hidden">
+              <p class="text-gray-600 ml-6 pr-6 pl-[3.5rem] leading-relaxed border-l-2 border-edf-orange/20">
+                {item.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const faqCards = Array.from(document.querySelectorAll("[data-faq-card]"));
+
+  const setOpen = (card, open) => {
+    const button = card.querySelector("[data-faq-toggle]");
+    const answer = card.querySelector("[data-faq-answer]");
+
+    if (!button || !answer) {
+      return;
+    }
+
+    card.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    answer.setAttribute("aria-hidden", open ? "false" : "true");
+  };
+
+  faqCards.forEach((card) => {
+    const button = card.querySelector("[data-faq-toggle]");
+
+    if (!button) {
+      return;
+    }
+
+    button.addEventListener("click", () => {
+      const isOpen = card.classList.contains("is-open");
+
+      faqCards.forEach((otherCard) => setOpen(otherCard, false));
+
+      if (!isOpen) {
+        setOpen(card, true);
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-answer {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-top: 0;
+  }
+
+  .faq-card.is-open .faq-answer {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    /* margin-top: 1rem; */
+    margin-bottom: 2rem;
+  }
+
+  .faq-card.is-open .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-card.is-open .faq-badge {
+    background-color: var(--color-edf-orange);
+    color: white;
+  }
+
+  .faq-card.is-open .faq-title {
+    color: var(--color-edf-orange);
+  }
+
+  .faq-card.is-open .faq-plus path {
+    stroke: var(--color-edf-orange);
+  }
+</style>

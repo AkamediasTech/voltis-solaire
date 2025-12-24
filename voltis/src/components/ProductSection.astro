@@ -1,0 +1,124 @@
+---
+// ProductSection.astro - Composant statique
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Main Title -->
+    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-16">
+      Montez en puissance et optimisez vos économies
+    </h2>
+
+    <!-- Top Content: Text + Image -->
+    <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+      
+      <!-- Text Side -->
+      <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
+        <h3 class="text-xl md:text-2xl font-bold text-edf-orange leading-tight">
+          Voltis Solaire vous équipe de panneaux photovoltaïques nouvelle génération, à la pointe de l'innovation.
+        </h3>
+        
+        <p class="text-gray-800 leading-relaxed text-base md:text-lg">
+          Reprenez la main sur votre facture d'électricité et réalisez jusqu'à 60 % d'économies d'énergie par an<sup>(1)</sup>. Produisez et consommez votre propre énergie, toute l'année.
+        </p>
+        
+        <p class="text-gray-800 leading-relaxed text-base md:text-lg">
+          Avec nos nouveaux panneaux solaires 500Wc, vous générez davantage d'électricité verte à surface équivalente. Leur technologie avancée garantit de meilleures performances, y compris lorsque l'ensoleillement est faible.
+        </p>
+
+        <div class="pt-4 flex justify-center lg:justify-start">
+          <button data-scroll-top class="hover:cursor-pointer bg-edf-orange text-white font-bold py-3.5 px-8 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg shadow-orange-100">
+            Réaliser mon bilan solaire gratuit
+          </button>
+        </div>
+      </div>
+
+      <!-- Image Side -->
+      <div class="lg:w-1/2 flex justify-center w-full">
+        <img 
+          src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop" 
+          alt="Panneaux solaires EcoLife" 
+          class="w-full max-w-md object-contain drop-shadow-2xl rounded-xl"
+        />
+      </div>
+    </div>
+
+    <!-- Features Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        
+      <!-- Column 1 -->
+      <div class="flex flex-col items-center text-center group">
+        <div class="mb-6 transform transition-transform group-hover:scale-110 duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange">
+            <path d="M10.188 8.5A6 6 0 0 1 16 4a1 1 0 0 0 6 6 6 6 0 0 1-3 5.197"/>
+            <path d="M11 20v2"/>
+            <path d="M3 20a5 5 0 1 1 8.9-4H13a3 3 0 0 1 2 5.24"/>
+            <path d="M7 19v2"/>
+          </svg>
+        </div>
+        <h4 class="text-lg font-bold text-gray-900 mb-4 h-auto md:h-14 flex items-center justify-center">
+          Une production optimisée par tous les temps
+        </h4>
+        <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">
+          Même par temps nuageux, en hiver ou en automne, nos panneaux captent plus d'énergie. Vous produisez ainsi votre propre électricité de manière plus constante tout au long de l'année.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="flex flex-col items-center text-center group">
+        <div class="mb-6 transform transition-transform group-hover:scale-110 duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        </div>
+        <h4 class="text-lg font-bold text-gray-900 mb-4 h-auto md:h-14 flex items-center justify-center">
+          Un rendement supérieur, même en cas de forte chaleur
+        </h4>
+        <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">
+          Contrairement aux panneaux classiques, la technologie EcoLife est moins sensible aux températures élevées, garantissant une production maximale.
+        </p>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="flex flex-col items-center text-center group">
+        <div class="mb-6 transform transition-transform group-hover:scale-110 duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </div>
+        <h4 class="text-lg font-bold text-gray-900 mb-4 h-auto md:h-14 flex items-center justify-center">
+          Une promesse solide pour votre tranquillité d'esprit
+        </h4>
+        <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">
+          Cette innovation offre une durabilité accrue avec des panneaux photovoltaïques performants et garantie à vie<sup>(2)</sup>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-20 text-center">
+      <button data-scroll-top class="cursor-pointer bg-edf-orange text-white font-bold py-3.5 px-8 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg shadow-orange-100">
+        Réaliser mon bilan solaire gratuit
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-scroll-top]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>

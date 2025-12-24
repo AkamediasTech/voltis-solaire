@@ -1,0 +1,47 @@
+---
+// Header.astro - Composant statique
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo Section -->
+      <div 
+        class="flex items-center gap-2 cursor-pointer" 
+        data-scroll-top
+      >
+        <div class="relative flex items-center justify-center">
+          <div class="w-10 h-10 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold text-xl">
+            e
+          </div>
+          <div class="absolute -top-1 -right-1">
+            <div class="w-4 h-4 bg-edf-orange rounded-full border-2 border-white"></div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-edf-blue font-bold text-xl leading-none tracking-tight">SOLUTIONS</span>
+          <span class="text-gray-500 text-xs font-semibold tracking-widest uppercase">Solaires</span>
+        </div>
+      </div>
+
+      <!-- Action Section -->
+      <div class="flex items-center">
+        <button 
+          data-scroll-top
+          class="cursor-pointer bg-edf-blue text-white px-4 md:px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold hover:bg-edf-lightBlue transition-all shadow-md transform active:scale-95 whitespace-nowrap"
+        >
+          <span class="md:hidden">Bilan Solaire Gratuit</span>
+          <span class="hidden md:inline">Obtenir mon Bilan Solaire Gratuit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll('[data-scroll-top]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>

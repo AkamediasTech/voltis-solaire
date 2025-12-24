@@ -1,0 +1,74 @@
+---
+// Hero.astro - Composant hybride avec React Island
+import Simulator from './Simulator.tsx';
+---
+
+<div class="relative min-h-[90vh] bg-edf-blue flex flex-col">
+  <!-- Background Image Container -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="https://picsum.photos/1920/1080" 
+      alt="Panneaux solaires sur toit" 
+      class="w-full h-full object-cover opacity-20 md:opacity-100 md:object-right"
+    />
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-edf-blue/90 via-edf-blue/70 to-edf-blue/90 md:bg-gradient-to-r md:from-edf-blue md:via-edf-blue/80 md:to-transparent"></div>
+  </div>
+
+  <div class="relative z-10 flex-grow flex items-center py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20">
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              ))}
+            </div>
+            <span class="text-white text-xs font-medium">4.8/5 sur Trustpilot</span>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+            Produisez votre propre électricité <span class="text-edf-orange">verte</span>
+          </h1>
+          
+          <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Réduisez jusqu'à <span class="font-bold text-white">60%</span> de vos factures d'énergie grâce à l'autoconsommation. Profitez des aides de l'État en 2025.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4 text-sm font-medium text-blue-200">
+            <div class="flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-edf-orange"></div>
+              Installation clé en main
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-edf-orange"></div>
+              Garantie 25 ans
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-edf-orange"></div>
+              Filiale d'EDF
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content: Simulator React Island -->
+        <div class="lg:col-span-5 w-full">
+          <Simulator client:load />
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+  <!-- Wave Separator at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" class="fill-current w-full h-auto block">
+      <path fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+    </svg>
+  </div>
+</div>

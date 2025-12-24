@@ -1,0 +1,61 @@
+---
+// Features.astro - Composant statique
+const features = [
+  {
+    icon: 'piggy-bank',
+    title: "Réduisez vos factures",
+    description: "Jusqu'à 60% d'économies sur votre facture d'électricité en consommant votre propre production."
+  },
+  {
+    icon: 'trending-up',
+    title: "Valorisez votre bien",
+    description: "Une maison équipée de panneaux solaires se revend plus cher et plus vite (Valeur verte)."
+  },
+  {
+    icon: 'leaf',
+    title: "Énergie Verte",
+    description: "Participez à la transition énergétique en produisant une énergie propre et locale."
+  },
+  {
+    icon: 'shield-check',
+    title: "Garantie Sérénité",
+    description: "Bénéficiez de la solidité et de l'expertise d'une filiale du groupe EDF. Garantie performance 25 ans."
+  }
+];
+
+const iconSvgs: Record<string, string> = {
+  'piggy-bank': '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z"/><path d="M2 9v1c0 1.1.9 2 2 2h1"/><path d="M16 11h.01"/></svg>',
+  'trending-up': '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+  'leaf': '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
+  'shield-check': '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>'
+};
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-edf-blue mb-4">
+        Pourquoi passer à l'autoconsommation ?
+      </h2>
+      <p class="text-lg text-gray-600">
+        Une solution rentable, écologique et durable pour votre habitation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      {features.map((feature) => (
+        <div class="flex flex-col items-center text-center group">
+          <div class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-orange-100">
+            <div class="w-10 h-10 text-edf-orange" set:html={iconSvgs[feature.icon]} />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-edf-orange transition-colors">
+            {feature.title}
+          </h3>
+          <p class="text-gray-500 leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

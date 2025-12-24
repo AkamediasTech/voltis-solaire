@@ -1,0 +1,84 @@
+---
+// ProcessV2.astro - Version en grille de 4 cartes
+import { Clipboard, Send, FileCheck, Wrench } from 'lucide-react';
+
+const steps = [
+  {
+    num: "01",
+    icon: "clipboard",
+    title: "Étude gratuite",
+    desc: "faite par un conseiller solaire pour une installation sur-mesure adaptée à vos besoins."
+  },
+  {
+    num: "02",
+    icon: "send",
+    title: "Envoi d'un devis",
+    desc: "pour une installation sans surprise. Le paiement est fait quoiqu'il arrive après l'installation uniquement."
+  },
+  {
+    num: "03",
+    icon: "file-check",
+    title: "Démarches administratives prises en charge",
+    desc: "pour vous simplifier la vie (accord de l'urbanisme, accès à la prime à l'auto-consommation selon éligibilité...)."
+  },
+  {
+    num: "04",
+    icon: "wrench",
+    title: "Installation des panneaux solaires",
+    desc: "1 semaine après la signature du devis par notre équipe de professionnels certifiés."
+  }
+];
+
+// Mapping des icônes
+const iconComponents = {
+  'clipboard': Clipboard,
+  'send': Send,
+  'file-check': FileCheck,
+  'wrench': Wrench
+};
+
+type IconKey = keyof typeof iconComponents;
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- En-tête centré -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Du diagnostic à la mise en service :<br />
+        <span class="text-edf-blue">nos experts s'occupent de tout</span>
+      </h2>
+      <p class="text-xl text-gray-600 mt-6">
+        Un parcours simple, rapide et 100 % pris en charge
+      </p>
+    </div>
+
+    <!-- Grille de 4 cartes -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {steps.map((step) => {
+        const IconComponent = iconComponents[step.icon as IconKey];
+        return (
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+            <!-- Icône et numéro -->
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0">
+                <IconComponent className="w-7 h-7 text-edf-orange" />
+              </div>
+              <span class="text-6xl font-bold text-gray-100">{step.num}</span>
+            </div>
+
+            <!-- Contenu -->
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-gray-900 mb-3 leading-tight">
+                {step.title}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                {step.desc}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

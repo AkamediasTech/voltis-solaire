@@ -1,0 +1,99 @@
+---
+// StepsSection.astro - Composant statique avec script de scroll
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header Title -->
+    <div class="text-center max-w-5xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+        Passez au solaire et réalisez jusqu'à 60%<sup>(1)</sup> d'économies d'énergie à l'année
+      </h2>
+    </div>
+
+    <!-- Steps Container Box -->
+    <div class="border border-gray-200 rounded-sm p-8 md:p-12 bg-white">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 md:gap-4">
+        
+        <!-- Step 1 -->
+        <div class="flex-1 flex flex-col items-center text-center px-2">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange">
+              <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+              <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-edf-orange mb-3">Une étude gratuite</h3>
+          <p class="text-gray-800 text-sm leading-relaxed">
+            pour une installation sur-mesure par notre Conseiller Solaire à votre domicile
+          </p>
+        </div>
+
+        <!-- Arrow 1 -->
+        <div class="hidden md:flex items-center justify-center text-gray-800 w-12">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex-1 flex flex-col items-center text-center px-2">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="m16 11 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-edf-orange mb-3">Une validation technique</h3>
+          <p class="text-gray-800 text-sm leading-relaxed">
+            par nos experts pour confirmer la proposition du Conseiller Solaire. Elle se déroule à distance ou sur place
+          </p>
+        </div>
+
+        <!-- Arrow 2 -->
+        <div class="hidden md:flex items-center justify-center text-gray-800 w-12">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex-1 flex flex-col items-center text-center px-2">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+              <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+              <path d="m9 15 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-edf-orange mb-3 leading-tight">Démarches administratives prises en charge</h3>
+          <p class="text-gray-800 text-sm leading-relaxed">
+            pour vous simplifier la vie<sup>(4)</sup>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-16 text-center">
+      <button 
+        data-scroll-top
+        class="cursor-pointer bg-edf-orange text-white font-bold py-4 px-10 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg shadow-orange-100 text-lg"
+      >
+        Je demande mon Bilan gratuit
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-scroll-top]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
 // ProductSection.astro - Composant statique
+import { Image } from 'astro:assets';
 ---
 
 <section class="py-20 bg-white">
@@ -46,6 +47,9 @@
           src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop" 
           alt="Panneaux solaires" 
           class="w-full max-w-md object-contain drop-shadow-2xl rounded-xl"
+          loading="lazy"
+          width="800"
+          height="600"
         />
       </div>
     </div>

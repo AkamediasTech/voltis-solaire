@@ -1,0 +1,249 @@
+---
+// CookieConsent.astro - Bannière de consentement aux cookies (RGPD)
+interface Props {
+  delay?: number;
+}
+
+const { delay = 2000 } = Astro.props;
+---
+
+<div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-50 bg-edf-blue text-white shadow-[0_-4px_20px_rgba(0,0,0,0.2)] border-t border-white/10 transition-transform duration-500 translate-y-full" data-visible="false">
+  
+  <!-- Panneau de paramètres -->
+  <div id="settings-panel" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2">
+        <svg class="w-5 h-5 text-edf-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        Paramètres des cookies
+      </h3>
+      <button id="close-settings" class="cursor-pointer text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm">
+        <span class="hidden sm:inline">Retour</span>
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <!-- Nécessaires -->
+      <div class="bg-white/5 p-5 rounded-lg border border-white/10 relative overflow-hidden">
+        <div class="flex justify-between items-start mb-3">
+          <span class="font-bold text-edf-orange text-lg">Nécessaires</span>
+          <div class="flex items-center gap-2 px-2 py-1 bg-edf-orange/10 rounded text-edf-orange text-xs font-bold uppercase tracking-wider border border-edf-orange/20">
+            Toujours actif
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed">Indispensables au bon fonctionnement du site (sécurité, connexion, mémorisation de vos choix).</p>
+      </div>
+
+      <!-- Statistiques -->
+      <div data-cookie="analytics" class="cookie-card bg-white/5 p-5 rounded-lg border border-white/10 hover:bg-white/10 cursor-pointer transition-colors">
+        <div class="flex justify-between items-center mb-3">
+          <span class="cookie-label font-bold text-lg text-gray-300">Statistiques</span>
+          <div class="cookie-toggle w-12 h-6 rounded-full relative transition-colors duration-300 bg-gray-600">
+            <div class="cookie-toggle-dot w-4 h-4 bg-white rounded-full absolute top-1 transition-transform duration-300 shadow-sm translate-x-1"></div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed">Nous aident à comprendre comment vous utilisez le site afin d'en améliorer le contenu et l'ergonomie.</p>
+      </div>
+
+      <!-- Marketing -->
+      <div data-cookie="marketing" class="cookie-card bg-white/5 p-5 rounded-lg border border-white/10 hover:bg-white/10 cursor-pointer transition-colors">
+        <div class="flex justify-between items-center mb-3">
+          <span class="cookie-label font-bold text-lg text-gray-300">Marketing</span>
+          <div class="cookie-toggle w-12 h-6 rounded-full relative transition-colors duration-300 bg-gray-600">
+            <div class="cookie-toggle-dot w-4 h-4 bg-white rounded-full absolute top-1 transition-transform duration-300 shadow-sm translate-x-1"></div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed">Permettent d'afficher des publicités personnalisées adaptées à vos centres d'intérêt sur des sites tiers.</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-end gap-4 pt-4 border-t border-white/10">
+      <button id="save-preferences" class="cursor-pointer py-3 px-8 bg-white text-edf-blue font-bold rounded hover:bg-edf-orange hover:text-white transition-all duration-300 shadow-lg text-sm">
+        ENREGISTRER MES PRÉFÉRENCES
+      </button>
+    </div>
+  </div>
+
+  <!-- Bannière standard -->
+  <div id="standard-banner" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+    <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12">
+      <div class="flex-1">
+        <h3 class="text-sm font-bold uppercase tracking-widest text-edf-orange mb-2 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          Transparence et Protection des Données
+        </h3>
+        <p class="text-sm text-gray-300 leading-relaxed text-justify md:text-left">
+          Conformément aux dispositions du Règlement Général sur la Protection des Données (RGPD), nous sollicitons votre consentement pour l'utilisation de traceurs (cookies). Ces technologies nous permettent d'assurer la sécurité du site, de mesurer l'audience et d'adapter nos offres à votre profil énergétique. Vous pouvez retirer votre consentement à tout moment.
+        </p>
+      </div>
+
+      <div class="flex flex-col items-end gap-3 min-w-[280px]">
+        <div class="flex w-full gap-3">
+          <button id="accept-all" class="flex-1 py-3 px-6 bg-white text-edf-blue text-sm font-bold rounded hover:bg-edf-orange hover:text-white transition-all duration-300 cursor-pointer">
+            ACCEPTER ET CONTINUER
+          </button>
+          <button id="open-settings" class="py-3 px-4 border-[1.5px] border-gray-400 text-gray-300 rounded hover:border-white hover:text-white transition-colors text-sm font-semibold cursor-pointer">
+            PARAMÉTRER
+          </button>
+        </div>
+        
+        <div id="reject-container" class="transition-all duration-1000 ease-in-out overflow-hidden flex justify-center w-full max-h-0 opacity-0">
+          <button id="reject-all" class="text-xs text-gray-400 hover:text-white underline decoration-gray-500 underline-offset-4 transition-colors">
+            Continuer sans accepter les traceurs optionnels
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes slideUpBanner {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .animate-slide-up {
+    animation: slideUpBanner 0.5s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  /* Active state for cookie cards */
+  .cookie-card.active {
+    border-color: rgba(255, 94, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cookie-card.active .cookie-label {
+    color: white;
+  }
+
+  .cookie-card.active .cookie-toggle {
+    background-color: rgb(255, 94, 0);
+  }
+
+  .cookie-card.active .cookie-toggle-dot {
+    transform: translateX(1.75rem);
+  }
+</style>
+
+<script define:vars={{ delay }}>
+  // Check if consent already exists
+  const existingConsent = localStorage.getItem('voltis_solar_consent');
+  if (existingConsent) {
+    // User has already made a choice, don't show banner
+    console.log('✅ Consentement existant détecté', JSON.parse(existingConsent));
+  } else {
+    // Show banner after delay
+    const banner = document.getElementById('cookie-banner');
+    const standardBanner = document.getElementById('standard-banner');
+    const settingsPanel = document.getElementById('settings-panel');
+    const rejectContainer = document.getElementById('reject-container');
+    
+    // State management
+    let preferences = {
+      necessary: true,
+      analytics: true,
+      marketing: true
+    };
+
+    // Show banner with animation
+    setTimeout(() => {
+      banner.classList.remove('translate-y-full');
+      banner.classList.add('animate-slide-up');
+      banner.dataset.visible = 'true';
+    }, 100);
+
+    // Show reject button after delay
+    setTimeout(() => {
+      rejectContainer.classList.remove('max-h-0', 'opacity-0');
+      rejectContainer.classList.add('max-h-10', 'opacity-100');
+    }, delay);
+
+    // Helper functions
+    function closeBanner() {
+      banner.classList.add('translate-y-full');
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 500);
+    }
+
+    function saveConsent(consentData) {
+      localStorage.setItem('voltis_solar_consent', JSON.stringify(consentData));
+      console.log('💾 Consentement sauvegardé', consentData);
+      closeBanner();
+    }
+
+    function showSettings() {
+      standardBanner.classList.add('hidden');
+      settingsPanel.classList.remove('hidden');
+      settingsPanel.classList.add('animate-fade-in');
+      
+      // Initialize toggles based on current preferences
+      updateToggles();
+    }
+
+    function hideSettings() {
+      settingsPanel.classList.add('hidden');
+      standardBanner.classList.remove('hidden');
+    }
+
+    function updateToggles() {
+      const cards = document.querySelectorAll('.cookie-card');
+      cards.forEach(card => {
+        const type = card.dataset.cookie;
+        if (preferences[type]) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    // Event listeners
+    document.getElementById('accept-all').addEventListener('click', () => {
+      const allAccepted = { necessary: true, analytics: true, marketing: true };
+      console.log('✅ CONSENTEMENT : Tout accepté', allAccepted);
+      saveConsent(allAccepted);
+    });
+
+    document.getElementById('reject-all').addEventListener('click', () => {
+      const allRejected = { necessary: true, analytics: false, marketing: false };
+      console.log('❌ CONSENTEMENT : Tout refusé (sauf nécessaires)', allRejected);
+      saveConsent(allRejected);
+    });
+
+    document.getElementById('open-settings').addEventListener('click', showSettings);
+    document.getElementById('close-settings').addEventListener('click', hideSettings);
+
+    // Cookie card toggles
+    const cookieCards = document.querySelectorAll('.cookie-card');
+    cookieCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const type = card.dataset.cookie;
+        preferences[type] = !preferences[type];
+        updateToggles();
+      });
+    });
+
+    document.getElementById('save-preferences').addEventListener('click', () => {
+      console.log('⚙️ CONSENTEMENT : Préférences personnalisées', preferences);
+      saveConsent(preferences);
+    });
+  }
+</script>

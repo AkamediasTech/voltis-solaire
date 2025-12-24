@@ -68,7 +68,10 @@ type IconKey = keyof typeof iconComponents;
               <div class="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0">
                 <IconComponent className="w-7 h-7 text-edf-orange" />
               </div>
-              <span class="text-6xl font-bold text-gray-100">{step.num}</span>
+              {/* Version avec bordure orange */}
+              <span class="text-6xl font-bold text-gray-100" style="-webkit-text-stroke: 3px rgba(255, 107, 53, 0.85);">{step.num}</span>
+              {/* Version avec texte orange */}
+              {/* <span class="text-6xl font-bold text-edf-orange opacity-85">{step.num}</span> */}
             </div>
 
             <!-- Contenu -->

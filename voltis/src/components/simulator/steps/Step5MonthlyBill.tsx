@@ -1,6 +1,6 @@
 import React from "react";
 import type { StepProps } from "../../../types";
-import { CardOption } from "../shared/CardOption";
+import { CardOptionCompact } from "../shared/CardOptionCompact";
 import { GradientPremiumButtons } from "../shared/NavigationButtons";
 
 const Step5MonthlyBill: React.FC<StepProps> = ({
@@ -15,28 +15,28 @@ const Step5MonthlyBill: React.FC<StepProps> = ({
         Montant approximatif de votre facture mensuelle d'électricité
       </h3>
       <div className="grid grid-cols-2 gap-4">
-        <CardOption
+        <CardOptionCompact
           label="Moins de 75€"
           value="LESS_THAN_75"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
           icon="💰"
         />
-        <CardOption
+        <CardOptionCompact
           label="75€ à 150€"
           value="75_TO_150"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
           icon="💵"
         />
-        <CardOption
+        <CardOptionCompact
           label="150€ à 250€"
           value="150_TO_250"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
           icon="💸"
         />
-        <CardOption
+        <CardOptionCompact
           label="Plus de 250€"
           value="MORE_THAN_250"
           currentValue={data.monthlyBill}

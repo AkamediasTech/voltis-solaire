@@ -1,6 +1,6 @@
 import React from "react";
 import type { StepProps } from "../../../types";
-import { CardOption } from "../shared/CardOption";
+import { CardOptionCompact } from "../shared/CardOptionCompact";
 import { GradientPremiumButtons } from "../shared/NavigationButtons";
 
 const Step4SurfaceArea: React.FC<StepProps> = ({
@@ -15,28 +15,28 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
         Quelle est la surface de votre logement ?
       </h3>
       <div className="grid grid-cols-2 gap-4">
-        <CardOption
+        <CardOptionCompact
           label="Moins de 70 m²"
           value="LESS_THAN_70"
           currentValue={data.surfaceArea}
           onChange={(val) => updateData({ surfaceArea: val })}
           icon="📏"
         />
-        <CardOption
+        <CardOptionCompact
           label="70 à 100 m²"
           value="70_TO_100"
           currentValue={data.surfaceArea}
           onChange={(val) => updateData({ surfaceArea: val })}
           icon="📐"
         />
-        <CardOption
+        <CardOptionCompact
           label="100 à 150 m²"
           value="100_TO_150"
           currentValue={data.surfaceArea}
           onChange={(val) => updateData({ surfaceArea: val })}
           icon="📊"
         />
-        <CardOption
+        <CardOptionCompact
           label="Plus de 150 m²"
           value="MORE_THAN_150"
           currentValue={data.surfaceArea}

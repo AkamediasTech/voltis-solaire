@@ -1,7 +1,7 @@
 import React from "react";
 import { HeatingType } from "../../../types";
 import type { StepProps } from "../../../types";
-import { CardOption } from "../shared/CardOption";
+import { CardOptionCompact } from "../shared/CardOptionCompact";
 import { GradientPremiumButtons } from "../shared/NavigationButtons";
 import { CampingGasColorIcon } from "../../icons/CampingGasColorIcon";
 import { LightBulbColorIcon } from "../../icons/LightBulbColorIcon";
@@ -20,36 +20,32 @@ const Step3HeatingType: React.FC<StepProps> = ({
         Quel est votre type de chauffage actuel ?
       </h3>
       <div className="grid grid-cols-2 gap-4">
-        <CardOption
+        <CardOptionCompact
           label="Fioul"
           value={HeatingType.FUEL_OIL}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          // icon="🛢️"
           icon={<OilBarrelColorIcon size={48} />}
         />
-        <CardOption
+        <CardOptionCompact
           label="Gaz"
           value={HeatingType.GAS}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          // icon="🔥"
           icon={<CampingGasColorIcon size={48} />}
         />
-        <CardOption
+        <CardOptionCompact
           label="Électrique"
           value={HeatingType.ELECTRIC}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          // icon="⚡"
           icon={<LightBulbColorIcon size={48} />}
         />
-        <CardOption
+        <CardOptionCompact
           label="Autre"
           value={HeatingType.OTHER}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          // icon="��"
           icon={<FireWoodColorIcon size={48} />}
         />
       </div>

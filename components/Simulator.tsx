@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
-import { UserType, HousingType, SimulationData } from '../types';
-import { Button } from './Button';
-import { 
-  Home, Building2, User, Check, ArrowRight, MapPin, Zap, 
-  Key, Wallet, Hammer, Users, Triangle, Box, Sun, CloudSun, Cloud, HelpCircle, Info
-} from 'lucide-react';
+import React, { useState } from "react";
+import { UserType, HousingType, SimulationData } from "../types";
+import { Button } from "./Button";
+import {
+  Home,
+  Building2,
+  User,
+  Check,
+  ArrowRight,
+  MapPin,
+  Zap,
+  Key,
+  Wallet,
+  Hammer,
+  Users,
+  Triangle,
+  Box,
+  Sun,
+  CloudSun,
+  Cloud,
+  HelpCircle,
+  Info,
+} from "lucide-react";
 
 const INITIAL_DATA: SimulationData = {
   userType: null,
   housingType: null,
   constructionStatus: null,
-  postalCode: '',
+  postalCode: "",
   surfaceArea: null,
   occupants: null,
   roofShape: null,
@@ -20,10 +36,10 @@ const INITIAL_DATA: SimulationData = {
   alreadyInquired: null,
   projectReason: null,
   projectTimeline: null,
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
   newsletter: false,
 };
 
@@ -36,24 +52,24 @@ export const Simulator: React.FC = () => {
   const totalSteps = 15;
 
   const updateData = (fields: Partial<SimulationData>) => {
-    setData(prev => ({ ...prev, ...fields }));
+    setData((prev) => ({ ...prev, ...fields }));
   };
 
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => prev - 1);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSuccess(true);
   };
 
   const ProgressBar = () => (
     <div className="w-full bg-gray-100 h-1.5 rounded-full mb-8 overflow-hidden flex justify-between items-center relative">
-      <div 
+      <div
         className="bg-edf-orange h-1.5 rounded-full transition-all duration-500 ease-out absolute top-0 left-0"
         style={{ width: `${((step + 1) / totalSteps) * 100}%` }}
       />
@@ -65,31 +81,41 @@ export const Simulator: React.FC = () => {
 
   // --- REUSABLE COMPONENTS ---
 
-  const RadioOption = ({ 
-    label, 
-    value, 
-    currentValue, 
-    onChange, 
-    icon = null 
-  }: { 
-    label: string, 
-    value: string, 
-    currentValue: string | null, 
-    onChange: (val: string) => void,
-    icon?: React.ReactNode
+  const RadioOption = ({
+    label,
+    value,
+    currentValue,
+    onChange,
+    icon = null,
+  }: {
+    label: string;
+    value: string;
+    currentValue: string | null;
+    onChange: (val: string) => void;
+    icon?: React.ReactNode;
   }) => (
     <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors bg-white group shadow-sm border-gray-200">
-      <input 
-        type="radio" 
+      <input
+        type="radio"
         name="radio-group"
         className="hidden"
         checked={currentValue === value}
         onChange={() => onChange(value)}
       />
-      <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center flex-shrink-0 ${currentValue === value ? 'border-gray-900' : 'border-gray-400'}`}>
-        {currentValue === value && <div className="w-2.5 h-2.5 rounded-full bg-gray-900" />}
+      <div
+        className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center flex-shrink-0 ${
+          currentValue === value ? "border-gray-900" : "border-gray-400"
+        }`}
+      >
+        {currentValue === value && (
+          <div className="w-2.5 h-2.5 rounded-full bg-gray-900" />
+        )}
       </div>
-      {icon && <div className="mr-3 text-gray-600 group-hover:text-edf-orange transition-colors">{icon}</div>}
+      {icon && (
+        <div className="mr-3 text-gray-600 group-hover:text-edf-orange transition-colors">
+          {icon}
+        </div>
+      )}
       <span className="text-gray-800 font-medium">{label}</span>
     </label>
   );
@@ -99,25 +125,31 @@ export const Simulator: React.FC = () => {
     value,
     currentValue,
     onChange,
-    icon
+    icon,
   }: {
-    label: string,
-    value: string,
-    currentValue: string | null,
-    onChange: (val: string) => void,
-    icon: React.ReactNode
+    label: string;
+    value: string;
+    currentValue: string | null;
+    onChange: (val: string) => void;
+    icon: React.ReactNode;
   }) => (
-    <div 
+    <div
       onClick={() => onChange(value)}
       className="cursor-pointer bg-white rounded-lg border border-gray-200 p-6 flex flex-col items-center justify-center gap-4 hover:shadow-md transition-all h-full"
     >
-        <div className="text-edf-blue">
-            {icon}
-        </div>
-        <span className="font-bold text-gray-600 text-sm uppercase text-center">{label}</span>
-        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${currentValue === value ? 'border-gray-900' : 'border-gray-300'}`}>
-            {currentValue === value && <div className="w-3 h-3 rounded-full bg-gray-900" />}
-        </div>
+      <div className="text-edf-blue">{icon}</div>
+      <span className="font-bold text-gray-600 text-sm uppercase text-center">
+        {label}
+      </span>
+      <div
+        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+          currentValue === value ? "border-gray-900" : "border-gray-300"
+        }`}
+      >
+        {currentValue === value && (
+          <div className="w-3 h-3 rounded-full bg-gray-900" />
+        )}
+      </div>
     </div>
   );
 
@@ -125,23 +157,27 @@ export const Simulator: React.FC = () => {
 
   const StepUserType = () => (
     <div className="space-y-6 animate-fadeIn">
-      <h3 className="text-2xl font-bold text-gray-700 mb-6">
-        Vous êtes ?
-      </h3>
+      <h3 className="text-2xl font-bold text-gray-700 mb-6">Vous êtes ?</h3>
       <div className="grid grid-cols-2 gap-4">
-        <CardOption 
-            label="PROPRIÉTAIRE" 
-            value={UserType.OWNER} 
-            currentValue={data.userType} 
-            onChange={(val) => { updateData({ userType: val as UserType }); nextStep(); }}
-            icon={<Home className="w-12 h-12 stroke-1" />}
+        <CardOption
+          label="PROPRIÉTAIRE"
+          value={UserType.OWNER}
+          currentValue={data.userType}
+          onChange={(val) => {
+            updateData({ userType: val as UserType });
+            nextStep();
+          }}
+          icon={<Home className="w-12 h-12 stroke-1" />}
         />
-        <CardOption 
-            label="LOCATAIRE (NON ÉLIGIBLE)" 
-            value={UserType.TENANT} 
-            currentValue={data.userType} 
-            onChange={(val) => { updateData({ userType: val as UserType }); nextStep(); }}
-            icon={<Key className="w-12 h-12 stroke-1" />}
+        <CardOption
+          label="LOCATAIRE (NON ÉLIGIBLE)"
+          value={UserType.TENANT}
+          currentValue={data.userType}
+          onChange={(val) => {
+            updateData({ userType: val as UserType });
+            nextStep();
+          }}
+          icon={<Key className="w-12 h-12 stroke-1" />}
         />
       </div>
     </div>
@@ -153,22 +189,31 @@ export const Simulator: React.FC = () => {
         Quel type de bien possédez-vous ?
       </h3>
       <div className="space-y-3">
-        <RadioOption 
-          label="Une maison" 
-          value={HousingType.HOUSE} 
-          currentValue={data.housingType} 
-          onChange={(val) => { updateData({ housingType: val as HousingType }); nextStep(); }} 
+        <RadioOption
+          label="Une maison"
+          value={HousingType.HOUSE}
+          currentValue={data.housingType}
+          onChange={(val) => {
+            updateData({ housingType: val as HousingType });
+            nextStep();
+          }}
         />
-        <RadioOption 
-          label="Un appartement (non éligible)" 
-          value={HousingType.APARTMENT} 
-          currentValue={data.housingType} 
-          onChange={(val) => { updateData({ housingType: val as HousingType }); nextStep(); }} 
+        <RadioOption
+          label="Un appartement (non éligible)"
+          value={HousingType.APARTMENT}
+          currentValue={data.housingType}
+          onChange={(val) => {
+            updateData({ housingType: val as HousingType });
+            nextStep();
+          }}
         />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -180,28 +225,40 @@ export const Simulator: React.FC = () => {
         Quel est son état ?
       </h3>
       <div className="space-y-3">
-        <RadioOption 
-          label="Terminé" 
-          value="Terminé" 
-          currentValue={data.constructionStatus} 
-          onChange={(val) => { updateData({ constructionStatus: val }); nextStep(); }} 
+        <RadioOption
+          label="Terminé"
+          value="Terminé"
+          currentValue={data.constructionStatus}
+          onChange={(val) => {
+            updateData({ constructionStatus: val });
+            nextStep();
+          }}
         />
-        <RadioOption 
-          label="En construction" 
-          value="En construction" 
-          currentValue={data.constructionStatus} 
-          onChange={(val) => { updateData({ constructionStatus: val }); nextStep(); }} 
+        <RadioOption
+          label="En construction"
+          value="En construction"
+          currentValue={data.constructionStatus}
+          onChange={(val) => {
+            updateData({ constructionStatus: val });
+            nextStep();
+          }}
         />
-        <RadioOption 
-          label="Pas encore acheté" 
-          value="Pas encore acheté" 
-          currentValue={data.constructionStatus} 
-          onChange={(val) => { updateData({ constructionStatus: val }); nextStep(); }} 
+        <RadioOption
+          label="Pas encore acheté"
+          value="Pas encore acheté"
+          currentValue={data.constructionStatus}
+          onChange={(val) => {
+            updateData({ constructionStatus: val });
+            nextStep();
+          }}
         />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -213,31 +270,48 @@ export const Simulator: React.FC = () => {
         Quelle est la surface de votre maison ?
       </h3>
       <div className="grid grid-cols-3 gap-4">
-         <CardOption 
-            label="MOINS DE 100 M2" 
-            value="< 100" 
-            currentValue={data.surfaceArea} 
-            onChange={(val) => { updateData({ surfaceArea: val }); nextStep(); }}
-            icon={<Home className="w-10 h-10 stroke-1" />}
-         />
-         <CardOption 
-            label="DE 101 À 175 M2" 
-            value="101-175" 
-            currentValue={data.surfaceArea} 
-            onChange={(val) => { updateData({ surfaceArea: val }); nextStep(); }}
-            icon={<Building2 className="w-12 h-12 stroke-1" />}
-         />
-         <CardOption 
-            label="PLUS DE 175 M2" 
-            value="> 175" 
-            currentValue={data.surfaceArea} 
-            onChange={(val) => { updateData({ surfaceArea: val }); nextStep(); }}
-            icon={<div className="relative"><Building2 className="w-12 h-12 stroke-1" /><span className="absolute -right-2 -top-1 text-xl">+</span></div>}
-         />
+        <CardOption
+          label="MOINS DE 100 M2"
+          value="< 100"
+          currentValue={data.surfaceArea}
+          onChange={(val) => {
+            updateData({ surfaceArea: val });
+            nextStep();
+          }}
+          icon={<Home className="w-10 h-10 stroke-1" />}
+        />
+        <CardOption
+          label="DE 101 À 175 M2"
+          value="101-175"
+          currentValue={data.surfaceArea}
+          onChange={(val) => {
+            updateData({ surfaceArea: val });
+            nextStep();
+          }}
+          icon={<Building2 className="w-12 h-12 stroke-1" />}
+        />
+        <CardOption
+          label="PLUS DE 175 M2"
+          value="> 175"
+          currentValue={data.surfaceArea}
+          onChange={(val) => {
+            updateData({ surfaceArea: val });
+            nextStep();
+          }}
+          icon={
+            <div className="relative">
+              <Building2 className="w-12 h-12 stroke-1" />
+              <span className="absolute -right-2 -top-1 text-xl">+</span>
+            </div>
+          }
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -249,14 +323,49 @@ export const Simulator: React.FC = () => {
         Combien de personnes vivent dans votre logement ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="1-2 personnes" value="1-2" currentValue={data.occupants} onChange={(val) => { updateData({ occupants: val }); nextStep(); }} />
-        <RadioOption label="3-5 personnes" value="3-5" currentValue={data.occupants} onChange={(val) => { updateData({ occupants: val }); nextStep(); }} />
-        <RadioOption label="Plus de 5 personnes" value="> 5" currentValue={data.occupants} onChange={(val) => { updateData({ occupants: val }); nextStep(); }} />
-        <RadioOption label="Je ne sais pas" value="Je ne sais pas" currentValue={data.occupants} onChange={(val) => { updateData({ occupants: val }); nextStep(); }} />
+        <RadioOption
+          label="1-2 personnes"
+          value="1-2"
+          currentValue={data.occupants}
+          onChange={(val) => {
+            updateData({ occupants: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="3-5 personnes"
+          value="3-5"
+          currentValue={data.occupants}
+          onChange={(val) => {
+            updateData({ occupants: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Plus de 5 personnes"
+          value="> 5"
+          currentValue={data.occupants}
+          onChange={(val) => {
+            updateData({ occupants: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Je ne sais pas"
+          value="Je ne sais pas"
+          currentValue={data.occupants}
+          onChange={(val) => {
+            updateData({ occupants: val });
+            nextStep();
+          }}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -268,14 +377,53 @@ export const Simulator: React.FC = () => {
         Quelle est la forme de votre toit ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Toit en pente" value="Pente" currentValue={data.roofShape} onChange={(val) => { updateData({ roofShape: val }); nextStep(); }} icon={<Triangle className="w-5 h-5" />} />
-        <RadioOption label="Toit à pignon" value="Pignon" currentValue={data.roofShape} onChange={(val) => { updateData({ roofShape: val }); nextStep(); }} icon={<Home className="w-5 h-5" />} />
-        <RadioOption label="Toit plat" value="Plat" currentValue={data.roofShape} onChange={(val) => { updateData({ roofShape: val }); nextStep(); }} icon={<Box className="w-5 h-5" />} />
-        <RadioOption label="Je ne sais pas" value="Je ne sais pas" currentValue={data.roofShape} onChange={(val) => { updateData({ roofShape: val }); nextStep(); }} icon={<HelpCircle className="w-5 h-5" />} />
+        <RadioOption
+          label="Toit en pente"
+          value="Pente"
+          currentValue={data.roofShape}
+          onChange={(val) => {
+            updateData({ roofShape: val });
+            nextStep();
+          }}
+          icon={<Triangle className="w-5 h-5" />}
+        />
+        <RadioOption
+          label="Toit à pignon"
+          value="Pignon"
+          currentValue={data.roofShape}
+          onChange={(val) => {
+            updateData({ roofShape: val });
+            nextStep();
+          }}
+          icon={<Home className="w-5 h-5" />}
+        />
+        <RadioOption
+          label="Toit plat"
+          value="Plat"
+          currentValue={data.roofShape}
+          onChange={(val) => {
+            updateData({ roofShape: val });
+            nextStep();
+          }}
+          icon={<Box className="w-5 h-5" />}
+        />
+        <RadioOption
+          label="Je ne sais pas"
+          value="Je ne sais pas"
+          currentValue={data.roofShape}
+          onChange={(val) => {
+            updateData({ roofShape: val });
+            nextStep();
+          }}
+          icon={<HelpCircle className="w-5 h-5" />}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -287,14 +435,53 @@ export const Simulator: React.FC = () => {
         Quel est l'ensoleillement de votre toit ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Au soleil" value="Soleil" currentValue={data.sunlight} onChange={(val) => { updateData({ sunlight: val }); nextStep(); }} icon={<Sun className="w-5 h-5 text-yellow-500" />} />
-        <RadioOption label="Mi-soleil, mi-ombre" value="Mixte" currentValue={data.sunlight} onChange={(val) => { updateData({ sunlight: val }); nextStep(); }} icon={<CloudSun className="w-5 h-5 text-gray-500" />} />
-        <RadioOption label="À l'ombre" value="Ombre" currentValue={data.sunlight} onChange={(val) => { updateData({ sunlight: val }); nextStep(); }} icon={<Cloud className="w-5 h-5 text-gray-400" />} />
-        <RadioOption label="Je ne sais pas" value="Je ne sais pas" currentValue={data.sunlight} onChange={(val) => { updateData({ sunlight: val }); nextStep(); }} icon={<HelpCircle className="w-5 h-5" />} />
+        <RadioOption
+          label="Au soleil"
+          value="Soleil"
+          currentValue={data.sunlight}
+          onChange={(val) => {
+            updateData({ sunlight: val });
+            nextStep();
+          }}
+          icon={<Sun className="w-5 h-5 text-yellow-500" />}
+        />
+        <RadioOption
+          label="Mi-soleil, mi-ombre"
+          value="Mixte"
+          currentValue={data.sunlight}
+          onChange={(val) => {
+            updateData({ sunlight: val });
+            nextStep();
+          }}
+          icon={<CloudSun className="w-5 h-5 text-gray-500" />}
+        />
+        <RadioOption
+          label="À l'ombre"
+          value="Ombre"
+          currentValue={data.sunlight}
+          onChange={(val) => {
+            updateData({ sunlight: val });
+            nextStep();
+          }}
+          icon={<Cloud className="w-5 h-5 text-gray-400" />}
+        />
+        <RadioOption
+          label="Je ne sais pas"
+          value="Je ne sais pas"
+          currentValue={data.sunlight}
+          onChange={(val) => {
+            updateData({ sunlight: val });
+            nextStep();
+          }}
+          icon={<HelpCircle className="w-5 h-5" />}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -305,18 +492,20 @@ export const Simulator: React.FC = () => {
       <h3 className="text-2xl font-bold text-gray-700 text-center mb-2">
         Où se situe votre logement ?
       </h3>
-      <p className="text-gray-500 text-center text-sm mb-6">Pour calculer l'ensoleillement de votre région.</p>
+      <p className="text-gray-500 text-center text-sm mb-6">
+        Pour calculer l'ensoleillement de votre région.
+      </p>
 
       <div className="max-w-xs mx-auto">
         <div className="relative">
           <MapPin className="absolute left-3 top-3.5 text-gray-400 w-5 h-5" />
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Code Postal (ex: 69002)"
             value={data.postalCode}
             onChange={(e) => {
-                const val = e.target.value.replace(/\D/g, '').slice(0, 5);
-                updateData({ postalCode: val });
+              const val = e.target.value.replace(/\D/g, "").slice(0, 5);
+              updateData({ postalCode: val });
             }}
             className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:border-edf-orange focus:ring-0 outline-none transition-colors text-lg"
             autoFocus
@@ -325,13 +514,16 @@ export const Simulator: React.FC = () => {
       </div>
 
       <div className="flex justify-between items-center pt-8">
-         <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
-         <Button 
-            onClick={nextStep} 
-            disabled={data.postalCode.length < 5}
-            className="flex items-center gap-2"
+        <Button
+          onClick={nextStep}
+          disabled={data.postalCode.length < 5}
+          className="flex items-center gap-2"
         >
           Continuer <ArrowRight className="w-4 h-4" />
         </Button>
@@ -345,17 +537,44 @@ export const Simulator: React.FC = () => {
         Quel est le montant de votre facture d'électricité mensuelle ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Moins de 50€" value="< 50" currentValue={data.monthlyBill} onChange={(val) => updateData({ monthlyBill: val })} />
-        <RadioOption label="Entre 50€ et 100€" value="50-100" currentValue={data.monthlyBill} onChange={(val) => updateData({ monthlyBill: val })} />
-        <RadioOption label="Entre 100€ et 200€" value="100-200" currentValue={data.monthlyBill} onChange={(val) => updateData({ monthlyBill: val })} />
-        <RadioOption label="Plus de 200€" value="> 200" currentValue={data.monthlyBill} onChange={(val) => updateData({ monthlyBill: val })} />
+        <RadioOption
+          label="Moins de 50€"
+          value="< 50"
+          currentValue={data.monthlyBill}
+          onChange={(val) => updateData({ monthlyBill: val })}
+        />
+        <RadioOption
+          label="Entre 50€ et 100€"
+          value="50-100"
+          currentValue={data.monthlyBill}
+          onChange={(val) => updateData({ monthlyBill: val })}
+        />
+        <RadioOption
+          label="Entre 100€ et 200€"
+          value="100-200"
+          currentValue={data.monthlyBill}
+          onChange={(val) => updateData({ monthlyBill: val })}
+        />
+        <RadioOption
+          label="Plus de 200€"
+          value="> 200"
+          currentValue={data.monthlyBill}
+          onChange={(val) => updateData({ monthlyBill: val })}
+        />
       </div>
 
       <div className="flex justify-between items-center pt-4 mt-6">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
-        <Button onClick={nextStep} disabled={!data.monthlyBill} className="flex items-center gap-2">
+        <Button
+          onClick={nextStep}
+          disabled={!data.monthlyBill}
+          className="flex items-center gap-2"
+        >
           Continuer
         </Button>
       </div>
@@ -368,13 +587,40 @@ export const Simulator: React.FC = () => {
         Êtes-vous intéressé par les aides de l'État ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Oui" value="Oui" currentValue={data.stateAid} onChange={(val) => { updateData({ stateAid: val }); nextStep(); }} />
-        <RadioOption label="Non" value="Non" currentValue={data.stateAid} onChange={(val) => { updateData({ stateAid: val }); nextStep(); }} />
-        <RadioOption label="Je ne sais pas" value="Je ne sais pas" currentValue={data.stateAid} onChange={(val) => { updateData({ stateAid: val }); nextStep(); }} />
+        <RadioOption
+          label="Oui"
+          value="Oui"
+          currentValue={data.stateAid}
+          onChange={(val) => {
+            updateData({ stateAid: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Non"
+          value="Non"
+          currentValue={data.stateAid}
+          onChange={(val) => {
+            updateData({ stateAid: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Je ne sais pas"
+          value="Je ne sais pas"
+          currentValue={data.stateAid}
+          onChange={(val) => {
+            updateData({ stateAid: val });
+            nextStep();
+          }}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -386,13 +632,40 @@ export const Simulator: React.FC = () => {
         Vous êtes-vous déjà renseigné sur les panneaux solaires ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Oui, plusieurs fois" value="Oui, plusieurs fois" currentValue={data.alreadyInquired} onChange={(val) => { updateData({ alreadyInquired: val }); nextStep(); }} />
-        <RadioOption label="Oui, une fois" value="Oui, une fois" currentValue={data.alreadyInquired} onChange={(val) => { updateData({ alreadyInquired: val }); nextStep(); }} />
-        <RadioOption label="Non, jamais" value="Non, jamais" currentValue={data.alreadyInquired} onChange={(val) => { updateData({ alreadyInquired: val }); nextStep(); }} />
+        <RadioOption
+          label="Oui, plusieurs fois"
+          value="Oui, plusieurs fois"
+          currentValue={data.alreadyInquired}
+          onChange={(val) => {
+            updateData({ alreadyInquired: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Oui, une fois"
+          value="Oui, une fois"
+          currentValue={data.alreadyInquired}
+          onChange={(val) => {
+            updateData({ alreadyInquired: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Non, jamais"
+          value="Non, jamais"
+          currentValue={data.alreadyInquired}
+          onChange={(val) => {
+            updateData({ alreadyInquired: val });
+            nextStep();
+          }}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -404,14 +677,49 @@ export const Simulator: React.FC = () => {
         Pourquoi souhaitez-vous installer des panneaux solaires ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Économiser sur mes factures d'électricité" value="Économiser" currentValue={data.projectReason} onChange={(val) => { updateData({ projectReason: val }); nextStep(); }} />
-        <RadioOption label="Utiliser une énergie renouvelable" value="Écologie" currentValue={data.projectReason} onChange={(val) => { updateData({ projectReason: val }); nextStep(); }} />
-        <RadioOption label="Revendre mon énergie" value="Revente" currentValue={data.projectReason} onChange={(val) => { updateData({ projectReason: val }); nextStep(); }} />
-        <RadioOption label="Je ne souhaite pas installer des panneaux solaires" value="Pas intéressé" currentValue={data.projectReason} onChange={(val) => { updateData({ projectReason: val }); nextStep(); }} />
+        <RadioOption
+          label="Économiser sur mes factures d'électricité"
+          value="Économiser"
+          currentValue={data.projectReason}
+          onChange={(val) => {
+            updateData({ projectReason: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Utiliser une énergie renouvelable"
+          value="Écologie"
+          currentValue={data.projectReason}
+          onChange={(val) => {
+            updateData({ projectReason: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Revendre mon énergie"
+          value="Revente"
+          currentValue={data.projectReason}
+          onChange={(val) => {
+            updateData({ projectReason: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Je ne souhaite pas installer des panneaux solaires"
+          value="Pas intéressé"
+          currentValue={data.projectReason}
+          onChange={(val) => {
+            updateData({ projectReason: val });
+            nextStep();
+          }}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -423,15 +731,58 @@ export const Simulator: React.FC = () => {
         Quand souhaitez-vous installer des panneaux solaires ?
       </h3>
       <div className="space-y-3">
-        <RadioOption label="Dès que possible" value="Dès que possible" currentValue={data.projectTimeline} onChange={(val) => { updateData({ projectTimeline: val }); nextStep(); }} />
-        <RadioOption label="Dans 3 à 6 mois" value="3-6 mois" currentValue={data.projectTimeline} onChange={(val) => { updateData({ projectTimeline: val }); nextStep(); }} />
-        <RadioOption label="Plus de 6 mois" value="+ 6 mois" currentValue={data.projectTimeline} onChange={(val) => { updateData({ projectTimeline: val }); nextStep(); }} />
-        <RadioOption label="Cette année" value="Cette année" currentValue={data.projectTimeline} onChange={(val) => { updateData({ projectTimeline: val }); nextStep(); }} />
-        <RadioOption label="Je ne souhaite pas installer des panneaux solaires" value="Pas intéressé" currentValue={data.projectTimeline} onChange={(val) => { updateData({ projectTimeline: val }); nextStep(); }} />
+        <RadioOption
+          label="Dès que possible"
+          value="Dès que possible"
+          currentValue={data.projectTimeline}
+          onChange={(val) => {
+            updateData({ projectTimeline: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Dans 3 à 6 mois"
+          value="3-6 mois"
+          currentValue={data.projectTimeline}
+          onChange={(val) => {
+            updateData({ projectTimeline: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Plus de 6 mois"
+          value="+ 6 mois"
+          currentValue={data.projectTimeline}
+          onChange={(val) => {
+            updateData({ projectTimeline: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Cette année"
+          value="Cette année"
+          currentValue={data.projectTimeline}
+          onChange={(val) => {
+            updateData({ projectTimeline: val });
+            nextStep();
+          }}
+        />
+        <RadioOption
+          label="Je ne souhaite pas installer des panneaux solaires"
+          value="Pas intéressé"
+          currentValue={data.projectTimeline}
+          onChange={(val) => {
+            updateData({ projectTimeline: val });
+            nextStep();
+          }}
+        />
       </div>
       <div className="mt-4">
-        <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
       </div>
     </div>
@@ -442,36 +793,41 @@ export const Simulator: React.FC = () => {
       <h3 className="text-2xl font-bold text-gray-700 mb-4">
         A quel email pouvons-nous vous contacter ?
       </h3>
-      
+
       <div className="flex items-start gap-3 mb-6 text-gray-600 bg-gray-50 p-3 rounded-lg">
-         <Info className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400" />
-         <p className="text-sm">Génial ! Nous avons trouvé un professionnel près de chez vous !</p>
+        <Info className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400" />
+        <p className="text-sm">
+          Génial ! Nous avons trouvé un professionnel près de chez vous !
+        </p>
       </div>
 
       <div>
-           <input 
-              required
-              type="email" 
-              className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
-              placeholder="Email"
-              value={data.email}
-              onChange={e => updateData({ email: e.target.value })}
-              onKeyDown={(e) => {
-                  if (e.key === 'Enter' && data.email.includes('@')) {
-                      nextStep();
-                  }
-              }}
-            />
+        <input
+          required
+          type="email"
+          className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
+          placeholder="Email"
+          value={data.email}
+          onChange={(e) => updateData({ email: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && data.email.includes("@")) {
+              nextStep();
+            }
+          }}
+        />
       </div>
 
       <div className="flex justify-between items-center pt-8">
-         <button onClick={prevStep} className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm">
-           ← Retour
+        <button
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-4 py-2 rounded hover:bg-orange-50 transition-colors text-sm"
+        >
+          ← Retour
         </button>
-         <Button 
-            onClick={nextStep} 
-            disabled={!data.email || !data.email.includes('@')}
-            className="flex items-center gap-2"
+        <Button
+          onClick={nextStep}
+          disabled={!data.email || !data.email.includes("@")}
+          className="flex items-center gap-2"
         >
           Continuer <ArrowRight className="w-4 h-4" />
         </Button>
@@ -482,82 +838,114 @@ export const Simulator: React.FC = () => {
   const StepContact = () => (
     <form onSubmit={handleSubmit} className="space-y-4 animate-fadeIn">
       <h3 className="text-xl md:text-2xl font-bold text-gray-700 mb-4 leading-tight">
-        Remplissez le formulaire ci-dessous si vous souhaitez qu'un conseiller d'EDF solutions solaires vous appelle pour échanger autour de votre projet photovoltaïque
+        Remplissez le formulaire ci-dessous si vous souhaitez qu'un conseiller
+        du Groupe France Solaire vous appelle pour échanger autour de votre
+        projet photovoltaïque
       </h3>
-      
+
       <div className="flex items-start gap-3 mb-6 text-gray-600">
-         <Info className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400" />
-         <p className="text-sm">Dernière étape ! Remplissez vos coordonnées pour recevoir l'appel d'un expert.</p>
+        <Info className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400" />
+        <p className="text-sm">
+          Dernière étape ! Remplissez vos coordonnées pour recevoir l'appel d'un
+          expert.
+        </p>
       </div>
 
       <div className="space-y-4">
         <div>
-           <input 
-              required
-              type="text" 
-              className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
-              placeholder="Prénom"
-              value={data.firstName}
-              onChange={e => updateData({ firstName: e.target.value })}
-            />
+          <input
+            required
+            type="text"
+            className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
+            placeholder="Prénom"
+            value={data.firstName}
+            onChange={(e) => updateData({ firstName: e.target.value })}
+          />
         </div>
         <div>
-           <input 
-              required
-              type="text" 
-              className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
-              placeholder="Nom"
-              value={data.lastName}
-              onChange={e => updateData({ lastName: e.target.value })}
-            />
+          <input
+            required
+            type="text"
+            className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
+            placeholder="Nom"
+            value={data.lastName}
+            onChange={(e) => updateData({ lastName: e.target.value })}
+          />
         </div>
         <div>
-           <input 
-              required
-              type="tel" 
-              pattern="[0-9]{10}"
-              className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
-              placeholder="Numéro de téléphone"
-              value={data.phone}
-              onChange={e => {
-                  const val = e.target.value.replace(/\D/g, '').slice(0, 10);
-                  updateData({ phone: val });
-              }}
-            />
+          <input
+            required
+            type="tel"
+            pattern="[0-9]{10}"
+            className="w-full px-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-edf-orange focus:ring-1 focus:ring-edf-orange outline-none text-lg placeholder-gray-400"
+            placeholder="Numéro de téléphone"
+            value={data.phone}
+            onChange={(e) => {
+              const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+              updateData({ phone: val });
+            }}
+          />
         </div>
       </div>
 
       <p className="text-xs text-gray-500 mt-2">
-         Vous disposez du droit de vous inscrire sur la liste d'opposition au démarchage téléphonique (www.bloctel.gouv.fr).
+        Vous disposez du droit de vous inscrire sur la liste d'opposition au
+        démarchage téléphonique (www.bloctel.gouv.fr).
       </p>
 
       <div className="flex items-start gap-3 mt-4">
-          <input 
-            type="checkbox" 
-            id="newsletter" 
-            checked={data.newsletter}
-            onChange={(e) => updateData({ newsletter: e.target.checked })}
-            className="mt-1 w-5 h-5 text-edf-orange border-gray-300 rounded focus:ring-edf-orange" 
-          />
-          <label htmlFor="newsletter" className="text-sm text-gray-700 leading-tight">
-            Je souhaite être informé(e) par email et SMS des actualités et offres d'EDF solutions solaires.
-          </label>
+        <input
+          type="checkbox"
+          id="newsletter"
+          checked={data.newsletter}
+          onChange={(e) => updateData({ newsletter: e.target.checked })}
+          className="mt-1 w-5 h-5 text-edf-orange border-gray-300 rounded focus:ring-edf-orange"
+        />
+        <label
+          htmlFor="newsletter"
+          className="text-sm text-gray-700 leading-tight"
+        >
+          Je souhaite être informé(e) par email et SMS des actualités et offres
+          d'EDF solutions solaires.
+        </label>
       </div>
 
       <div className="flex justify-between items-center gap-4 pt-6">
-        <button type="button" onClick={prevStep} className="text-edf-orange border border-edf-orange px-6 py-3 rounded hover:bg-orange-50 transition-colors font-medium">
-           ← Retour
+        <button
+          type="button"
+          onClick={prevStep}
+          className="text-edf-orange border border-edf-orange px-6 py-3 rounded hover:bg-orange-50 transition-colors font-medium"
+        >
+          ← Retour
         </button>
-        <Button type="submit" className="flex-grow py-4 text-lg" disabled={isSubmitting}>
-          {isSubmitting ? 'Envoi en cours...' : 'Estimer vos économies'}
+        <Button
+          type="submit"
+          className="flex-grow py-4 text-lg"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Envoi en cours..." : "Estimer vos économies"}
         </Button>
       </div>
 
       <div className="flex items-start gap-2 mt-6 text-[10px] text-gray-500 leading-normal text-justify">
-         <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
-         <p>
-            En validant ce formulaire, vous consentez à l’utilisation de vos données personnelles par EDF solutions solaires, responsable de traitements, aux fins de vous fournir un service d’assistance téléphonique dans le cadre de votre projet solaire et, lorsque cela est nécessaire, de vous envoyer des emails et/ou SMS aux fins de suivi de votre demande et de la relation commerciale qui peut en découler. Les champs obligatoires vous sont signalés dans le formulaire par un astérisque. Par ailleurs, en cochant la case ci-dessus, vous consentez au traitement de vos données personnelles par EDF solutions solaires à des fins de vous envoyer des messages promotionnels par email et/ou sms. Pour en savoir plus sur la gestion de vos données personnelles par EDF solutions solaires et vos droits, notamment d’accès, de rectification, d’effacement, d’opposition ou de retrait de votre consentement à recevoir des messages promotionnels, consultez la politique de confidentialité d’EDF solutions solaires.
-         </p>
+        <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
+        <p>
+          En validant ce formulaire, vous consentez à l’utilisation de vos
+          données personnelles par Groupe France Solaire, responsable de
+          traitements, aux fins de vous fournir un service d’assistance
+          téléphonique dans le cadre de votre projet solaire et, lorsque cela
+          est nécessaire, de vous envoyer des emails et/ou SMS aux fins de suivi
+          de votre demande et de la relation commerciale qui peut en découler.
+          Les champs obligatoires vous sont signalés dans le formulaire par un
+          astérisque. Par ailleurs, en cochant la case ci-dessus, vous consentez
+          au traitement de vos données personnelles par Groupe France Solaire à
+          des fins de vous envoyer des messages promotionnels par email et/ou
+          sms. Pour en savoir plus sur la gestion de vos données personnelles
+          par Groupe France Solaire et vos droits, notamment d’accès, de
+          rectification, d’effacement, d’opposition ou de retrait de votre
+          consentement à recevoir des messages promotionnels, consultez la
+          politique de confidentialité d’Groupe France Solaire.
+        </p>
       </div>
     </form>
   );
@@ -569,11 +957,16 @@ export const Simulator: React.FC = () => {
       </div>
       <h3 className="text-2xl font-bold text-edf-blue">Demande reçue !</h3>
       <p className="text-gray-600 max-w-md mx-auto">
-        Merci {data.firstName}. Votre demande d'étude solaire pour votre logement à <span className="font-semibold">{data.postalCode}</span> a bien été enregistrée.
+        Merci {data.firstName}. Votre demande d'étude solaire pour votre
+        logement à <span className="font-semibold">{data.postalCode}</span> a
+        bien été enregistrée.
       </p>
       <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 max-w-sm mx-auto mt-6">
         <p className="text-edf-blue font-semibold mb-2">Prochaine étape :</p>
-        <p className="text-sm text-gray-600">Un conseiller expert vous appellera sous 24h (numéro commençant par 01, 04 ou 09) pour confirmer vos données.</p>
+        <p className="text-sm text-gray-600">
+          Un conseiller expert vous appellera sous 24h (numéro commençant par
+          01, 04 ou 09) pour confirmer vos données.
+        </p>
       </div>
     </div>
   );
@@ -581,8 +974,10 @@ export const Simulator: React.FC = () => {
   return (
     <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-lg mx-auto relative z-10 border-t-4 border-edf-orange">
       {!isSuccess && <ProgressBar />}
-      
-      {isSuccess ? <SuccessMessage /> : (
+
+      {isSuccess ? (
+        <SuccessMessage />
+      ) : (
         <>
           {step === 0 && <StepUserType />}
           {step === 1 && <StepHousingType />}
@@ -604,8 +999,8 @@ export const Simulator: React.FC = () => {
 
       {!isSuccess && (
         <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-center gap-2 text-xs text-gray-400">
-           <Zap className="w-3 h-3 text-edf-orange fill-current" />
-           <span>Simulation gratuite et sans engagement</span>
+          <Zap className="w-3 h-3 text-edf-orange fill-current" />
+          <span>Traitement conforme au RGPD</span>
         </div>
       )}
     </div>

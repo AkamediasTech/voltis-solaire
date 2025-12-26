@@ -2,6 +2,9 @@ import React from "react";
 import { Zap } from "lucide-react";
 import { SimulatorProvider, useSimulator } from "./simulator/SimulatorContext";
 import { ProgressBar } from "./simulator/shared/ProgressBar";
+import { GradientFlowBanner } from "./simulator/shared/GradientFlowBanner";
+import { PulseSoftBanner } from "./simulator/shared/PulseSoftBanner";
+import { ShimmerBanner } from "./simulator/shared/ShimmerBanner";
 import { StepUserType } from "./simulator/steps/StepUserType";
 import { StepHousingType } from "./simulator/steps/StepHousingType";
 import { StepConstructionStatus } from "./simulator/steps/StepConstructionStatus";
@@ -24,7 +27,18 @@ const SimulatorContent: React.FC = () => {
 
   return (
     <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-lg mx-auto relative z-10 border-t-4 border-edf-orange">
-      {!isSuccess && <ProgressBar />}
+      {!isSuccess && (
+        <>
+          {/* Comparaison des 3 animations */}
+          <div className="space-y-8 mb-8 px-4">
+            {/* <GradientFlowBanner /> */}
+            {/* <PulseSoftBanner /> */}
+            <ShimmerBanner />
+          </div>
+
+          <ProgressBar />
+        </>
+      )}
 
       {isSuccess ? (
         <SuccessMessage />
@@ -51,7 +65,7 @@ const SimulatorContent: React.FC = () => {
       {!isSuccess && (
         <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-center gap-2 text-xs text-gray-400">
           <Zap className="w-3 h-3 text-edf-orange fill-current" />
-          <span>Simulation gratuite et sans engagement</span>
+          <span>Traitement conforme au RGPD</span>
         </div>
       )}
     </div>

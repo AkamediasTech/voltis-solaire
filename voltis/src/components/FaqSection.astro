@@ -126,10 +126,10 @@ const faqItems = [
   </div>
 </section>
 
-<script>
+<script >
   const faqCards = Array.from(document.querySelectorAll("[data-faq-card]"));
 
-  const setOpen = (card, open) => {
+  const setOpen = (card : Element, open : boolean) => {
     const button = card.querySelector("[data-faq-toggle]");
     const answer = card.querySelector("[data-faq-answer]");
 

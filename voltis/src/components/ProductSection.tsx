@@ -15,8 +15,8 @@ export const ProductSection: React.FC = () => {
           {/* Text Side */}
           <div className="lg:w-1/2 space-y-8 text-center lg:text-left">
             <h3 className="text-xl md:text-2xl font-bold text-edf-orange leading-tight">
-              Voltis Solaire vous équipe de panneaux photovoltaïques nouvelle
-              génération, à la pointe de l’innovation.
+              Groupe France Solaire vous équipe de panneaux photovoltaïques
+              nouvelle génération, à la pointe de l’innovation.
             </h3>
 
             <p className="text-gray-800 leading-relaxed text-base md:text-lg">

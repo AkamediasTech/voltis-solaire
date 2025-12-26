@@ -46,3 +46,44 @@
     cursor: pointer;
   }
 }
+
+/* Animations pour les bandeaux du simulateur */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-gradient-flow {
+  animation: gradient-flow 4s ease infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}

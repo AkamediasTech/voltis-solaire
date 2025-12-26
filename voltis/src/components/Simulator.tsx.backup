@@ -840,7 +840,7 @@ export const Simulator: React.FC = () => {
     <form onSubmit={handleSubmit} className="space-y-4 animate-fadeIn">
       <h3 className="text-xl md:text-2xl font-bold text-gray-700 mb-4 leading-tight">
         Remplissez le formulaire ci-dessous si vous souhaitez qu'un conseiller
-        d'EDF solutions solaires vous appelle pour échanger autour de votre
+        du Groupe France Solaire vous appelle pour échanger autour de votre
         projet photovoltaïque
       </h3>
 
@@ -907,7 +907,7 @@ export const Simulator: React.FC = () => {
           className="text-sm text-gray-700 leading-tight"
         >
           Je souhaite être informé(e) par email et SMS des actualités et offres
-          d'EDF solutions solaires.
+          du Groupe France Solaire.
         </label>
       </div>
 
@@ -932,20 +932,20 @@ export const Simulator: React.FC = () => {
         <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
         <p>
           En validant ce formulaire, vous consentez à l’utilisation de vos
-          données personnelles par EDF solutions solaires, responsable de
+          données personnelles par Groupe France Solaire, responsable de
           traitements, aux fins de vous fournir un service d’assistance
           téléphonique dans le cadre de votre projet solaire et, lorsque cela
           est nécessaire, de vous envoyer des emails et/ou SMS aux fins de suivi
           de votre demande et de la relation commerciale qui peut en découler.
           Les champs obligatoires vous sont signalés dans le formulaire par un
           astérisque. Par ailleurs, en cochant la case ci-dessus, vous consentez
-          au traitement de vos données personnelles par EDF solutions solaires à
+          au traitement de vos données personnelles par Groupe France Solaire à
           des fins de vous envoyer des messages promotionnels par email et/ou
           sms. Pour en savoir plus sur la gestion de vos données personnelles
-          par EDF solutions solaires et vos droits, notamment d’accès, de
+          par Groupe France Solaire et vos droits, notamment d’accès, de
           rectification, d’effacement, d’opposition ou de retrait de votre
           consentement à recevoir des messages promotionnels, consultez la
-          politique de confidentialité d’EDF solutions solaires.
+          politique de confidentialité d’Groupe France Solaire.
         </p>
       </div>
     </form>

@@ -1,18 +1,27 @@
 export enum UserType {
-  OWNER = 'OWNER',
-  TENANT = 'TENANT'
+  OWNER = "OWNER",
+  TENANT = "TENANT",
 }
 
 export enum HousingType {
-  HOUSE = 'HOUSE',
-  APARTMENT = 'APARTMENT'
+  HOUSE = "HOUSE",
+  APARTMENT = "APARTMENT",
+}
+
+export enum HeatingType {
+  FUEL_OIL = "FUEL_OIL",
+  GAS = "GAS",
+  ELECTRIC = "ELECTRIC",
+  OTHER = "OTHER",
 }
 
 export interface SimulationData {
   userType: UserType | null;
   housingType: HousingType | null;
+  heatingType: HeatingType | null;
   constructionStatus: string | null;
   postalCode: string;
+  city: string;
   surfaceArea: string | null;
   occupants: string | null;
   roofShape: string | null;

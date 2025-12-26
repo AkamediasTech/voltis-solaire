@@ -29,8 +29,10 @@ export const useSimulator = () => {
 const INITIAL_DATA: SimulationData = {
   userType: null,
   housingType: null,
+  heatingType: null,
   constructionStatus: null,
   postalCode: "",
+  city: "",
   surfaceArea: null,
   occupants: null,
   roofShape: null,
@@ -55,7 +57,7 @@ export const SimulatorProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const totalSteps = 15;
+  const totalSteps = 3;
 
   const updateData = (fields: Partial<SimulationData>) => {
     setData((prev) => ({ ...prev, ...fields }));

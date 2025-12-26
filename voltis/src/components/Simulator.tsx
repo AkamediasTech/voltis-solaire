@@ -3,7 +3,11 @@ import { Zap } from "lucide-react";
 import { SimulatorProvider, useSimulator } from "./simulator/SimulatorContext";
 import { ProgressBar } from "./simulator/shared/ProgressBar";
 import { ShimmerBanner } from "./simulator/shared/ShimmerBanner";
-import NewStepHousingInfo from "./simulator/steps/NewStepHousingInfo";
+import Step1UserType from "./simulator/steps/Step1UserType";
+import Step2HousingType from "./simulator/steps/Step2HousingType";
+import Step3HeatingType from "./simulator/steps/Step3HeatingType";
+import Step4SurfaceArea from "./simulator/steps/Step4SurfaceArea";
+import Step5MonthlyBill from "./simulator/steps/Step5MonthlyBill";
 import NewStepLocation from "./simulator/steps/NewStepLocation";
 import NewStepContactInfo from "./simulator/steps/NewStepContactInfo";
 import { SuccessMessage } from "./simulator/steps/SuccessMessage";
@@ -29,7 +33,7 @@ const SimulatorContent: React.FC = () => {
       ) : (
         <>
           {step === 0 && (
-            <NewStepHousingInfo
+            <Step1UserType
               data={data}
               updateData={updateData}
               nextStep={nextStep}
@@ -37,7 +41,7 @@ const SimulatorContent: React.FC = () => {
             />
           )}
           {step === 1 && (
-            <NewStepLocation
+            <Step2HousingType
               data={data}
               updateData={updateData}
               nextStep={nextStep}
@@ -45,6 +49,38 @@ const SimulatorContent: React.FC = () => {
             />
           )}
           {step === 2 && (
+            <Step3HeatingType
+              data={data}
+              updateData={updateData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
+          )}
+          {step === 3 && (
+            <Step4SurfaceArea
+              data={data}
+              updateData={updateData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
+          )}
+          {step === 4 && (
+            <Step5MonthlyBill
+              data={data}
+              updateData={updateData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
+          )}
+          {step === 5 && (
+            <NewStepLocation
+              data={data}
+              updateData={updateData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
+          )}
+          {step === 6 && (
             <NewStepContactInfo
               data={data}
               updateData={updateData}

@@ -57,7 +57,7 @@ export const SimulatorProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const totalSteps = 3;
+  const totalSteps = 7;
 
   const updateData = (fields: Partial<SimulationData>) => {
     setData((prev) => ({ ...prev, ...fields }));

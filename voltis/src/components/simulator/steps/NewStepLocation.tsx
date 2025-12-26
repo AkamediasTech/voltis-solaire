@@ -67,7 +67,12 @@ const NewStepLocation: React.FC<StepProps> = ({
       {localPostalCode.length === 5 && (
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Ville *
+            Ville *{" "}
+            {!loading && !error && cities.length > 0 && (
+              <span className="text-gray-500 font-normal">
+                - Sélectionnez une option
+              </span>
+            )}
           </label>
 
           {loading && (

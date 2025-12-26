@@ -107,7 +107,7 @@ export const GradientPremiumButtons: React.FC<NavigationButtonsProps> = ({
   backLabel = "Retour",
 }) => (
   <div className="mt-4">
-    <p className="text-xs text-gray-500 mb-2">Variante 3 - Gradient Premium</p>
+    {/* <p className="text-xs text-gray-500 mb-2">Variante 3 - Gradient Premium</p> */}
     <div className={`flex ${showBack ? "justify-between" : "justify-end"}`}>
       {showBack && onBack && (
         <button

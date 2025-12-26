@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { StepProps } from "../../../types";
+import { GradientPremiumButtons } from "../shared/NavigationButtons";
 
 const NewStepContactInfo: React.FC<StepProps> = ({
   data,
@@ -193,21 +194,14 @@ const NewStepContactInfo: React.FC<StepProps> = ({
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between mt-8">
-          <button
-            type="button"
-            onClick={prevStep}
-            className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-          >
-            Précédent
-          </button>
-          <button
-            type="submit"
-            className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors"
-          >
-            Envoyer ma demande
-          </button>
-        </div>
+        <GradientPremiumButtons
+          onBack={prevStep}
+          onNext={handleSubmit as any}
+          disabled={false}
+          showBack={true}
+          nextLabel="Envoyer ma demande"
+          backLabel="Précédent"
+        />
       </form>
     </div>
   );

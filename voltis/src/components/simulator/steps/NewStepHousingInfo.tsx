@@ -3,6 +3,11 @@ import { useSimulator } from "../SimulatorContext";
 import { UserType, HousingType, HeatingType } from "../../../types";
 import type { StepProps } from "../../../types";
 import { CardOption } from "../shared/CardOption";
+import {
+  ModernIconButtons,
+  MinimalOutlineButtons,
+  GradientPremiumButtons,
+} from "../shared/NavigationButtons";
 
 const NewStepHousingInfo: React.FC<StepProps> = ({
   data,
@@ -50,15 +55,27 @@ const NewStepHousingInfo: React.FC<StepProps> = ({
               icon="🏠"
             />
           </div>
-          <div className="flex justify-end mt-8">
-            <button
-              onClick={() => handleQuestionNext(1)}
-              disabled={!data.userType}
-              className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-            >
-              Suivant
-            </button>
-          </div>
+
+          {/* Variante 1 : Moderne avec Icônes */}
+          {/* <ModernIconButtons
+            onNext={() => handleQuestionNext(1)}
+            disabled={!data.userType}
+            showBack={false}
+          /> */}
+
+          {/* Variante 2 : Minimaliste avec Bordure */}
+          {/* <MinimalOutlineButtons
+            onNext={() => handleQuestionNext(1)}
+            disabled={!data.userType}
+            showBack={false}
+          /> */}
+
+          {/* Variante 3 : Gradient Premium */}
+          <GradientPremiumButtons
+            onNext={() => handleQuestionNext(1)}
+            disabled={!data.userType}
+            showBack={false}
+          />
         </div>
       )}
 
@@ -88,21 +105,30 @@ const NewStepHousingInfo: React.FC<StepProps> = ({
               icon="🏢"
             />
           </div>
-          <div className="flex justify-between mt-8">
-            <button
-              onClick={handleBack}
-              className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-            >
-              Retour
-            </button>
-            <button
-              onClick={() => handleQuestionNext(2)}
-              disabled={!data.housingType}
-              className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-            >
-              Suivant
-            </button>
-          </div>
+
+          {/* Variante 1 : Moderne avec Icônes */}
+          {/* <ModernIconButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(2)}
+            disabled={!data.housingType}
+            showBack={true}
+          /> */}
+
+          {/* Variante 2 : Minimaliste avec Bordure */}
+          {/* <MinimalOutlineButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(2)}
+            disabled={!data.housingType}
+            showBack={true}
+          /> */}
+
+          {/* Variante 3 : Gradient Premium */}
+          <GradientPremiumButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(2)}
+            disabled={!data.housingType}
+            showBack={true}
+          />
         </div>
       )}
 
@@ -150,21 +176,30 @@ const NewStepHousingInfo: React.FC<StepProps> = ({
               icon="🔧"
             />
           </div>
-          <div className="flex justify-between mt-8">
-            <button
-              onClick={handleBack}
-              className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-            >
-              Retour
-            </button>
-            <button
-              onClick={() => handleQuestionNext(3)}
-              disabled={!data.heatingType}
-              className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-            >
-              Suivant
-            </button>
-          </div>
+
+          {/* Variante 1 : Moderne avec Icônes */}
+          {/* <ModernIconButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(3)}
+            disabled={!data.heatingType}
+            showBack={true}
+          /> */}
+
+          {/* Variante 2 : Minimaliste avec Bordure */}
+          {/* <MinimalOutlineButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(3)}
+            disabled={!data.heatingType}
+            showBack={true}
+          /> */}
+
+          {/* Variante 3 : Gradient Premium */}
+          <GradientPremiumButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(3)}
+            disabled={!data.heatingType}
+            showBack={true}
+          />
         </div>
       )}
 
@@ -204,21 +239,30 @@ const NewStepHousingInfo: React.FC<StepProps> = ({
               icon="📈"
             />
           </div>
-          <div className="flex justify-between mt-8">
-            <button
-              onClick={handleBack}
-              className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-            >
-              Retour
-            </button>
-            <button
-              onClick={() => handleQuestionNext(4)}
-              disabled={!data.surfaceArea}
-              className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-            >
-              Suivant
-            </button>
-          </div>
+
+          {/* Variante 1 : Moderne avec Icônes */}
+          {/* <ModernIconButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(4)}
+            disabled={!data.surfaceArea}
+            showBack={true}
+          /> */}
+
+          {/* Variante 2 : Minimaliste avec Bordure */}
+          {/* <MinimalOutlineButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(4)}
+            disabled={!data.surfaceArea}
+            showBack={true}
+          /> */}
+
+          {/* Variante 3 : Gradient Premium */}
+          <GradientPremiumButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(4)}
+            disabled={!data.surfaceArea}
+            showBack={true}
+          />
         </div>
       )}
 
@@ -258,21 +302,30 @@ const NewStepHousingInfo: React.FC<StepProps> = ({
               icon="💳"
             />
           </div>
-          <div className="flex justify-between mt-8">
-            <button
-              onClick={handleBack}
-              className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-            >
-              Retour
-            </button>
-            <button
-              onClick={() => handleQuestionNext(5)}
-              disabled={!data.monthlyBill}
-              className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-            >
-              Suivant
-            </button>
-          </div>
+
+          {/* Variante 1 : Moderne avec Icônes */}
+          {/* <ModernIconButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(5)}
+            disabled={!data.monthlyBill}
+            showBack={true}
+          /> */}
+
+          {/* Variante 2 : Minimaliste avec Bordure */}
+          {/* <MinimalOutlineButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(5)}
+            disabled={!data.monthlyBill}
+            showBack={true}
+          /> */}
+
+          {/* Variante 3 : Gradient Premium */}
+          <GradientPremiumButtons
+            onBack={handleBack}
+            onNext={() => handleQuestionNext(5)}
+            disabled={!data.monthlyBill}
+            showBack={true}
+          />
         </div>
       )}
     </div>

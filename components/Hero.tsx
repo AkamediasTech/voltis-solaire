@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
                 Réduisez jusqu'à{" "}
                 <span className="font-bold text-white">60%</span> de vos
                 factures d'énergie grâce à l'autoconsommation. Profitez des
-                aides de l'État en 2025.
+                aides de l'État en 2026.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4 text-sm font-medium text-blue-200">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import type { StepProps } from "../../../types";
 import { useCityAutocomplete } from "../hooks/useCityAutocomplete";
+import { GradientPremiumButtons } from "../shared/NavigationButtons";
 
 const NewStepLocation: React.FC<StepProps> = ({
   data,
@@ -97,21 +98,13 @@ const NewStepLocation: React.FC<StepProps> = ({
       )}
 
       {/* Navigation Buttons */}
-      <div className="flex justify-between mt-8">
-        <button
-          onClick={prevStep}
-          className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-        >
-          Précédent
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={localPostalCode.length !== 5 || !data.city}
-          className="px-8 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-        >
-          Suivant
-        </button>
-      </div>
+      <GradientPremiumButtons
+        onBack={prevStep}
+        onNext={handleNext}
+        disabled={localPostalCode.length !== 5 || !data.city}
+        showBack={true}
+        backLabel="Précédent"
+      />
     </div>
   );
 };

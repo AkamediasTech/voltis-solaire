@@ -3,6 +3,10 @@ import { HeatingType } from "../../../types";
 import type { StepProps } from "../../../types";
 import { CardOption } from "../shared/CardOption";
 import { GradientPremiumButtons } from "../shared/NavigationButtons";
+import { CampingGasColorIcon } from "../../icons/CampingGasColorIcon";
+import { LightBulbColorIcon } from "../../icons/LightBulbColorIcon";
+import { OilBarrelColorIcon } from "../../icons/OilBarrelColorIcon";
+import { FireWoodColorIcon } from "../../icons/FireWoodColorIcon";
 
 const Step3HeatingType: React.FC<StepProps> = ({
   data,
@@ -21,28 +25,32 @@ const Step3HeatingType: React.FC<StepProps> = ({
           value={HeatingType.FUEL_OIL}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          icon="🛢️"
+          // icon="🛢️"
+          icon={<OilBarrelColorIcon size={48} />}
         />
         <CardOption
           label="Gaz"
           value={HeatingType.GAS}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          icon="🔥"
+          // icon="🔥"
+          icon={<CampingGasColorIcon size={48} />}
         />
         <CardOption
           label="Électrique"
           value={HeatingType.ELECTRIC}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          icon="⚡"
+          // icon="⚡"
+          icon={<LightBulbColorIcon size={48} />}
         />
         <CardOption
           label="Autre"
           value={HeatingType.OTHER}
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
-          icon="��"
+          // icon="��"
+          icon={<FireWoodColorIcon size={48} />}
         />
       </div>
 

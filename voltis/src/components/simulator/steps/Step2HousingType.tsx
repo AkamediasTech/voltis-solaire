@@ -3,6 +3,8 @@ import { HousingType } from "../../../types";
 import type { StepProps } from "../../../types";
 import { CardOption } from "../shared/CardOption";
 import { GradientPremiumButtons } from "../shared/NavigationButtons";
+import { HouseColorIcon } from "../../icons/HouseColorIcon";
+import { RoomKeyColorIcon } from "../../icons/RoomKeyColorIcon";
 
 const Step2HousingType: React.FC<StepProps> = ({
   data,
@@ -21,14 +23,16 @@ const Step2HousingType: React.FC<StepProps> = ({
           value={HousingType.HOUSE}
           currentValue={data.housingType}
           onChange={(val) => updateData({ housingType: val as HousingType })}
-          icon="🏡"
+          // icon="🏡"
+          icon={<HouseColorIcon size={48} />}
         />
         <CardOption
           label="Appartement"
           value={HousingType.APARTMENT}
           currentValue={data.housingType}
           onChange={(val) => updateData({ housingType: val as HousingType })}
-          icon="🏢"
+          // icon="🏢"
+          icon={<RoomKeyColorIcon size={48} />}
         />
       </div>
 

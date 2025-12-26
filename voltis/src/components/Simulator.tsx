@@ -17,7 +17,7 @@ const SimulatorContent: React.FC = () => {
     useSimulator();
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-lg mx-auto relative z-10 border-t-4 border-edf-orange">
+    <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-2xl mx-auto relative z-10 border-t-4 border-edf-orange">
       {!isSuccess && (
         <>
           <div className="mb-8 mx-7">

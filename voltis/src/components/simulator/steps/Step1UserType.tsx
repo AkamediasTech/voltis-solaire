@@ -3,6 +3,7 @@ import { UserType } from "../../../types";
 import type { StepProps } from "../../../types";
 import { CardOption } from "../shared/CardOption";
 import { GradientPremiumButtons } from "../shared/NavigationButtons";
+import { HouseColorIcon } from "../../icons/HouseColorIcon";
 
 const Step1UserType: React.FC<StepProps> = ({ data, updateData, nextStep }) => {
   return (
@@ -23,7 +24,7 @@ const Step1UserType: React.FC<StepProps> = ({ data, updateData, nextStep }) => {
           value={UserType.TENANT}
           currentValue={data.userType}
           onChange={(val) => updateData({ userType: val as UserType })}
-          icon="🏠"
+          icon={<HouseColorIcon size={48} />}
         />
       </div>
 

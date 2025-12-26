@@ -86,96 +86,98 @@ const NewStepContactInfo: React.FC<StepProps> = ({
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* First Name */}
-        <div>
-          <label
-            htmlFor="firstName"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
-            Prénom *
-          </label>
-          <input
-            id="firstName"
-            type="text"
-            value={data.firstName}
-            onChange={(e) => handleInputChange("firstName", e.target.value)}
-            placeholder="Votre prénom"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.firstName ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.firstName && (
-            <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
-          )}
+        {/* First Name & Last Name - 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="firstName"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Prénom *
+            </label>
+            <input
+              id="firstName"
+              type="text"
+              value={data.firstName}
+              onChange={(e) => handleInputChange("firstName", e.target.value)}
+              placeholder="Votre prénom"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                errors.firstName ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.firstName && (
+              <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+            )}
+          </div>
+
+          <div>
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Nom *
+            </label>
+            <input
+              id="lastName"
+              type="text"
+              value={data.lastName}
+              onChange={(e) => handleInputChange("lastName", e.target.value)}
+              placeholder="Votre nom"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                errors.lastName ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.lastName && (
+              <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+            )}
+          </div>
         </div>
 
-        {/* Last Name */}
-        <div>
-          <label
-            htmlFor="lastName"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
-            Nom *
-          </label>
-          <input
-            id="lastName"
-            type="text"
-            value={data.lastName}
-            onChange={(e) => handleInputChange("lastName", e.target.value)}
-            placeholder="Votre nom"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.lastName ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.lastName && (
-            <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
-          )}
-        </div>
+        {/* Email & Phone - 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Email *
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={data.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              placeholder="exemple@email.com"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
 
-        {/* Email */}
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
-            Email *
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={data.email}
-            onChange={(e) => handleInputChange("email", e.target.value)}
-            placeholder="exemple@email.com"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-          )}
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label
-            htmlFor="phone"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
-            Téléphone *
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            value={data.phone}
-            onChange={(e) => handleInputChange("phone", e.target.value)}
-            placeholder="06 12 34 56 78"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.phone ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.phone && (
-            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-          )}
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Téléphone *
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              value={data.phone}
+              onChange={(e) => handleInputChange("phone", e.target.value)}
+              placeholder="06 12 34 56 78"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                errors.phone ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            )}
+          </div>
         </div>
 
         {/* Newsletter Checkbox */}

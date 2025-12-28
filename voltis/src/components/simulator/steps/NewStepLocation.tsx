@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import type { StepProps } from "@types";
 import { useCityAutocomplete } from "@simulator/hooks/useCityAutocomplete";
 import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
+import { SelectCity } from "@simulator/shared/SelectCity";
 
 const NewStepLocation: React.FC<StepProps> = ({
   data,
@@ -67,38 +68,15 @@ const NewStepLocation: React.FC<StepProps> = ({
       {localPostalCode.length === 5 && (
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Ville *{" "}
-            {!loading && !error && cities.length > 0 && (
-              <span className="text-gray-500 font-normal">
-                - Sélectionnez une option
-              </span>
-            )}
+            Ville *
           </label>
-
-          {loading && (
-            <div className="text-gray-500 py-3">Chargement des villes...</div>
-          )}
-
-          {error && <div className="text-red-500 py-3">{error}</div>}
-
-          {!loading && !error && cities.length > 0 && (
-            <div className="space-y-2">
-              {cities.map((city) => (
-                <button
-                  key={city.code}
-                  type="button"
-                  onClick={() => handleCitySelect(city.nom)}
-                  className={`w-full px-4 py-3 border rounded-lg text-left transition-all ${
-                    data.city === city.nom
-                      ? "border-orange-500 bg-orange-50 text-orange-700 font-semibold"
-                      : "border-gray-300 hover:border-orange-300 hover:bg-gray-50"
-                  }`}
-                >
-                  {city.nom}
-                </button>
-              ))}
-            </div>
-          )}
+          <SelectCity
+            cities={cities}
+            selectedCity={data.city}
+            onChange={handleCitySelect}
+            loading={loading}
+            error={error}
+          />
         </div>
       )}
 

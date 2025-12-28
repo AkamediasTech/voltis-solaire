@@ -84,6 +84,11 @@ const NewStepContactInfo: React.FC<StepProps> = ({
         if (!response.ok) {
           throw new Error("Erreur lors de l'envoi du formulaire");
         }
+
+        // Track lead submission
+        if (typeof window !== "undefined" && (window as any).__tracking) {
+          (window as any).__tracking.lead(data);
+        }
       } else {
         // Fallback: just log the data
         console.log("Form data (no webhook configured):", data);

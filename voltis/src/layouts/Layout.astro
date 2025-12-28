@@ -36,6 +36,119 @@ const {
       })(window,document,'script','dataLayer',gtmId);
     </script>
   )}
+
+  <!-- Custom Tracking System (n8n webhooks) -->
+  {config.analytics.tracking?.enabled && (
+    <script is:inline define:vars={{ 
+      trackingConfig: config.analytics.tracking,
+      siteId: config.siteId 
+    }}>
+      (() => {
+        // Initialize tracking state
+        const sessionId = crypto.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
+        const isDev = location.hostname === 'localhost' || location.hostname.includes('127.0.0.1');
+        
+        // Skip in dev unless debug enabled
+        if (isDev && !trackingConfig.debug) {
+          console.log('[Tracking] Dev mode + debug disabled, tracking skipped');
+          return;
+        }
+
+        // Helper: extract UTM parameters
+        function extractUTMs() {
+          const params = new URLSearchParams(location.search);
+          const utms = {};
+          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(key => {
+            const val = params.get(key);
+            if (val) utms[key] = val;
+          });
+          return utms;
+        }
+
+        // Helper: send event
+        function sendEvent(endpoint, payload) {
+          const enrichedPayload = {
+            ...payload,
+            site_id: siteId,
+            session_id: sessionId,
+            environment: isDev ? 'development' : 'production',
+            ts: Date.now(),
+            url: location.href,
+            path: location.pathname,
+            ref: document.referrer || '',
+            ua: navigator.userAgent || '',
+            lang: navigator.language || '',
+            viewport: `${window.innerWidth}x${window.innerHeight}`,
+            screen: `${screen.width}x${screen.height}`,
+            ...extractUTMs()
+          };
+
+          const body = JSON.stringify(enrichedPayload);
+
+          // Try sendBeacon first
+          try {
+            if (navigator.sendBeacon) {
+              const ok = navigator.sendBeacon(
+                endpoint,
+                new Blob([body], { type: 'text/plain' })
+              );
+              if (ok) {
+                if (trackingConfig.debug) console.log('[Tracking] ✅ sendBeacon', enrichedPayload);
+                return;
+              }
+            }
+          } catch {}
+
+          // Fallback to fetch
+          fetch(endpoint, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body,
+            keepalive: true
+          })
+            .then(() => trackingConfig.debug && console.log('[Tracking] ✅ fetch', enrichedPayload))
+            .catch((err) => trackingConfig.debug && console.log('[Tracking] ❌ failed', err));
+        }
+
+        // Track page view (anti-duplicate)
+        function trackPageView() {
+          const key = `pv:${location.pathname}`;
+          if (sessionStorage.getItem(key)) {
+            if (trackingConfig.debug) console.log('[Tracking] Page view already tracked');
+            return;
+          }
+          sessionStorage.setItem(key, '1');
+
+          sendEvent(trackingConfig.endpoints.pageView, {
+            event: 'page_view',
+            page_path: location.pathname,
+            page_title: document.title
+          });
+        }
+
+        // Public API for tracking (used by React components)
+        window.__tracking = {
+          lead: (formData) => {
+            sendEvent(trackingConfig.endpoints.lead, {
+              event: 'lead',
+              ...formData,
+              lead_type: 'simulator'
+            });
+          },
+          event: (eventName, data) => {
+            sendEvent(trackingConfig.endpoints.event, {
+              event: eventName,
+              ...data
+            });
+          }
+        };
+
+        // Track page view on load
+        window.addEventListener('load', trackPageView, { once: true });
+      })();
+    </script>
+  )}
   
   <!-- Preload géré automatiquement par <Image> component -->
   

@@ -45,6 +45,15 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
 
   analytics: {
     gtmId: "GTM-XXXXXXX", // Replace with actual GTM ID
+    tracking: {
+      enabled: true,
+      endpoints: {
+        pageView: "https://france-solaire.n8n.cloud/webhook/pv",
+        lead: "https://france-solaire.n8n.cloud/webhook/lead",
+        event: "https://france-solaire.n8n.cloud/webhook/event",
+      },
+      debug: false, // Set to true to enable console logs in development
+    },
   },
 
   api: {

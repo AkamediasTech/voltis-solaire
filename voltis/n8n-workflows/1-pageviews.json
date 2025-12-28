@@ -1,0 +1,229 @@
+{
+  "name": "Tracking - Page Views",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pv",
+        "options": {}
+      },
+      "id": "webhook-pv",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.body.ua }}",
+              "operation": "notContains",
+              "value2": "bot"
+            },
+            {
+              "value1": "={{ $json.body.ua }}",
+              "operation": "notContains",
+              "value2": "crawler"
+            },
+            {
+              "value1": "={{ $json.body.ua }}",
+              "operation": "notContains",
+              "value2": "spider"
+            }
+          ]
+        }
+      },
+      "id": "filter-bots",
+      "name": "Filter Bots",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "site_id",
+              "name": "site_id",
+              "value": "={{ $json.body.site_id }}",
+              "type": "string"
+            },
+            {
+              "id": "session_id",
+              "name": "session_id",
+              "value": "={{ $json.body.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "environment",
+              "name": "environment",
+              "value": "={{ $json.body.environment }}",
+              "type": "string"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "value": "={{ new Date($json.body.ts).toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "url",
+              "name": "url",
+              "value": "={{ $json.body.url }}",
+              "type": "string"
+            },
+            {
+              "id": "path",
+              "name": "path",
+              "value": "={{ $json.body.path }}",
+              "type": "string"
+            },
+            {
+              "id": "page_title",
+              "name": "page_title",
+              "value": "={{ $json.body.page_title }}",
+              "type": "string"
+            },
+            {
+              "id": "referrer",
+              "name": "referrer",
+              "value": "={{ $json.body.ref || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "viewport",
+              "name": "viewport",
+              "value": "={{ $json.body.viewport }}",
+              "type": "string"
+            },
+            {
+              "id": "screen",
+              "name": "screen",
+              "value": "={{ $json.body.screen }}",
+              "type": "string"
+            },
+            {
+              "id": "language",
+              "name": "language",
+              "value": "={{ $json.body.lang }}",
+              "type": "string"
+            },
+            {
+              "id": "utm_source",
+              "name": "utm_source",
+              "value": "={{ $json.body.utm_source || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "utm_medium",
+              "name": "utm_medium",
+              "value": "={{ $json.body.utm_medium || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "utm_campaign",
+              "name": "utm_campaign",
+              "value": "={{ $json.body.utm_campaign || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-data",
+      "name": "Format Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "PageViews",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData"
+        },
+        "options": {}
+      },
+      "id": "google-sheets",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"success\": true, \"message\": \"Page view tracked\" }",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1050, 200]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filter Bots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Bots": {
+      "main": [
+        [
+          {
+            "node": "Format Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Data": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

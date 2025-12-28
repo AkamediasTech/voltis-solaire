@@ -45,9 +45,22 @@ export interface ApiConfig {
   timeout?: number;
 }
 
+export interface TrackingEndpoints {
+  pageView: string;
+  lead: string;
+  event: string;
+}
+
+export interface TrackingConfig {
+  enabled: boolean;
+  endpoints: TrackingEndpoints;
+  debug?: boolean;
+}
+
 export interface AnalyticsConfig {
   gtmId?: string;
   googleAnalyticsId?: string;
+  tracking?: TrackingConfig;
 }
 
 export interface HeroContent {

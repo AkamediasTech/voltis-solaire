@@ -1,0 +1,292 @@
+{
+  "name": "Tracking - Leads",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead",
+        "options": {}
+      },
+      "id": "webhook-lead",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "site_id",
+              "name": "site_id",
+              "value": "={{ $json.body.site_id }}",
+              "type": "string"
+            },
+            {
+              "id": "session_id",
+              "name": "session_id",
+              "value": "={{ $json.body.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "environment",
+              "name": "environment",
+              "value": "={{ $json.body.environment }}",
+              "type": "string"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "value": "={{ new Date($json.body.ts).toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "lead_type",
+              "name": "lead_type",
+              "value": "={{ $json.body.lead_type }}",
+              "type": "string"
+            },
+            {
+              "id": "first_name",
+              "name": "first_name",
+              "value": "={{ $json.body.firstName }}",
+              "type": "string"
+            },
+            {
+              "id": "last_name",
+              "name": "last_name",
+              "value": "={{ $json.body.lastName }}",
+              "type": "string"
+            },
+            {
+              "id": "email",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "phone",
+              "name": "phone",
+              "value": "={{ $json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "postal_code",
+              "name": "postal_code",
+              "value": "={{ $json.body.postalCode }}",
+              "type": "string"
+            },
+            {
+              "id": "city",
+              "name": "city",
+              "value": "={{ $json.body.city }}",
+              "type": "string"
+            },
+            {
+              "id": "user_type",
+              "name": "user_type",
+              "value": "={{ $json.body.userType }}",
+              "type": "string"
+            },
+            {
+              "id": "housing_type",
+              "name": "housing_type",
+              "value": "={{ $json.body.housingType }}",
+              "type": "string"
+            },
+            {
+              "id": "heating_type",
+              "name": "heating_type",
+              "value": "={{ $json.body.heatingType }}",
+              "type": "string"
+            },
+            {
+              "id": "surface",
+              "name": "surface",
+              "value": "={{ $json.body.surface }}",
+              "type": "string"
+            },
+            {
+              "id": "electric_bill",
+              "name": "electric_bill",
+              "value": "={{ $json.body.electricBill }}",
+              "type": "string"
+            },
+            {
+              "id": "url",
+              "name": "url",
+              "value": "={{ $json.body.url }}",
+              "type": "string"
+            },
+            {
+              "id": "referrer",
+              "name": "referrer",
+              "value": "={{ $json.body.ref || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "utm_source",
+              "name": "utm_source",
+              "value": "={{ $json.body.utm_source || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "utm_medium",
+              "name": "utm_medium",
+              "value": "={{ $json.body.utm_medium || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "utm_campaign",
+              "name": "utm_campaign",
+              "value": "={{ $json.body.utm_campaign || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-lead",
+      "name": "Format Lead Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData"
+        },
+        "options": {}
+      },
+      "id": "google-sheets-lead",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"success\": true, \"message\": \"Lead tracked\" }",
+        "options": {}
+      },
+      "id": "respond-lead",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1050, 200]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "subject",
+              "name": "subject",
+              "value": "=🚀 Nouveau Lead: {{ $json.first_name }} {{ $json.last_name }} ({{ $json.site_id }})",
+              "type": "string"
+            },
+            {
+              "id": "body",
+              "name": "body",
+              "value": "=**Nouveau lead depuis {{ $json.site_id }}**\n\n📧 Contact: {{ $json.first_name }} {{ $json.last_name }}\n✉️ {{ $json.email }}\n📞 {{ $json.phone }}\n📍 {{ $json.city }} ({{ $json.postal_code }})\n\n🏠 Projet:\n- Type: {{ $json.user_type }} / {{ $json.housing_type }}\n- Chauffage: {{ $json.heating_type }}\n- Surface: {{ $json.surface }}m²\n- Facture: {{ $json.electric_bill }}€/mois\n\n📊 Source:\n- UTM: {{ $json.utm_source }} / {{ $json.utm_medium }} / {{ $json.utm_campaign }}\n- Referrer: {{ $json.referrer }}\n\n⏰ {{ $json.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "prepare-email",
+      "name": "Prepare Email",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [650, 400],
+      "disabled": false
+    },
+    {
+      "parameters": {
+        "fromEmail": "notifications@votredomaine.fr",
+        "toEmail": "commercial@votredomaine.fr",
+        "subject": "={{ $json.subject }}",
+        "emailFormat": "text",
+        "text": "={{ $json.body }}",
+        "options": {}
+      },
+      "id": "send-email",
+      "name": "Send Email (Optional)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [850, 400],
+      "disabled": true,
+      "notes": "Configure SMTP and enable this node"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prepare Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Email": {
+      "main": [
+        [
+          {
+            "node": "Send Email (Optional)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

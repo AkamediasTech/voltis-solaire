@@ -101,9 +101,11 @@ const SimulatorContent: React.FC = () => {
   );
 };
 
-export const Simulator: React.FC = () => {
+export const Simulator: React.FC<{ webhookUrl?: string }> = ({
+  webhookUrl,
+}) => {
   return (
-    <SimulatorProvider>
+    <SimulatorProvider webhookUrl={webhookUrl}>
       <SimulatorContent />
     </SimulatorProvider>
   );

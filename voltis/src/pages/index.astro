@@ -1,43 +1,29 @@
 ﻿---
-// index.astro - Page principale
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import FaqSection from '../components/FaqSection.astro';
-import Features from '../components/Features.astro';
-import OurLabels from '../components/OurLabels.astro';
-import Process from '../components/Process.astro';
-import TestimonialsSection from '../components/TestimonialsSection.astro';
-import OurStrengthsSection from '../components/OurStrengthsSection.astro';
-import StepsSection from '../components/StepsSection.astro';
-import ProductSection from '../components/ProductSection.astro';
-import SmartMonitoringSection from '../components/SmartMonitoringSection.astro';
-import CallToActionSection from '../components/CallToActionSection.astro';
-import LegalDisclaimerSection from '../components/LegalDisclaimerSection.astro';
-import ProcessV2 from '../components/ProcessV2.astro';
-import FeaturesV2 from '../components/FeaturesV2.astro';
-import CookieConsent from '../components/CookieConsent.astro';
-import CustomerJourney from '../components/CustomerJourney.astro';
+/**
+ * Main Landing Page - Dynamically loads the correct layout based on SITE_ID
+ * Each site has its own isolated layout file defining components and their order
+ */
+import { getConfig } from '@config';
+import EcoEnergieFranceLayout from '@layouts/EcoEnergieFranceLayout.astro';
+import FranceSolaireLayout from '@layouts/FranceSolaireLayout.astro';
+
+const config = getConfig();
+
+// Map site IDs to their respective layouts
+const layouts: Record<string, any> = {
+  'eco-energie-france': EcoEnergieFranceLayout,
+  'france-solaire': FranceSolaireLayout,
+};
+
+const PageLayout = layouts[config.siteId];
+
+if (!PageLayout) {
+  throw new Error(
+    `No layout found for site "${config.siteId}". ` +
+    `Available layouts: ${Object.keys(layouts).join(', ')}`
+  );
+}
 ---
 
-<Layout>
-  <Hero />
-  <!-- <Features /> -->
-  <FeaturesV2 />
-  <OurLabels />
-  <StepsSection />
-  <!-- <Process /> -->
-   <!-- <CustomerJourney /> -->
-  <!-- <ProcessV2 /> -->
-  
-  <OurStrengthsSection />
-  <!-- <StepsSection /> -->
-  <ProductSection />
-  <SmartMonitoringSection />
-  <TestimonialsSection />
-  <FaqSection />
-
-  <CallToActionSection />
-  <LegalDisclaimerSection />
-  <CookieConsent delay={2000}/>
-</Layout>
+<PageLayout />
 

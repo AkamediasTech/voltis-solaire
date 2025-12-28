@@ -1,7 +1,13 @@
 import React from "react";
-import type { StepProps } from "../../../types";
-import { CardOptionCompact } from "../shared/CardOptionCompact";
-import { GradientPremiumButtons } from "../shared/NavigationButtons";
+import type { StepProps } from "@types";
+import { CardOptionCompact } from "@simulator/shared/CardOptionCompact";
+import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
+import EuroColorIcon from "@components/icons/EuroColorIcon";
+import CoinsColorIcon from "@components/icons/CoinsColorIcon";
+import EuroBillColorIcon from "@components/icons/EuroBillColorIcon";
+import EuroBillsColorIcon from "@components/icons/EuroBillsColorIcon";
+import EuroBillsColorIcon2 from "@components/icons/EuroBillsColorIcon2";
+import AtmCardColorIcon from "@components/icons/AtmCardColorIcon";
 
 const Step5MonthlyBill: React.FC<StepProps> = ({
   data,
@@ -20,28 +26,36 @@ const Step5MonthlyBill: React.FC<StepProps> = ({
           value="LESS_THAN_75"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
-          icon="💰"
+          // icon="💰"
+          // icon={<EuroColorIcon size={36} />}
+          icon={<CoinsColorIcon size={48} />}
         />
         <CardOptionCompact
           label="75€ à 150€"
           value="75_TO_150"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
-          icon="💵"
+          // icon="💵"
+          // icon={<CoinsColorIcon size={48} />}
+          icon={<EuroBillColorIcon size={48} />}
         />
         <CardOptionCompact
           label="150€ à 250€"
           value="150_TO_250"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
-          icon="💸"
+          // icon="💸"
+          // icon={<EuroBillColorIcon size={48} />}
+          // icon={<EuroBillsColorIcon2 size={48} />}
+          icon={<EuroBillsColorIcon size={48} />}
         />
         <CardOptionCompact
           label="Plus de 250€"
           value="MORE_THAN_250"
           currentValue={data.monthlyBill}
           onChange={(val) => updateData({ monthlyBill: val })}
-          icon="💳"
+          // icon="💳"
+          icon={<AtmCardColorIcon size={48} />}
         />
       </div>
 

@@ -1,12 +1,12 @@
 import React from "react";
-import { HeatingType } from "../../../types";
-import type { StepProps } from "../../../types";
-import { CardOptionCompact } from "../shared/CardOptionCompact";
-import { GradientPremiumButtons } from "../shared/NavigationButtons";
-import { CampingGasColorIcon } from "../../icons/CampingGasColorIcon";
-import { LightBulbColorIcon } from "../../icons/LightBulbColorIcon";
-import { OilBarrelColorIcon } from "../../icons/OilBarrelColorIcon";
-import { FireWoodColorIcon } from "../../icons/FireWoodColorIcon";
+import { HeatingType } from "@types";
+import type { StepProps } from "@types";
+import { CardOptionCompact } from "@simulator/shared/CardOptionCompact";
+import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
+import { CampingGasColorIcon } from "@icons/CampingGasColorIcon";
+import { LightBulbColorIcon } from "@icons/LightBulbColorIcon";
+import { OilBarrelColorIcon } from "@icons/OilBarrelColorIcon";
+import { FireWoodColorIcon } from "@icons/FireWoodColorIcon";
 
 const Step3HeatingType: React.FC<StepProps> = ({
   data,

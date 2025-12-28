@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import type { StepProps } from "../../../types";
-import { useCityAutocomplete } from "../hooks/useCityAutocomplete";
-import { GradientPremiumButtons } from "../shared/NavigationButtons";
+import type { StepProps } from "@types";
+import { useCityAutocomplete } from "@simulator/hooks/useCityAutocomplete";
+import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
 
 const NewStepLocation: React.FC<StepProps> = ({
   data,

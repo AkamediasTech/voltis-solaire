@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useSimulator } from "../SimulatorContext";
-import { UserType, HousingType, HeatingType } from "../../../types";
-import type { StepProps } from "../../../types";
-import { CardOption } from "../shared/CardOption";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { UserType, HousingType, HeatingType } from "@types";
+import type { StepProps } from "@types";
+import { CardOption } from "@simulator/shared/CardOption";
 import {
   ModernIconButtons,
   MinimalOutlineButtons,
   GradientPremiumButtons,
-} from "../shared/NavigationButtons";
+} from "@simulator/shared/NavigationButtons";
 
 const NewStepHousingInfo: React.FC<StepProps> = ({
   data,

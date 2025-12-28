@@ -1,7 +1,7 @@
 import React from "react";
 import { Triangle, Home, Box, HelpCircle } from "lucide-react";
-import { useSimulator } from "../SimulatorContext";
-import { RadioOption } from "../shared/RadioOption";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { RadioOption } from "@simulator/shared/RadioOption";
 
 export const StepRoof: React.FC = () => {
   const { data, updateData, nextStep, prevStep } = useSimulator();

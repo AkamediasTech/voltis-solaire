@@ -1,155 +1,165 @@
 ---
-// SmartMonitoringSection.astro - Composant statique
+// SmartMonitoringSection.astro - Composant généralisé
 import { Image } from 'astro:assets';
-import panneauImage from '../../public/panneau-solaire-transparent.webp';
-import appliMobileSuiviConso from "../../public/appli-suivi-conso.png";
+import { getConfig } from '../config';
+import type { SmartMonitoringConfig } from '@config/types';
+
+interface Props {
+  smartMonitoring?: SmartMonitoringConfig;
+}
+
+const { smartMonitoring: propConfig } = Astro.props;
+
+// Load config from site if not provided via props
+const siteConfig = !propConfig ? getConfig() : null;
+const config = propConfig || siteConfig?.content.smartMonitoring;
+
+// Hardcoded fallback for backward compatibility
+const HARDCODED_CONFIG: SmartMonitoringConfig = {
+  badge: "Pilotage intelligent",
+  mainTitle: "Maîtrisez votre production jour après jour",
+  blocks: {
+    productionTracking: {
+      title: "Suivi intelligent de votre production solaire",
+      description: "Visualisez en direct les performances de votre installation photovoltaïque grâce à notre système de monitoring avancé. Accédez à tout moment à :",
+      features: [
+        "Votre production instantanée en kW",
+        "Vos courbes de production journalières et mensuelles",
+        "L'historique complet de votre installation"
+      ],
+      footerText: "Un tableau de bord intuitif qui vous permet de vérifier le bon fonctionnement de vos panneaux et de mesurer précisément l'électricité que vous produisez, jour après jour.",
+      image: "/panneau-solaire-transparent.webp",
+      imageAlt: "Panneaux et équipements de suivi"
+    },
+    consumptionTracking: {
+      title: "Pilotage intelligent de votre consommation depuis votre smartphone",
+      description: "Suivez et analysez votre consommation électrique en temps réel grâce à l'application mobile. Accédez à :",
+      features: [
+        "Votre consommation instantanée par appareil",
+        "Des recommandations personnalisées pour réduire votre facture",
+        "L'historique détaillé de vos usages énergétiques"
+      ],
+      footerText: "Identifiez les postes de consommation élevés et ajustez vos habitudes pour maximiser vos économies d'énergie.",
+      image: "/appli-suivi-conso.png",
+      imageAlt: "Suivi de consommation sur smartphone"
+    }
+  },
+  ctaText: "Je demande mon Bilan gratuit"
+};
+
+const content = config || HARDCODED_CONFIG;
+const { badge, mainTitle, blocks, ctaText } = content;
 ---
 
-<section class="py-20 bg-white">
+<section class="py-20 bg-edf-gray">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
     
     <!-- Badge + Main Title -->
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
-        <span class="text-edf-orange text-sm font-semibold">Pilotage intelligent</span>
+    {(badge || mainTitle) && (
+      <div class="text-center mb-16">
+        {badge && (
+          <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
+            <span class="text-edf-orange text-sm font-semibold">{badge}</span>
+          </div>
+        )}
+        
+        {mainTitle && (
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900" set:html={mainTitle}></h2>
+        )}
       </div>
-      
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
-        Maîtrisez votre production <span class="text-edf-blue">jour après jour</span>
-      </h2>
-    </div>
+    )}
     
-    <!-- Block 1: Guarantee & Equipment -->
-    <div class="bg-gray-100 rounded-sm overflow-hidden flex flex-col lg:flex-row">
-      <div class="p-8 md:p-16 lg:w-2/3 flex flex-col justify-center">
-        <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-6">
-          Suivi intelligent de votre production solaire <br/>
-          <span class="font-medium">en temps réel</span>
-        </h2>
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          Visualisez en direct les performances de votre installation photovoltaïque grâce à notre système de monitoring avancé. Accédez à tout moment à :
-        </p>
-        <ul class="space-y-2 mb-8">
-          <li class="flex items-center gap-2 font-bold text-edf-orange">
-            <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> Votre production instantanée en kW
-          </li>
-          <li class="flex items-center gap-2 font-bold text-edf-orange">
-            <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> Vos courbes de production journalières et mensuelles
-          </li>
-          <li class="flex items-center gap-2 font-bold text-edf-orange">
-            <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> L'historique complet de votre installation
-          </li>
-        </ul>
-        <p class="text-gray-600 leading-relaxed text-sm">
-          Un tableau de bord intuitif qui vous permet de vérifier le bon fonctionnement de vos panneaux et de mesurer précisément l'électricité que vous produisez, jour après jour.
-        </p>
+    <!-- Block 1: Production Tracking -->
+    {blocks.productionTracking && (
+      <div class="bg-gray-100 rounded-sm overflow-hidden flex flex-col lg:flex-row">
+        <div class="p-8 md:p-16 lg:w-2/3 flex flex-col justify-center">
+          <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-6" set:html={blocks.productionTracking.title}></h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">{blocks.productionTracking.description}</p>
+          
+          {blocks.productionTracking.features && blocks.productionTracking.features.length > 0 && (
+            <ul class="space-y-2 mb-8">
+              {blocks.productionTracking.features.map(feature => (
+                <li class="flex items-center gap-2 font-bold text-edf-orange">
+                  <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> {feature}
+                </li>
+              ))}
+            </ul>
+          )}
+          
+          {blocks.productionTracking.footerText && (
+            <p class="text-gray-600 leading-relaxed text-sm">{blocks.productionTracking.footerText}</p>
+          )}
+        </div>
+        <div class="lg:w-1/3 bg-[#e3e3e3] flex items-center justify-center p-8 lg:p-0 bg-gray-50">
+          <img 
+            src={blocks.productionTracking.image}
+            alt={blocks.productionTracking.imageAlt}
+            class="w-full h-full object-cover max-h-[500px]"
+            loading="lazy"
+            width="500"
+            height="500"
+          />
+        </div>
       </div>
-      <div class="lg:w-1/3 bg-[#e3e3e3] flex items-center justify-center p-8 lg:p-0 bg-gray-50">
-        <Image 
-          src={panneauImage}
-          alt="Panneaux et équipements de suivi" 
-          class="w-full h-full object-cover max-h-[500px]"
-          loading="lazy"
-          widths={[400, 500]}
-          sizes="(max-width: 768px) 400px, 500px"
-        />
-      </div>
-    </div>
+    )}
+    )}
 
-    <!-- Block 2: Yuze Pilotage -->
-    <!-- <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
-      <div class="h-full min-h-[300px] lg:col-span-1">
-        <img 
-          src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
-          alt="Homme consultant son application" 
-          class="w-full h-full object-cover"
-        />
-      </div>
-      <div class="bg-gray-100 p-8 md:p-16 flex flex-col justify-center lg:col-span-2">
-        <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-6">
-          Pilotage de votre production avec YUZE
-        </h2>
-        <p class="text-gray-600 mb-4 leading-relaxed">
-          <span class="font-bold text-gray-800">Yuze est un compagnon intelligent</span> pour votre installation solaire. Il remonte <span class="font-bold text-gray-800">sur votre Espace Client Groupe France Solaire</span> :
-        </p>
-        <ul class="space-y-2 mb-6 text-gray-600 list-disc pl-5">
-          <li>La consommation électrique du foyer</li>
-          <li>La production d'électricité de l'installation photovoltaïque.</li>
-          <li>Et donc, calcule votre surplus de production solaire.</li>
-        </ul>
-        <p class="text-edf-orange font-bold leading-relaxed">
-          Et pour aller plus loin, profitez de notre Afficheur pour visualiser en temps réel et en un simple coup d'œil votre production d'énergie solaire.
-        </p>
-      </div>
-    </div> -->
-
-    <!-- Block 3: Suivi intelligent de la consommation -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
-      <div class="h-full min-h-[300px] lg:col-span-1 flex items-center justify-center p-4 bg-gray-50">
-        <!-- <img 
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" 
-          alt="Application mobile sur smartphone" 
-          class="w-full h-full object-cover"
-          loading="lazy"
-          width="800"
-          height="600"
-        /> -->
-           <Image 
-          src={appliMobileSuiviConso}
-          alt="Suivi de consommation sur smartphone"
-          class="w-auto h-auto max-w-full max-h-[500px] object-contain"
-          loading="lazy"
-          widths={[400, 500]}
-          sizes="(max-width: 768px) 400px, 500px"
-        />
-      </div>
-      <div class="bg-gray-100 p-8 md:p-16 flex flex-col justify-center lg:col-span-2">
-        <div class="hidden lg:block mb-8">
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-8 h-8 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold text-sm">e</div>
-            <div class="flex flex-col">
-              <span class="text-edf-blue font-bold text-sm leading-none">SOLUTIONS</span>
-              <span class="text-gray-500 text-[10px] font-semibold tracking-widest uppercase">Solaires</span>
+    <!-- Block 2: Consumption Tracking -->
+    {blocks.consumptionTracking && (
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+        <div class="h-full min-h-[300px] lg:col-span-1 flex items-center justify-center p-4 bg-gray-50">
+          <img 
+            src={blocks.consumptionTracking.image}
+            alt={blocks.consumptionTracking.imageAlt}
+            class="w-auto h-auto max-w-full max-h-[500px] object-contain"
+            loading="lazy"
+            width="400"
+            height="500"
+          />
+        </div>
+        <div class="bg-gray-100 p-8 md:p-16 flex flex-col justify-center lg:col-span-2">
+          <div class="hidden lg:block mb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold text-sm">e</div>
+              <div class="flex flex-col">
+                <span class="text-edf-blue font-bold text-sm leading-none">SOLUTIONS</span>
+                <span class="text-gray-500 text-[10px] font-semibold tracking-widest uppercase">Solaires</span>
+              </div>
             </div>
           </div>
+          
+          <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-6" set:html={blocks.consumptionTracking.title}></h2>
+          
+          <p class="text-gray-600 mb-6 leading-relaxed">{blocks.consumptionTracking.description}</p>
+          
+          {blocks.consumptionTracking.features && blocks.consumptionTracking.features.length > 0 && (
+            <ul class="space-y-2 mb-8">
+              {blocks.consumptionTracking.features.map(feature => (
+                <li class="flex items-center gap-2 font-bold text-edf-orange">
+                  <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> {feature}
+                </li>
+              ))}
+            </ul>
+          )}
+          
+          {blocks.consumptionTracking.footerText && (
+            <p class="text-gray-600 leading-relaxed text-sm">{blocks.consumptionTracking.footerText}</p>
+          )}
         </div>
-        
-        <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-6">
-          Pilotage intelligent de votre consommation <br/>
-          <span class="font-medium">depuis votre smartphone</span>
-        </h2>
-        
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          Suivez et analysez votre consommation électrique en temps réel grâce à l'application mobile. Accédez à :
-        </p>
-        
-        <ul class="space-y-2 mb-8">
-          <li class="flex items-center gap-2 font-bold text-edf-orange">
-            <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> Votre consommation instantanée par appareil
-          </li>
-          <li class="flex items-center gap-2 font-bold text-edf-orange">
-            <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> Des recommandations personnalisées pour réduire votre facture
-          </li>
-          <li class="flex items-center gap-2 font-bold text-edf-orange">
-            <span class="w-1.5 h-1.5 rounded-full bg-edf-orange"></span> L'historique détaillé de vos usages énergétiques
-          </li>
-        </ul>
-        
-        <p class="text-gray-600 leading-relaxed text-sm">
-          Identifiez les postes de consommation élevés et ajustez vos habitudes pour maximiser vos économies d'énergie.
-        </p>
       </div>
-    </div>
+    )}
 
     <!-- Final CTA -->
-    <div class="flex justify-center pt-8">
-      <button 
-        data-scroll-top
-        class="cursor-pointer bg-edf-orange text-white font-bold py-4 px-10 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg shadow-orange-100 text-lg"
-      >
-        Je demande mon Bilan gratuit
-      </button>
-    </div>
+    {ctaText && (
+      <div class="flex justify-center pt-8">
+        <button 
+          data-scroll-top
+          class="cursor-pointer bg-edf-orange text-white font-bold py-4 px-10 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg shadow-orange-100 text-lg"
+        >
+          {ctaText}
+        </button>
+      </div>
+    )}
 
   </div>
 </section>

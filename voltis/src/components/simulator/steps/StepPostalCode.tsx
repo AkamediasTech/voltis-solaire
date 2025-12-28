@@ -1,7 +1,7 @@
 import React from "react";
 import { MapPin, ArrowRight } from "lucide-react";
-import { useSimulator } from "../SimulatorContext";
-import { Button } from "../../Button";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { Button } from "@components/Button";
 
 export const StepPostalCode: React.FC = () => {
   const { data, updateData, nextStep, prevStep } = useSimulator();

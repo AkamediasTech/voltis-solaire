@@ -3,6 +3,11 @@ dist/
 # generated types
 .astro/
 
+# Generated public folder (merged from public-shared + public-{site})
+# Actual assets are in public-shared/, public-france-solaire/, public-eco-energie-france/
+public/*
+!public/.gitkeep
+
 # dependencies
 node_modules/
 

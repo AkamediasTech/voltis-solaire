@@ -1,7 +1,7 @@
 import React from "react";
-import { HousingType } from "../../../types";
-import { useSimulator } from "../SimulatorContext";
-import { RadioOption } from "../shared/RadioOption";
+import { HousingType } from "@types";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { RadioOption } from "@simulator/shared/RadioOption";
 
 export const StepHousingType: React.FC = () => {
   const { data, updateData, nextStep, prevStep } = useSimulator();

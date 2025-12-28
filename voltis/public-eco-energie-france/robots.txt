@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eco-energie-france.fr/sitemap.xml

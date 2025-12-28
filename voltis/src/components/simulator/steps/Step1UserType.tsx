@@ -1,10 +1,10 @@
 import React from "react";
-import { UserType } from "../../../types";
-import type { StepProps } from "../../../types";
-import { CardOptionCompact } from "../shared/CardOptionCompact";
-import { GradientPremiumButtons } from "../shared/NavigationButtons";
-import { HouseColorIcon } from "../../icons/HouseColorIcon";
-import { SurrogateKeyColorIcon } from "../../icons/SurrogateKeyColorIcon";
+import { UserType } from "@types";
+import type { StepProps } from "@types";
+import { CardOptionCompact } from "@simulator/shared/CardOptionCompact";
+import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
+import { HouseColorIcon } from "@icons/HouseColorIcon";
+import { SurrogateKeyColorIcon } from "@icons/SurrogateKeyColorIcon";
 
 const Step1UserType: React.FC<StepProps> = ({ data, updateData, nextStep }) => {
   return (

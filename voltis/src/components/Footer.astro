@@ -1,81 +1,144 @@
 ---
-// Footer.astro - Composant statique
+// Footer.astro - Composant généralisé
+import { getConfig } from '@config';
+import type { FooterConfig } from '@config/types';
+
+interface Props {
+  footer?: FooterConfig;
+}
+
+const { footer: propFooter } = Astro.props;
+const config = !propFooter ? getConfig() : null;
+const footerContent = propFooter || config?.content.footer;
+
+// Hardcoded fallback
+const HARDCODED_FOOTER: FooterConfig = {
+  companyName: "SOLUTIONS SOLAIRES",
+  description: "Nous accompagnons les particuliers et les professionnels dans leur transition énergétique grâce à des solutions solaires performantes et durables.",
+  sections: [
+    {
+      title: "Nos solutions",
+      links: [
+        { label: "Panneaux photovoltaïques", href: "#" },
+        { label: "Autoconsommation", href: "#" },
+        { label: "Batterie de stockage", href: "#" },
+        { label: "Borne de recharge", href: "#" }
+      ]
+    },
+    {
+      title: "À propos",
+      links: [
+        { label: "Qui sommes-nous ?", href: "#" },
+        { label: "Nos réalisations", href: "#" },
+        { label: "Avis clients", href: "#" },
+        { label: "Recrutement", href: "#" }
+      ]
+    }
+  ],
+  contactPhone: "tel:0809404005",
+  contactPhoneDisplay: "0 809 404 005",
+  contactSchedule: "Service & appel gratuits.<br/>Du lundi au vendredi de 9h à 19h.",
+  socialLinks: [
+    { platform: "facebook", url: "#" },
+    { platform: "twitter", url: "#" },
+    { platform: "linkedin", url: "#" }
+  ],
+  copyright: `© ${new Date().getFullYear()} Groupe France Solaire - Tous droits réservés.`,
+  legalLinks: [
+    { label: "Mentions légales", href: "#" },
+    { label: "Politique de confidentialité", href: "#" },
+    { label: "Cookies", href: "#" }
+  ]
+};
+
+const footer = footerContent || HARDCODED_FOOTER;
 ---
 
 <footer class="bg-slate-900 text-white pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       
+      <!-- Company info -->
+      {footer.companyName && (
       <div>
         <div class="mb-6 flex items-center gap-2">
           <div class="w-8 h-8 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold border border-white/20">e</div>
-          <span class="font-bold text-lg">SOLUTIONS SOLAIRES</span>
+          <span class="font-bold text-lg">{footer.companyName}</span>
         </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Nous accompagnons les particuliers et les professionnels dans leur transition énergétique grâce à des solutions solaires performantes et durables.
-        </p>
-        <div class="flex gap-4">
-          <a href="#" class="p-2 bg-slate-800 rounded-full hover:bg-edf-orange transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-          <a href="#" class="p-2 bg-slate-800 rounded-full hover:bg-edf-orange transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-            </svg>
-          </a>
-          <a href="#" class="p-2 bg-slate-800 rounded-full hover:bg-edf-orange transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect width="4" height="12" x="2" y="9"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </a>
+        {footer.description && (
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            {footer.description}
+          </p>
+        )}
+        {footer.socialLinks && footer.socialLinks.length > 0 && (
+          <div class="flex gap-4">
+            {footer.socialLinks.map(social => (
+              <a href={social.url} class="p-2 bg-slate-800 rounded-full hover:bg-edf-orange transition-colors">
+                {social.platform === 'facebook' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                )}
+                {social.platform === 'twitter' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+                  </svg>
+                )}
+                {social.platform === 'linkedin' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect width="4" height="12" x="2" y="9"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+      )}
+
+      <!-- Dynamic sections -->
+      {footer.sections && footer.sections.map(section => (
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-white">{section.title}</h4>
+          <ul class="space-y-3 text-slate-400 text-sm">
+            {section.links.map(link => (
+              <li><a href={link.href} class="hover:text-edf-orange transition-colors">{link.label}</a></li>
+            ))}
+          </ul>
         </div>
-      </div>
+      ))}
 
-      <div>
-        <h4 class="text-lg font-bold mb-6 text-white">Nos solutions</h4>
-        <ul class="space-y-3 text-slate-400 text-sm">
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Panneaux photovoltaïques</a></li>
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Autoconsommation</a></li>
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Batterie de stockage</a></li>
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Borne de recharge</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-lg font-bold mb-6 text-white">À propos</h4>
-        <ul class="space-y-3 text-slate-400 text-sm">
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Qui sommes-nous ?</a></li>
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Nos réalisations</a></li>
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Avis clients</a></li>
-          <li><a href="#" class="hover:text-edf-orange transition-colors">Recrutement</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-lg font-bold mb-6 text-white">Contact</h4>
-        <p class="text-slate-400 text-sm mb-4">
-          Une question sur votre projet ?<br/>
-          Nos experts vous répondent.
-        </p>
-        <a href="tel:0809404005" class="text-2xl font-bold text-edf-orange hover:text-white transition-colors block mb-2">
-          0 809 404 005
-        </a>
-        <p class="text-slate-500 text-xs">Service & appel gratuits.<br/>Du lundi au vendredi de 9h à 19h.</p>
-      </div>
+      <!-- Contact section -->
+      {footer.contactPhone && (
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-white">Contact</h4>
+          <p class="text-slate-400 text-sm mb-4">
+            Une question sur votre projet ?<br/>
+            Nos experts vous répondent.
+          </p>
+          <a href={footer.contactPhone} class="text-2xl font-bold text-edf-orange hover:text-white transition-colors block mb-2">
+            {footer.contactPhoneDisplay}
+          </a>
+          {footer.contactSchedule && (
+            <p class="text-slate-500 text-xs" set:html={footer.contactSchedule}></p>
+          )}
+        </div>
+      )}
 
     </div>
 
+    <!-- Bottom bar -->
     <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-      <p>© 2024 Groupe France Solaire - Tous droits réservés.</p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-white transition-colors">Mentions légales</a>
-        <a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a>
-        <a href="#" class="hover:text-white transition-colors">Cookies</a>
-      </div>
+      <p>{footer.copyright}</p>
+      {footer.legalLinks && footer.legalLinks.length > 0 && (
+        <div class="flex gap-6">
+          {footer.legalLinks.map(link => (
+            <a href={link.href} class="hover:text-white transition-colors">{link.label}</a>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </footer>

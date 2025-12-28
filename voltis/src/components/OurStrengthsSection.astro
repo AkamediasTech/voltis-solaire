@@ -1,79 +1,98 @@
 ---
-// OurStrengthsSection.astro - Composant statique
+// OurStrengthsSection.astro - Composant généralisé
+import { getConfig } from '@config';
 import FranceMapColoredIcon2 from './icons/FranceMapColoredIcon2.astro';
-import LocalIcon from './icons/LocalIcon2.astro';import GuaranteeIcon from './icons/GuaranteeIcon.astro';---
+import LocalIcon from './icons/LocalIcon2.astro';
+import GuaranteeIcon from './icons/GuaranteeIcon.astro';
+
+interface Strength {
+  icon: 'france-map' | 'local' | 'guarantee';
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+interface StrengthsConfig {
+  badge?: string;
+  title: string;
+  subtitle: string;
+  strengths: Strength[];
+}
+
+interface Props {
+  strengths?: StrengthsConfig;
+}
+
+const { strengths: propStrengths } = Astro.props;
+const config = !propStrengths ? getConfig() : null;
+const strengthsContent = propStrengths || config?.content.strengths;
+
+// Hardcoded fallback
+const HARDCODED_STRENGTHS: StrengthsConfig = {
+  badge: "Ce qui nous différencie",
+  title: "National par la taille,",
+  subtitle: "Des techniciens certifiés RGE interviennent partout en France.",
+  strengths: [
+    {
+      icon: 'france-map',
+      title: "100% France",
+      subtitle: "Couverture nationale complète",
+      description: "Nous intervenons partout en France pour étudier, installer et mettre en service votre solution solaire."
+    },
+    {
+      icon: 'local',
+      title: "Local",
+      subtitle: "Une équipe près de chez vous",
+      description: "Une équipe locale pour vous accompagner sur le terrain, de la visite technique à la mise en service."
+    },
+    {
+      icon: 'guarantee',
+      title: "RGE",
+      subtitle: "Certifiés et assurés",
+      description: "Installation effectuée par des techniciens qualifiés, avec assurances à jour (RC Pro / décennale) pour une installation en toute sérénité."
+    }
+  ]
+};
+
+const strengths = strengthsContent || HARDCODED_STRENGTHS;
+---
 
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Badge + Titre + Sous-titre -->
     <div class="text-center mb-16">
-      <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
-        <span class="text-edf-orange text-sm font-semibold">Ce qui nous différencie</span>
-      </div>
+      {strengths.badge && (
+        <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
+          <span class="text-edf-orange text-sm font-semibold">{strengths.badge}</span>
+        </div>
+      )}
       
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-        National par la taille, <br/>
+        {strengths.title} <br/>
         <span class="text-edf-blue">local par l'accompagnement</span>
       </h2>
       
       <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-        Des techniciens certifiés RGE interviennent partout en France.
+        {strengths.subtitle}
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Card 1 -->
-      <div class="bg-white p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
-        <div class="mb-6 text-edf-orange">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg> -->
-          <FranceMapColoredIcon2 class="w-16 h-16" />
+      {strengths.strengths.map((strength: Strength) => (
+        <div class="bg-white p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="mb-6 text-edf-orange">
+            {strength.icon === 'france-map' && <FranceMapColoredIcon2 class="w-16 h-16" />}
+            {strength.icon === 'local' && <LocalIcon class="w-16 h-16" />}
+            {strength.icon === 'guarantee' && <GuaranteeIcon class="w-16 h-16" />}
+          </div>
+          <h3 class="text-2xl font-extrabold text-edf-orange mb-2">{strength.title}</h3>
+          <p class="text-lg font-bold text-gray-900 mb-3">{strength.subtitle}</p>
+          <p class="text-gray-600 leading-relaxed px-2">
+            {strength.description}
+          </p>
         </div>
-        <h3 class="text-2xl font-extrabold text-edf-orange mb-2">100% France</h3>
-        <p class="text-lg font-bold text-gray-900 mb-3">Couverture nationale complète</p>
-        <p class="text-gray-600 leading-relaxed px-2">
-          Nous intervenons partout en France pour étudier, installer et mettre en service votre solution solaire.
-        </p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
-        <div class="mb-6 text-edf-orange">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg> -->
-          <LocalIcon class="w-16 h-16" />
-        </div>
-        <h3 class="text-2xl font-extrabold text-edf-orange mb-2">Local</h3>
-        <p class="text-lg font-bold text-gray-900 mb-3">Une équipe près de chez vous</p>
-        <p class="text-gray-600 leading-relaxed px-2 text-base">
-          Une équipe locale pour vous accompagner sur le terrain, de la visite technique à la mise en service.
-        </p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
-        <div class="mb-6 text-edf-orange">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="6"/>
-            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-          </svg> -->
-          <GuaranteeIcon class="w-16 h-16" />
-        </div>
-        <h3 class="text-2xl font-extrabold text-edf-orange mb-2">RGE</h3>
-        <p class="text-lg font-bold text-gray-900 mb-3">Certifiés et assurés</p>
-        <p class="text-gray-600 leading-relaxed px-2 text-base">
-          Installation effectuée par des techniciens qualifiés, avec assurances à jour (RC Pro / décennale) pour une installation en toute sérénité.
-        </p>
-      </div>
-
+      ))}
     </div>
   </div>
 </section>

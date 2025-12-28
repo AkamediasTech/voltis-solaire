@@ -1,7 +1,7 @@
 import React from "react";
-import { useSimulator } from "../SimulatorContext";
-import { RadioOption } from "../shared/RadioOption";
-import { Button } from "../../Button";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { RadioOption } from "@simulator/shared/RadioOption";
+import { Button } from "@components/Button";
 
 export const StepBill: React.FC = () => {
   const { data, updateData, nextStep, prevStep } = useSimulator();

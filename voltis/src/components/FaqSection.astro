@@ -1,63 +1,106 @@
 ﻿---
-const faqItems = [
-  {
-    id: 1,
-    question: "Quels sont les avantages de l'autoconsommation ?",
-    answer:
-      "Vous produisez et consommez votre propre electricite, ce qui reduit durablement vos factures et diminue votre dependance aux variations des prix de l'energie.",
-  },
-  {
-    id: 2,
-    question: "Combien de temps dure l'installation ?",
-    answer:
-      "La pose est generalement realisee en 1 a 2 jours selon la configuration du toit et la puissance installee.",
-  },
-  {
-    id: 3,
-    question: "Quelles aides sont disponibles en 2026 ?",
-    answer:
-      "Vous pouvez beneficier de primes a l'autoconsommation et d'aides locales. Nos experts vous accompagnent pour identifier les dispositifs adaptes.",
-  },
-  {
-    id: 4,
-    question: "Mon toit est-il compatible ?",
-    answer:
-      "L'orientation, l'inclinaison et l'absence d'ombrage sont les principaux criteres. Une etude technique gratuite permet de valider la faisabilite.",
-  },
-  {
-    id: 5,
-    question: "Quelle garantie sur les panneaux ?",
-    answer:
-      "Les modules sont garantis 25 ans en performance. L'installation est egalement couverte par des assurances et garanties professionnelles.",
-  },
-  {
-    id: 6,
-    question: "Puis-je suivre ma production ?",
-    answer:
-      "Oui, un systeme de monitoring vous permet de suivre la production en temps reel et d'optimiser votre consommation.",
-  },
-];
+// FaqSection.astro - Composant généralisé
+import { getConfig } from '@config';
+
+interface FaqItem {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+interface FaqConfig {
+  badge?: string;
+  title: string;
+  ctaText?: string;
+  items: FaqItem[];
+}
+
+interface Props {
+  faq?: FaqConfig;
+}
+
+const { faq: propFaq } = Astro.props;
+const config = !propFaq ? getConfig() : null;
+const faqContent = propFaq || config?.content.faq;
+
+// Debug logs
+console.log('=== FaqSection Debug ===');
+console.log('propFaq:', propFaq);
+console.log('config loaded?', !!config);
+console.log('config?.content.faq:', config?.content.faq);
+console.log('faqContent:', faqContent);
+
+// Hardcoded fallback
+const HARDCODED_FAQ: FaqConfig = {
+  badge: "FAQ",
+  title: "Tout savoir sur le solaire",
+  ctaText: "Contacter un expert",
+  items: [
+    {
+      id: 1,
+      question: "Quels sont les avantages de l'autoconsommation ?",
+      answer:
+        "Vous produisez et consommez votre propre electricite, ce qui reduit durablement vos factures et diminue votre dependance aux variations des prix de l'energie.",
+    },
+    {
+      id: 2,
+      question: "Combien de temps dure l'installation ?",
+      answer:
+        "La pose est generalement realisee en 1 a 2 jours selon la configuration du toit et la puissance installee.",
+    },
+    {
+      id: 3,
+      question: "Quelles aides sont disponibles en 2026 ?",
+      answer:
+        "Vous pouvez beneficier de primes a l'autoconsommation et d'aides locales. Nos experts vous accompagnent pour identifier les dispositifs adaptes.",
+    },
+    {
+      id: 4,
+      question: "Mon toit est-il compatible ?",
+      answer:
+        "L'orientation, l'inclinaison et l'absence d'ombrage sont les principaux criteres. Une etude technique gratuite permet de valider la faisabilite.",
+    },
+    {
+      id: 5,
+      question: "Quelle garantie sur les panneaux ?",
+      answer:
+        "Les modules sont garantis 25 ans en performance. L'installation est egalement couverte par des assurances et garanties professionnelles.",
+    },
+    {
+      id: 6,
+      question: "Puis-je suivre ma production ?",
+      answer:
+        "Oui, un systeme de monitoring vous permet de suivre la production en temps reel et d'optimiser votre consommation.",
+    },
+  ]
+};
+
+const faq = faqContent || HARDCODED_FAQ;
 ---
 
 <section class="py-20 bg-edf-gray" id="faq">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
       <div>
-        <span class="text-edf-orange font-bold tracking-wider uppercase text-sm">FAQ</span>
+        {faq.badge && (
+          <span class="text-edf-orange font-bold tracking-wider uppercase text-sm">{faq.badge}</span>
+        )}
         <h2 class="text-3xl md:text-4xl font-bold text-edf-blue mt-2">
-          Tout savoir sur le solaire
+          {faq.title}
         </h2>
       </div>
-      <button
-        class="mt-4 md:mt-0 bg-edf-blue text-white px-6 py-3 rounded-full hover:bg-edf-lightBlue transition-all shadow-lg text-sm font-semibold cursor-pointer"
-        type="button"
-      >
-        Contacter un expert
-      </button>
+      {faq.ctaText && (
+        <button
+          class="mt-4 md:mt-0 bg-edf-blue text-white px-6 py-3 rounded-full hover:bg-edf-lightBlue transition-all shadow-lg text-sm font-semibold cursor-pointer"
+          type="button"
+        >
+          {faq.ctaText}
+        </button>
+      )}
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {faqItems.map((item) => (
+      {faq.items.map((item: FaqItem) => (
         <div
           class="faq-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group"
           data-faq-card

@@ -1,0 +1,96 @@
+---
+import type { CustomerJourneyStep } from '@config/types';
+
+interface Props {
+  steps?: CustomerJourneyStep[];
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+const HARDCODED_STEPS: CustomerJourneyStep[] = [
+  { id: '01', title: 'Conseil personnalisé offert', description: 'Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée.' },
+  { id: '02', title: 'Offre transparente', description: 'Un devis complet et lisible. Aucun paiement avant l\'installation : vous réglez une fois le chantier finalisé.' },
+  { id: '03', title: 'Accompagnement administratif complet', description: 'Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z.' },
+  { id: '04', title: 'Installation clé en main', description: 'Installation soignée par des professionnels certifiés, avec une planification rapide après validation.' }
+];
+
+const { 
+  steps = HARDCODED_STEPS,
+  title = 'Du diagnostic à la mise en service :',
+  subtitle = 'Notre processus',
+  description = 'Un parcours fluide, rapide, entièrement géré pour vous.'
+} = Astro.props;
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- En-tête centré -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
+        <span class="text-edf-orange text-sm font-semibold">{subtitle}</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        {title}<br />
+        <span class="text-edf-blue">nos experts s'occupent de tout</span>
+      </h2>
+      <p class="text-xl text-gray-600 mt-6">
+        {description}
+      </p>
+    </div>
+
+    <!-- Steps Container - Horizontal Layout avec flèches -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-8 md:gap-4">
+      
+      {steps.map((step, index) => (
+        <>
+          <!-- Step -->
+          <div class="flex-1 flex flex-col items-center text-center px-4 py-8 hover:transform hover:-translate-y-2 transition-all duration-300">
+            <!-- Badge Number -->
+            <div class="mb-6 w-20 h-20 rounded-full bg-orange-50 flex items-center justify-center relative">
+              <span class="text-4xl font-bold text-edf-orange">{step.id}</span>
+            </div>
+            
+            <!-- Content -->
+            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+              {step.title}
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+
+          {/* Arrow separator (not after last step) */}
+          {index < steps.length - 1 && (
+            <div class="hidden md:flex items-center justify-center text-edf-orange w-12 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </div>
+          )}
+        </>
+      ))}
+
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-16 text-center">
+      <button 
+        data-scroll-top
+        class="cursor-pointer bg-edf-orange text-white font-bold py-4 px-10 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg shadow-orange-100 text-lg"
+      >
+        Je demande mon Bilan gratuit
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-scroll-top]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Check } from "lucide-react";
-import { useSimulator } from "../SimulatorContext";
+import { useSimulator } from "@simulator/SimulatorContext";
 
 export const SuccessMessage: React.FC = () => {
   const { data } = useSimulator();

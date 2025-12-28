@@ -3,6 +3,27 @@
 import { Image } from 'astro:assets';
 import Simulator from './Simulator';
 import heroImage from '../../public/cinematic-bulb.webp';
+import { getConfig } from '@config';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  backgroundImage?: string;
+}
+
+const config = getConfig();
+
+const {
+  title = 'Produisez votre propre électricité verte',
+  subtitle,
+  description = 'Réduisez jusqu\'à 60% de vos factures d\'énergie grâce à l\'autoconsommation',
+  ctaText = 'Obtenir mon devis',
+  ctaLink = '#simulator',
+  backgroundImage = heroImage
+} = Astro.props;
 ---
 
 <div class="relative min-h-[90vh] bg-edf-blue flex flex-col">
@@ -36,15 +57,13 @@ import heroImage from '../../public/cinematic-bulb.webp';
                 </svg>
               ))}
             </div>
-            <span class="text-white text-xs font-medium">4.8/5 sur Trustpilot</span>
+            <span class="text-white text-xs font-medium">{subtitle || '4.8/5 sur Trustpilot'}</span>
           </div>
 
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
-            Produisez votre propre électricité <span class="text-edf-orange">verte</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight" set:html={title}>
           </h1>
           
-          <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-            Réduisez jusqu'à <span class="font-bold text-white">60%</span> de vos factures d'énergie grâce à l'autoconsommation. Profitez des aides de l'État en 2026.
+          <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed" set:html={description}>
           </p>
 
           <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4 text-sm font-medium text-blue-200">
@@ -65,7 +84,7 @@ import heroImage from '../../public/cinematic-bulb.webp';
 
         <!-- Right Content: Simulator React Island -->
         <div class="lg:col-span-5 w-full">
-          <Simulator client:idle />
+          <Simulator client:idle webhookUrl={config.api.webhookUrl} />
         </div>
 
       </div>

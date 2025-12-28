@@ -1,18 +1,32 @@
 ---
-const steps = [
-  { id: '01', title: 'Étude Solaire', desc: 'Analyse satellite de votre toiture et calcul de productivité.' },
-  { id: '02', title: 'Conception', desc: 'Ingénierie du système et démarches administratives incluses.' },
-  { id: '03', title: 'Installation', desc: 'Pose technique et raccordement au réseau en 48h chrono.' },
-  { id: '04', title: 'Activation', desc: 'Mise en service et début de votre autoconsommation.' }
+import type { CustomerJourneyStep } from '@config/types';
+
+interface Props {
+  steps?: CustomerJourneyStep[];
+  title?: string;
+  subtitle?: string;
+}
+
+const HARDCODED_STEPS: CustomerJourneyStep[] = [
+  { id: '01', title: 'Étude Solaire', description: 'Analyse satellite de votre toiture et calcul de productivité.' },
+  { id: '02', title: 'Conception', description: 'Ingénierie du système et démarches administratives incluses.' },
+  { id: '03', title: 'Installation', description: 'Pose technique et raccordement au réseau en 48h chrono.' },
+  { id: '04', title: 'Activation', description: 'Mise en service et début de votre autoconsommation.' }
 ];
+
+const { 
+  steps = HARDCODED_STEPS, 
+  title = '4 Etapes simples', 
+  subtitle = 'Parcous Client' 
+} = Astro.props;
 ---
 
 <section class="py-24 bg-blue-950 text-white overflow-hidden relative font-sans">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
     
     <div class="text-center mb-24">
-      <span class="text-edf-orange font-mono text-xs tracking-[0.4em] uppercase">Parcous Client</span>
-      <h2 class="text-4xl md:text-5xl font-black mt-4 tracking-tight">4 Etapes simples</h2>
+      <span class="text-edf-orange font-mono text-xs tracking-[0.4em] uppercase">{subtitle}</span>
+      <h2 class="text-4xl md:text-5xl font-black mt-4 tracking-tight">{title}</h2>
     </div>
 
     <div class="relative">
@@ -51,7 +65,7 @@ const steps = [
                   </div>
 
                   <p class="text-blue-200/60 leading-relaxed text-sm">
-                    {step.desc}
+                    {step.description}
                   </p>
                 </div>
               </div>

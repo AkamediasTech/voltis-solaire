@@ -3,9 +3,22 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "copy-public": "node scripts/copy-public.js",
     "dev": "astro dev",
+    "predev:france-solaire": "cross-env SITE_ID=france-solaire npm run copy-public",
+    "dev:france-solaire": "cross-env SITE_ID=france-solaire SITE_URL=https://groupe-france-solaire.fr astro dev",
+    "predev:eco-energie-france": "cross-env SITE_ID=eco-energie-france npm run copy-public",
+    "dev:eco-energie-france": "cross-env SITE_ID=eco-energie-france SITE_URL=https://eco-energie-france.fr astro dev",
     "build": "astro build",
+    "prebuild:france-solaire": "cross-env SITE_ID=france-solaire npm run copy-public",
+    "build:france-solaire": "cross-env SITE_ID=france-solaire SITE_URL=https://groupe-france-solaire.fr astro build",
+    "build:france-solaire:sub": "cross-env SITE_ID=france-solaire SITE_URL=https://example.com BASE_PATH=/france-solaire astro build",
+    "prebuild:eco-energie-france": "cross-env SITE_ID=eco-energie-france npm run copy-public",
+    "build:eco-energie-france": "cross-env SITE_ID=eco-energie-france SITE_URL=https://eco-energie-france.fr astro build",
+    "build:eco-energie-france:sub": "cross-env SITE_ID=eco-energie-france SITE_URL=https://example.com BASE_PATH=/eco-energie-france astro build",
     "preview": "astro preview",
+    "preview:france-solaire": "cross-env SITE_ID=france-solaire SITE_URL=https://groupe-france-solaire.fr astro preview",
+    "preview:eco-energie-france": "cross-env SITE_ID=eco-energie-france SITE_URL=https://eco-energie-france.fr astro preview",
     "astro": "astro"
   },
   "dependencies": {
@@ -19,6 +32,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.23",
+    "cross-env": "^7.0.3",
     "lucide-react": "^0.562.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18"

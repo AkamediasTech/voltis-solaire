@@ -1,33 +1,48 @@
 ---
 // ProcessV2.astro - Version en grille de 4 cartes
 import { Clipboard, Send, FileCheck, Wrench } from 'lucide-react';
+import type { Step } from '@config/types';
 
-const steps = [
+interface Props {
+  steps?: Step[];
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+const HARDCODED_STEPS: Step[] = [
   {
-    num: "01",
+    number: "01",
     icon: "clipboard",
     title: "Conseil personnalisé offert",
-    desc: "Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée."
+    description: "Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée."
   },
   {
-    num: "02",
+    number: "02",
     icon: "send",
     title: "Offre transparente",
-    desc: "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé."
+    description: "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé."
   },
   {
-    num: "03",
+    number: "03",
     icon: "file-check",
     title: "Accompagnement administratif complet",
-    desc: "Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z."
+    description: "Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z."
   },
   {
-    num: "04",
+    number: "04",
     icon: "wrench",
     title: "Installation clé en main",
-    desc: "Installation soignée par des professionnels certifiés, avec une planification rapide après validation."
+    description: "Installation soignée par des professionnels certifiés, avec une planification rapide après validation."
   }
 ];
+
+const { 
+  steps = HARDCODED_STEPS,
+  title = 'Du diagnostic à la mise en service :',
+  subtitle = 'Notre processus',
+  description = 'Un parcours fluide, rapide, entièrement géré pour vous.'
+} = Astro.props;
 
 // Mapping des icônes
 const iconComponents = {
@@ -45,15 +60,15 @@ type IconKey = keyof typeof iconComponents;
     <!-- En-tête centré -->
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
-        <span class="text-edf-orange text-sm font-semibold">Notre processus</span>
+        <span class="text-edf-orange text-sm font-semibold">{subtitle}</span>
       </div>
       
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Du diagnostic à la mise en service :<br />
+        {title}<br />
         <span class="text-edf-blue">nos experts s'occupent de tout</span>
       </h2>
       <p class="text-xl text-gray-600 mt-6">
-        Un parcours fluide, rapide, entièrement géré pour vous.
+        {description}
       </p>
     </div>
 
@@ -69,9 +84,9 @@ type IconKey = keyof typeof iconComponents;
                 <IconComponent className="w-7 h-7 text-edf-orange" />
               </div>
               {/* Version avec bordure orange */}
-              {/* <span class="text-6xl font-bold text-gray-100" style="-webkit-text-stroke: 2px rgba(255, 107, 53, 0.99);">{step.num}</span> */}
+              {/* <span class="text-6xl font-bold text-gray-100" style="-webkit-text-stroke: 2px rgba(255, 107, 53, 0.99);">{step.number}</span> */}
               {/* Version avec texte orange */}
-              <span class="text-6xl font-bold text-edf-orange opacity-90">{step.num}</span>
+              <span class="text-6xl font-bold text-edf-orange opacity-90">{step.number}</span>
             </div>
 
             <!-- Contenu -->
@@ -80,7 +95,7 @@ type IconKey = keyof typeof iconComponents;
                 {step.title}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed">
-                {step.desc}
+                {step.description}
               </p>
             </div>
           </div>

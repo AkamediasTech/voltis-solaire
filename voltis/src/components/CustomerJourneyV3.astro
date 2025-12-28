@@ -1,0 +1,84 @@
+---
+import type { CustomerJourneyStep } from '@config/types';
+
+interface Props {
+  steps?: CustomerJourneyStep[];
+  title?: string;
+  subtitle?: string;
+}
+
+const HARDCODED_STEPS: CustomerJourneyStep[] = [
+  { id: '01', title: 'Conseil personnalisé offert', description: 'Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée.' },
+  { id: '02', title: 'Offre transparente', description: 'Un devis complet et lisible. Aucun paiement avant l\'installation : vous réglez une fois le chantier finalisé.' },
+  { id: '03', title: 'Accompagnement administratif complet', description: 'Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z.' },
+  { id: '04', title: 'Installation clé en main', description: 'Installation soignée par des professionnels certifiés, avec une planification rapide après validation.' }
+];
+
+const { 
+  steps = HARDCODED_STEPS, 
+  title = 'Du diagnostic à la mise en service :', 
+  subtitle = 'Notre processus' 
+} = Astro.props;
+---
+
+<section class="py-24 bg-blue-950 text-white overflow-hidden relative font-sans">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+    
+    <div class="text-center mb-24">
+      <span class="text-edf-orange font-mono text-xs tracking-[0.4em] uppercase">{subtitle}</span>
+      <h2 class="text-4xl md:text-5xl font-black mt-4 tracking-tight">{title}</h2>
+    </div>
+
+    <div class="relative">
+      <!-- Central Line (Desktop) / Left Line (Mobile) -->
+      <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-ml-px"></div>
+
+      <div class="space-y-16 md:space-y-0">
+        {steps.map((step, idx) => {
+          const isEven = idx % 2 === 0;
+          return (
+            <div class={`relative flex items-center md:justify-between group ${isEven ? 'md:flex-row-reverse' : ''}`}>
+              
+              <!-- Empty space for layout balance on desktop -->
+              <div class="hidden md:block md:w-5/12"></div>
+
+              <!-- Central Node -->
+              <div class="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-edf-blue border-2 border-white/20 group-hover:border-edf-orange group-hover:scale-150 transition-all duration-500 z-20 shadow-[0_0_0_4px_rgba(12,31,85,1)]">
+                <div class="absolute inset-0 bg-edf-orange rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+              </div>
+
+              <!-- Content -->
+              <div class="pl-24 md:pl-0 md:w-5/12 relative">
+                <!-- Connector Line (Mobile only - horizontal stub) -->
+                <div class="absolute left-8 top-1/2 w-16 h-px bg-white/10 md:hidden"></div>
+
+                <div class={`transition-all duration-500 transform group-hover:-translate-y-2 flex flex-col ${isEven ? 'md:items-end md:text-right' : 'md:items-start md:text-left'}`}>
+                  
+                  <!-- Header Group with Number and Title -->
+                  <div class={`flex items-center gap-4 mb-2 ${isEven ? 'md:flex-row-reverse' : 'flex-row'}`}>
+                    <span class="text-5xl md:text-6xl font-black text-white/10 transition-colors duration-500 group-hover:text-edf-orange/20 select-none leading-none">
+                      {step.id}
+                    </span>
+                    <h3 class="text-2xl font-bold group-hover:text-edf-orange transition-colors leading-tight">
+                      {step.title}
+                    </h3>
+                  </div>
+
+                  <p class="text-blue-200/60 leading-relaxed text-sm">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+      
+      <!-- End cap -->
+      <div class="absolute left-8 md:left-1/2 bottom-0 -translate-x-1/2 translate-y-full pt-4">
+         <div class="w-2 h-2 rounded-full bg-edf-orange"></div>
+      </div>
+    </div>
+  </div>
+</section>

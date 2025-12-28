@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import type { StepProps } from "../../../types";
-import { GradientPremiumButtons } from "../shared/NavigationButtons";
+import type { StepProps } from "@types";
+import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
+import { useSimulator } from "@simulator/SimulatorContext";
 
 const NewStepContactInfo: React.FC<StepProps> = ({
   data,
   updateData,
   prevStep,
 }) => {
+  const { webhookUrl, setIsSubmitting, setIsSuccess } = useSimulator();
   const [errors, setErrors] = useState<{
     firstName?: string;
     lastName?: string;
@@ -66,12 +68,35 @@ const NewStepContactInfo: React.FC<StepProps> = ({
       return;
     }
 
-    // Here you would normally submit the form data
-    // For now, we'll just log it
-    console.log("Form data:", data);
+    setIsSubmitting(true);
 
-    // You can add your submission logic here
-    // Example: await submitForm(data);
+    try {
+      // Submit to n8n webhook if webhookUrl is provided
+      if (webhookUrl) {
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erreur lors de l'envoi du formulaire");
+        }
+      } else {
+        // Fallback: just log the data
+        console.log("Form data (no webhook configured):", data);
+      }
+
+      // Show success message
+      setIsSuccess(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

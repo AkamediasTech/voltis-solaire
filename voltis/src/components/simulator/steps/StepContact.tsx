@@ -1,7 +1,7 @@
 import React from "react";
 import { Info } from "lucide-react";
-import { useSimulator } from "../SimulatorContext";
-import { Button } from "../../Button";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { Button } from "@components/Button";
 
 export const StepContact: React.FC = () => {
   const {

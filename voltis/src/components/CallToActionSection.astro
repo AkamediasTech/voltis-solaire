@@ -1,44 +1,80 @@
 ---
-// CallToActionSection.astro - Composant statique
+// CallToActionSection.astro - Composant généralisé
+import { getConfig } from '@config';
+
+interface CallToActionConfig {
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  items: string[];
+  ctaText: string;
+  ctaLink: string;
+  scrollToTop?: boolean;
+}
+
+interface Props {
+  callToAction?: CallToActionConfig;
+}
+
+const { callToAction: propCallToAction } = Astro.props;
+const config = !propCallToAction ? getConfig() : null;
+const ctaContent = propCallToAction || config?.content.callToAction;
+
+// Hardcoded fallback
+const HARDCODED_CTA: CallToActionConfig = {
+  title: 'Passez au solaire en toute confiance : demandez votre <span class="text-edf-blue">bilan solaire offert</span>',
+  subtitle: 'Une visite à domicile offerte, sans engagement, avec un conseiller de votre région pour :',
+  items: [
+    'évaluer votre potentiel solaire et vos besoins,',
+    'vérifier votre éligibilité + les aides disponibles,',
+    'comprendre l\'autoconsommation,',
+    'recevoir une proposition personnalisée.',
+  ],
+  ctaText: 'Je demande mon bilan gratuit',
+  ctaLink: '#',
+  scrollToTop: true,
+};
+
+const cta = ctaContent || HARDCODED_CTA;
 ---
 
 <section class="py-20 bg-white">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
+    <!-- Badge -->
+    {cta.badge && (
+      <span class="text-edf-orange font-bold tracking-wider uppercase text-sm mb-4 block">
+        {cta.badge}
+      </span>
+    )}
+    
     <!-- Title -->
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-      Passez au solaire en toute confiance : demandez votre <span class="text-edf-blue">bilan solaire offert</span>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight" set:html={cta.title}>
     </h2>
     
     <!-- Subtitle -->
-    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-      Une visite à domicile offerte, sans engagement, avec un conseiller de votre région pour :
-    </p>
+    {cta.subtitle && (
+      <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+        {cta.subtitle}
+      </p>
+    )}
 
     <!-- List -->
     <ul class="space-y-3 text-lg text-gray-700 mb-12 list-disc pl-5 marker:text-gray-900">
-      <li>
-        évaluer votre potentiel solaire et vos besoins,
-      </li>
-      <li>
-        vérifier votre éligibilité + les aides disponibles,
-      </li>
-      <li>
-        comprendre l'autoconsommation,
-      </li>
-      <li>
-        recevoir une proposition personnalisée.
-      </li>
+      {cta.items.map((item: string) => (
+        <li>{item}</li>
+      ))}
     </ul>
 
     <!-- Button -->
     <div class="flex justify-center">
-      <button
-        data-scroll-top
-        class="cursor-pointer bg-edf-orange text-white font-bold py-4 px-12 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg text-lg"
+      <a
+        href={cta.ctaLink}
+        data-scroll-top={cta.scrollToTop ? 'true' : undefined}
+        class="cursor-pointer bg-edf-orange text-white font-bold py-4 px-12 rounded-full hover:bg-edf-orangeHover transition-colors shadow-lg text-lg inline-block text-center"
       >
-        Je demande mon bilan gratuit
-      </button>
+        {cta.ctaText}
+      </a>
     </div>
 
   </div>

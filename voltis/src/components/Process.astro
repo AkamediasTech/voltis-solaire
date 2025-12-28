@@ -1,27 +1,45 @@
 ---
-// Process.astro - Composant statique
-const steps = [
+// Process.astro - Composant avec support props
+import type { ProcessStep } from '../config/types';
+
+interface Props {
+  steps?: ProcessStep[];
+  title?: string;
+  image?: string;
+}
+
+const HARDCODED_STEPS: ProcessStep[] = [
   {
-    num: "01",
-    title: "Simulation en ligne",
-    desc: "Estimez votre potentiel en 2 minutes via notre formulaire."
+    number: "01",
+    title: "Nous analysons votre situation",
+    description: "Un conseiller France Solaire vous aide à identifier la puissance photovoltaïque adaptée à votre consommation et calcule votre potentiel d'économies.",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop"
   },
   {
-    num: "02",
-    title: "Étude personnalisée",
-    desc: "Un conseiller expert vous contacte pour affiner votre projet."
+    number: "02",
+    title: "Étude de faisabilité gratuite",
+    description: "Nos experts évaluent votre toiture, l'ensoleillement et définissent la meilleure configuration. Zéro engagement, zéro frais.",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop"
   },
   {
-    num: "03",
-    title: "Installation pro",
-    desc: "Nos installateurs certifiés RGE posent vos panneaux."
+    number: "03",
+    title: "Installation professionnelle",
+    description: "Installation réalisée par des techniciens certifiés RGE. Respect des normes, finitions impeccables, chantier propre.",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop"
   },
   {
-    num: "04",
-    title: "Économisez",
-    desc: "Produisez votre électricité et réduisez vos factures."
+    number: "04",
+    title: "Suivi et garanties",
+    description: "Garantie matériel 25 ans, assistance technique illimitée, application de monitoring incluse.",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop"
   }
 ];
+
+const { 
+  steps = HARDCODED_STEPS,
+  title = "Votre projet solaire en 4 étapes simples",
+  image = "https://picsum.photos/800/800"
+} = Astro.props;
 ---
 
 <section class="py-20 bg-gray-50 border-t border-gray-200">
@@ -30,7 +48,7 @@ const steps = [
       <!-- Image Side -->
       <div class="md:w-1/2 relative min-h-[400px] rounded-2xl overflow-hidden shadow-2xl">
         <img 
-          src="https://picsum.photos/800/800" 
+          src={image}
           alt="Technicien installant des panneaux" 
           class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
           loading="lazy"
@@ -47,17 +65,17 @@ const steps = [
 
       <!-- Steps Side -->
       <div class="md:w-1/2 flex flex-col justify-center py-4">
-        <h2 class="text-3xl font-bold text-edf-blue mb-10">Votre projet solaire en 4 étapes simples</h2>
+        <h2 class="text-3xl font-bold text-edf-blue mb-10">{title}</h2>
         
         <div class="space-y-8">
           {steps.map((step) => (
             <div class="flex gap-6 group">
               <div class="flex-shrink-0 w-12 h-12 rounded-full border-2 border-edf-orange flex items-center justify-center text-edf-orange font-bold text-lg bg-white group-hover:bg-edf-orange group-hover:text-white transition-colors duration-300">
-                {step.num}
+                {step.number}
               </div>
               <div>
                 <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-edf-blue transition-colors">{step.title}</h4>
-                <p class="text-gray-500">{step.desc}</p>
+                <p class="text-gray-500">{step.description}</p>
               </div>
             </div>
           ))}

@@ -1,0 +1,68 @@
+---
+/**
+ * Eco Energie France - Main Landing Page
+ * Uses components with configuration from site config
+ */
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import FaqSection from '@components/FaqSection.astro';
+import Features from '@components/Features.astro';
+import OurLabels from '@components/OurLabels.astro';
+import TestimonialsSection from '@components/TestimonialsSection.astro';
+import OurStrengthsSection from '@components/OurStrengthsSection.astro';
+import StepsSection from '@components/StepsSection.astro';
+import ProductSection from '@components/ProductSection.astro';
+import SmartMonitoringSection from '@components/SmartMonitoringSection.astro';
+import CallToActionSection from '@components/CallToActionSection.astro';
+import LegalDisclaimerSection from '@components/LegalDisclaimerSection.astro';
+import FeaturesV2 from '@components/FeaturesV2.astro';
+import CookieConsent from '@components/CookieConsent.astro';
+import { getConfig } from '@config';
+
+const config = getConfig();
+const { hero, features, faq, testimonials } = config.content;
+
+// Debug log
+console.log('=== ECO ENERGIE FRANCE ===');
+console.log('FAQ from config:', JSON.stringify(faq, null, 2));
+console.log('FAQ type:', typeof faq);
+console.log('FAQ has items?', faq?.items);
+console.log('FAQ items length:', faq?.items?.length);
+---
+
+<Layout 
+  title={`${config.branding.companyName} | Transition Énergétique`}
+  description={hero.description}
+>
+  <Hero 
+    title={hero.title}
+    subtitle={hero.subtitle}
+    description={hero.description}
+    ctaText={hero.ctaText}
+    ctaLink={hero.ctaLink}
+  />
+  
+  <FeaturesV2 />
+  
+  <OurLabels />
+  
+  <StepsSection />
+  
+  <OurStrengthsSection />
+  
+  <ProductSection />
+  
+  <SmartMonitoringSection />
+  
+  {testimonials && testimonials.length > 0 && (
+    <TestimonialsSection testimonials={testimonials} />
+  )}
+  
+  <FaqSection />
+
+  <CallToActionSection />
+  
+  <LegalDisclaimerSection />
+  
+  <CookieConsent delay={2000}/>
+</Layout>

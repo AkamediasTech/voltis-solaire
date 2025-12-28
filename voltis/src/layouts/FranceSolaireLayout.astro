@@ -1,0 +1,68 @@
+---
+/**
+ * Layout spécifique pour France Solaire
+ * Définit l'ordre et les composants utilisés pour ce site
+ */
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import FaqSection from '@components/FaqSection.astro';
+import OurLabels from '@components/OurLabels.astro';
+import TestimonialsSection from '@components/TestimonialsSection.astro';
+import OurStrengthsSection from '@components/OurStrengthsSection.astro';
+import StepsSection from '@components/StepsSection.astro';
+import ProductSection from '@components/ProductSection.astro';
+import SmartMonitoringSection from '@components/SmartMonitoringSection.astro';
+import CallToActionSection from '@components/CallToActionSection.astro';
+import LegalDisclaimerSection from '@components/LegalDisclaimerSection.astro';
+import FeaturesV2 from '@components/FeaturesV2.astro';
+import CookieConsent from '@components/CookieConsent.astro';
+import CustomerJourneyV3 from '@components/CustomerJourneyV3.astro';
+import ProcessV2 from '@components/ProcessV2.astro';
+import { getConfig } from '@config';
+
+const config = getConfig();
+const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
+---
+
+<Layout 
+  title={`${config.branding.companyName} | Installation Solaire`}
+  description={hero.description.replace(/<[^>]*>/g, '')}
+>
+  <Hero 
+    title={hero.title}
+    subtitle={hero.subtitle}
+    description={hero.description}
+    ctaText={hero.ctaText}
+    ctaLink={hero.ctaLink}
+  />
+  
+  <FeaturesV2 />
+  <OurLabels />
+  <StepsSection stepsSection={stepsSection} />
+  
+  <CustomerJourneyV3 
+    steps={customerJourney} 
+    title="Du diagnostic à la mise en service :"
+    subtitle="Notre processus"
+  />
+  
+  {processV2Steps && processV2Steps.length > 0 && (
+    <ProcessV2 steps={processV2Steps} />
+  )}
+
+  <OurStrengthsSection />
+  <ProductSection />
+  <SmartMonitoringSection />
+  
+  {testimonials && testimonials.length > 0 && (
+    <TestimonialsSection testimonials={testimonials} />
+  )}
+  
+  {faq && faq.items && faq.items.length > 0 && (
+    <FaqSection faq={faq}/>
+  )}
+
+  <CallToActionSection />
+  <LegalDisclaimerSection />
+  <CookieConsent delay={2000}/>
+</Layout>

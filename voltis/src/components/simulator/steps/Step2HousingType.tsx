@@ -1,10 +1,10 @@
 import React from "react";
-import { HousingType } from "../../../types";
-import type { StepProps } from "../../../types";
-import { CardOptionCompact } from "../shared/CardOptionCompact";
-import { GradientPremiumButtons } from "../shared/NavigationButtons";
-import { HouseColorIcon } from "../../icons/HouseColorIcon";
-import { RoomKeyColorIcon } from "../../icons/RoomKeyColorIcon";
+import { HousingType } from "@types";
+import type { StepProps } from "@types";
+import { CardOptionCompact } from "@simulator/shared/CardOptionCompact";
+import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
+import { HouseColorIcon } from "@icons/HouseColorIcon";
+import { RoomKeyColorIcon } from "@icons/RoomKeyColorIcon";
 
 const Step2HousingType: React.FC<StepProps> = ({
   data,

@@ -3,14 +3,17 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { getConfig } from '@config';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
+const config = getConfig();
+
 const { 
-  title = 'Estimation Solaire | Groupe France Solaire Clone',
+  title = `${config.branding.companyName} | Installation Solaire`,
   description = 'Estimez votre potentiel solaire et découvrez vos économies.'
 } = Astro.props;
 ---
@@ -22,6 +25,18 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  
+  <!-- Google Tag Manager -->
+  {config.analytics.gtmId && (
+    <script is:inline define:vars={{ gtmId: config.analytics.gtmId }}>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',gtmId);
+    </script>
+  )}
+  
   <!-- Preload géré automatiquement par <Image> component -->
   
   <!-- Critical CSS inline pour Hero section (above-the-fold) -->
@@ -159,6 +174,13 @@ const {
   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /> -->
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  {config.analytics.gtmId && (
+    <noscript>
+      <iframe src={`https://www.googletagmanager.com/ns.html?id=${config.analytics.gtmId}`} height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+  )}
+  
   <div class="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
     <Header />
     <main class="flex-grow">

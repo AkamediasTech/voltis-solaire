@@ -1,7 +1,7 @@
 import React from "react";
 import { Home, Building2 } from "lucide-react";
-import { useSimulator } from "../SimulatorContext";
-import { CardOption } from "../shared/CardOption";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { CardOption } from "@simulator/shared/CardOption";
 
 export const StepSurface: React.FC = () => {
   const { data, updateData, nextStep, prevStep } = useSimulator();

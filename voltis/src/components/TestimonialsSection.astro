@@ -1,39 +1,61 @@
 ---
-// TestimonialsSection.astro - Composant statique
-const testimonials = [
+import type { Testimonial } from '@config/types';
+
+interface Props {
+  testimonials?: Testimonial[];
+  title?: string;
+}
+
+const HARDCODED_TESTIMONIALS: Testimonial[] = [
   {
-    // image: "https://images.unsplash.com/photo-1544168190-79c11e66b380?q=80&w=800&auto=format&fit=crop", 
+    name: "Famille Leroux",
+    role: "Particulier",
+    company: "Bretagne",
+    content: "En plein été, on a vu des économies de plus de 60 %.",
+    rating: 5,
     image: "/testimonials/france-solaire/t4.png",
     quote: "« En plein été, on a vu des économies de plus de 60 %. »",
     author: "Bretagne - Famille Leroux"
   },
   {
-    // image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop", 
+    name: "M. Fourquet",
+    role: "Particulier",
+    company: "Occitanie",
+    content: "Sur les 4 derniers mois, ma consommation \"payée\" a été minime : les panneaux m'ont permis d'atteindre environ 90 % d'économies.",
+    rating: 5,
     image: "/testimonials/france-solaire/t2.png",
     quote: "« Sur les 4 derniers mois, ma consommation \"payée\" a été minime : les panneaux m'ont permis d'atteindre environ 90 % d'économies. »",
     author: "Occitanie - M. Fourquet"
   },
   {
-    // image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop", 
+    name: "M. Muller",
+    role: "Particulier",
+    company: "Grand Est",
+    content: "Depuis l'installation, j'économise plus de 45 % sur ma facture.",
+    rating: 5,
     image: "/testimonials/france-solaire/t3.png",
     quote: "« Depuis l'installation, j'économise plus de 45 % sur ma facture. »",
     author: "Grand Est - M. Muller"
   }
 ];
+
+const { 
+  testimonials = HARDCODED_TESTIMONIALS,
+  title = "Ils sont passés à l'<span class=\"text-edf-blue\">autoconsommation</span>"
+} = Astro.props;
 ---
 
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12">
-      Ils sont passés à l'<span class="text-edf-blue">autoconsommation</span>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12" set:html={title}>
     </h2>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {testimonials.map((item) => (
+      {testimonials.map((testimonial) => (
         <div class="relative h-[500px] rounded-sm overflow-hidden group shadow-lg cursor-pointer">
           <img 
-            src={item.image} 
-            alt={`Témoignage ${item.author}`}
+            src={testimonial.image} 
+            alt={`Témoignage ${testimonial.author || testimonial.name}`}
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
             loading="lazy"
             width="400"
@@ -44,10 +66,10 @@ const testimonials = [
           <div class="absolute inset-0 z-10"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-8 z-20">
             <p class="text-white font-bold text-xl mb-4 leading-snug">
-              {item.quote}
+              {testimonial.quote || testimonial.content}
             </p>
             <p class="text-gray-300 text-sm font-medium">
-              {item.author}
+              {testimonial.author || `${testimonial.company} - ${testimonial.name}`}
             </p>
           </div>
         </div>

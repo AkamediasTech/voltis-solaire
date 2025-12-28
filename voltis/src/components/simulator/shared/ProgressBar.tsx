@@ -1,5 +1,5 @@
 import React from "react";
-import { useSimulator } from "../SimulatorContext";
+import { useSimulator } from "@simulator/SimulatorContext";
 
 export const ProgressBar: React.FC = () => {
   const { step, totalSteps } = useSimulator();

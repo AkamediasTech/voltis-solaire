@@ -1,8 +1,8 @@
 import React from "react";
 import { Home, Key } from "lucide-react";
-import { UserType } from "../../../types";
-import { useSimulator } from "../SimulatorContext";
-import { CardOption } from "../shared/CardOption";
+import { UserType } from "@types";
+import { useSimulator } from "@simulator/SimulatorContext";
+import { CardOption } from "@simulator/shared/CardOption";
 
 export const StepUserType: React.FC = () => {
   const { data, updateData, nextStep } = useSimulator();

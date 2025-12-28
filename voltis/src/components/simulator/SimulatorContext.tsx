@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import type { SimulationData } from "../../types";
+import type { SimulationData } from "@types";
 
 interface SimulatorContextType {
   step: number;
@@ -7,6 +7,7 @@ interface SimulatorContextType {
   isSubmitting: boolean;
   isSuccess: boolean;
   totalSteps: number;
+  webhookUrl?: string;
   updateData: (fields: Partial<SimulationData>) => void;
   nextStep: () => void;
   prevStep: () => void;
@@ -49,9 +50,10 @@ const INITIAL_DATA: SimulationData = {
   newsletter: false,
 };
 
-export const SimulatorProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const SimulatorProvider: React.FC<{
+  children: React.ReactNode;
+  webhookUrl?: string;
+}> = ({ children, webhookUrl }) => {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<SimulationData>(INITIAL_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,6 +76,7 @@ export const SimulatorProvider: React.FC<{ children: React.ReactNode }> = ({
         isSubmitting,
         isSuccess,
         totalSteps,
+        webhookUrl,
         updateData,
         nextStep,
         prevStep,

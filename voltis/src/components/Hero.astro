@@ -19,7 +19,7 @@ const config = getConfig();
 const {
   title = 'Produisez votre propre électricité verte',
   subtitle,
-  description = 'Réduisez jusqu\'à 60% de vos factures d\'énergie grâce à l\'autoconsommation',
+  description = 'Réduisez jusqu\'à 70% de vos factures d\'énergie grâce à l\'autoconsommation',
   ctaText = 'Obtenir mon devis',
   ctaLink = '#simulator',
   backgroundImage = heroImage
@@ -60,7 +60,7 @@ const {
             <span class="text-white text-xs font-medium">{subtitle || '4.8/5 sur Trustpilot'}</span>
           </div>
 
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight" set:html={title}>
+          <h1 class="text-4xl md:text-5xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight" set:html={title}>
           </h1>
           
           <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed" set:html={description}>
@@ -78,6 +78,10 @@ const {
             <div class="flex items-center gap-2">
               <div class="w-1.5 h-1.5 rounded-full bg-edf-orange"></div>
               Couverture Nationale
+            </div>
+             <div class="flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-edf-orange"></div>
+              Un Revenu Complémentaire
             </div>
           </div>
         </div>

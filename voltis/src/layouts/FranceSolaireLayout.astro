@@ -19,6 +19,8 @@ import CookieConsent from '@components/CookieConsent.astro';
 import CustomerJourneyV3 from '@components/CustomerJourneyV3.astro';
 import ProcessV2 from '@components/ProcessV2.astro';
 import { getConfig } from '@config';
+import CustomerJourneyV4 from '@components/CustomerJourneyV4.astro';
+import CustomerJourneyV5 from '@components/CustomerJourneyV5.astro';
 
 const config = getConfig();
 const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
@@ -37,21 +39,24 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
   />
   
   <FeaturesV2 />
+  
+  <ProductSection />
+
+
   <OurLabels />
-  <StepsSection stepsSection={stepsSection} />
+  <!-- <StepsSection stepsSection={stepsSection} /> -->
   
   <CustomerJourneyV3 
-    steps={customerJourney} 
-    title="Du diagnostic à la mise en service :"
-    subtitle="Notre processus"
+    steps={customerJourney}
+    badge="Notre processus"
+    title="Du diagnostic à la mise en service : <br> <span class='text-edf-orange'>nos experts s'occupent de tout</span>"
   />
   
-  {processV2Steps && processV2Steps.length > 0 && (
+  <!-- {processV2Steps && processV2Steps.length > 0 && (
     <ProcessV2 steps={processV2Steps} />
-  )}
+  )} -->
 
   <OurStrengthsSection />
-  <ProductSection />
   <SmartMonitoringSection />
   
   {testimonials && testimonials.length > 0 && (

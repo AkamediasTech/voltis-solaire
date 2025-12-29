@@ -167,6 +167,7 @@ export interface FooterConfig {
 export interface ContentConfig {
   hero: HeroContent;
   features?: Feature[];
+  featuresSection?: any; // Defined in FeaturesV2.astro component
   faq?: any; // Defined in FaqSection.astro component
   testimonials?: Testimonial[];
   processSteps?: ProcessStep[];

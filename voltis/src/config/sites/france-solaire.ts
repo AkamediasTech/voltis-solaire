@@ -64,12 +64,53 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
   content: {
     hero: {
       title:
-        'Produisez votre propre électricité <span class="text-edf-orange">verte</span>',
+        // 'Produisez votre propre électricité <span class="text-edf-orange">verte</span>',
+        'Installez vos Panneaux Solaires <span class="text-edf-orange">nouvelle génération</span>',
       subtitle: "4.8/5 sur Trustpilot",
       description:
-        "Réduisez jusqu'à <span class=\"font-bold text-white\">60%</span> de vos factures d'énergie grâce à l'autoconsommation. Profitez des aides de l'État en 2026.",
+        "Réduisez jusqu'à <span class=\"font-bold text-white\">70%</span> de vos factures d'énergie grâce à l'autoconsommation. Profitez des aides de l'État en 2026.",
       ctaText: "Obtenir mon devis gratuit",
       ctaLink: "#simulator",
+    },
+
+    featuresSection: {
+      badge: "Vos Avantages",
+      title: "Pourquoi passer à l'",
+      titleHighlight: "autoconsommation ?",
+      subtitle:
+        "Une solution rentable, écologique et durable pour votre habitation.",
+      features: [
+        {
+          id: "reduce-bills",
+          iconName: "losses-color" as const,
+          iconSize: "w-12 h-12",
+          title: "Réduisez vos factures",
+          description:
+            "Jusqu'à 60% d'économies sur votre facture d'électricité en consommant votre propre production.",
+        },
+        {
+          id: "increase-value",
+          iconName: "trending-up" as const,
+          title: "Valorisez votre bien",
+          description:
+            "Une maison équipée de panneaux solaires se revend plus cher et plus vite (Valeur verte).",
+        },
+        {
+          id: "green-energy",
+          iconName: "green-energy-color" as const,
+          iconSize: "w-10 h-10",
+          title: "Énergie Verte",
+          description:
+            "Participez à la transition énergétique en produisant une énergie propre et locale.",
+        },
+        {
+          id: "warranty",
+          iconName: "shield-check" as const,
+          title: "Garantie Sérénité",
+          description:
+            "Bénéficiez d'équipements premium et d'une installation professionnelle certifiée. Garantie performance 25 ans.",
+        },
+      ],
     },
 
     features: [
@@ -253,25 +294,27 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
     customerJourney: [
       {
         id: "01",
-        title: "Étude Solaire",
+        title: "Conseil personnalisé offert",
         description:
-          "Analyse satellite de votre toiture et calcul de productivité.",
+          "Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée.",
       },
       {
         id: "02",
-        title: "Conception",
+        title: "Offre transparente",
         description:
-          "Ingénierie du système et démarches administratives incluses.",
+          "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé.",
       },
       {
         id: "03",
-        title: "Installation",
-        description: "Pose technique et raccordement au réseau en 48h chrono.",
+        title: "Accompagnement administratif complet",
+        description:
+          "Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z.",
       },
       {
         id: "04",
-        title: "Activation",
-        description: "Mise en service et début de votre autoconsommation.",
+        title: "Installation clé en main",
+        description:
+          "Installation soignée par des professionnels certifiés, avec une planification rapide après validation.",
       },
     ],
 

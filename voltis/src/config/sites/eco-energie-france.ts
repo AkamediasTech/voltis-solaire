@@ -71,6 +71,43 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ctaLink: "#simulator",
     },
 
+    featuresSection: {
+      badge: "Nos Avantages",
+      title: "Pourquoi choisir",
+      titleHighlight: "Eco Energie France ?",
+      subtitle: "L'excellence au service de votre indépendance énergétique.",
+      features: [
+        {
+          id: "zero-investment",
+          iconName: "piggy-bank" as const,
+          title: "Zéro investissement initial",
+          description:
+            "Profitez de nos solutions de financement sur mesure avec possibilité de crédit à taux préférentiel.",
+        },
+        {
+          id: "roi-rapid",
+          iconName: "percentage" as const,
+          title: "Retour sur investissement rapide",
+          description:
+            "Rentabilisez votre installation en 7 à 10 ans grâce aux économies réalisées et aux aides publiques.",
+        },
+        {
+          id: "eco-certified",
+          iconName: "house-value" as const,
+          title: "Certification écologique",
+          description:
+            "Nos installations sont certifiées RGE et respectent les normes environnementales les plus strictes.",
+        },
+        {
+          id: "support-premium",
+          iconName: "shield-check" as const,
+          title: "Accompagnement Premium",
+          description:
+            "Bénéficiez d'un accompagnement personnalisé de A à Z et d'un service client disponible 6j/7.",
+        },
+      ],
+    },
+
     features: [
       {
         title: "Zéro investissement initial",

@@ -1,28 +1,32 @@
-import React from 'react';
-import { PiggyBank, Leaf, TrendingUp, ShieldCheck } from 'lucide-react';
+import React from "react";
+import { PiggyBank, Leaf, TrendingUp, ShieldCheck } from "lucide-react";
 
 export const Features: React.FC = () => {
   const features = [
     {
       icon: <PiggyBank className="w-10 h-10 text-edf-orange" />,
       title: "Réduisez vos factures",
-      description: "Jusqu'à 60% d'économies sur votre facture d'électricité en consommant votre propre production."
+      description:
+        "Jusqu'à 70% d'économies sur votre facture d'électricité en consommant votre propre production.",
     },
     {
       icon: <TrendingUp className="w-10 h-10 text-edf-orange" />,
       title: "Valorisez votre bien",
-      description: "Une maison équipée de panneaux solaires se revend plus cher et plus vite (Valeur verte)."
+      description:
+        "Une maison équipée de panneaux solaires se revend plus cher et plus vite (Valeur verte).",
     },
     {
       icon: <Leaf className="w-10 h-10 text-edf-orange" />,
       title: "Énergie Verte",
-      description: "Participez à la transition énergétique en produisant une énergie propre et locale."
+      description:
+        "Participez à la transition énergétique en produisant une énergie propre et locale.",
     },
     {
       icon: <ShieldCheck className="w-10 h-10 text-edf-orange" />,
       title: "Garantie Sérénité",
-      description: "Bénéficiez de la solidité et de l'expertise d'une filiale du groupe EDF. Garantie performance 25 ans."
-    }
+      description:
+        "Bénéficiez de la solidité et de l'expertise d'une filiale du groupe EDF. Garantie performance 25 ans.",
+    },
   ];
 
   return (
@@ -39,7 +43,10 @@ export const Features: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {features.map((feature, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center group">
+            <div
+              key={idx}
+              className="flex flex-col items-center text-center group"
+            >
               <div className="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-orange-100">
                 {feature.icon}
               </div>

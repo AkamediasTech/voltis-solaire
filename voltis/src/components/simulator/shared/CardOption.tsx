@@ -6,6 +6,7 @@ interface CardOptionProps {
   currentValue: string | null;
   onChange: (val: string) => void;
   icon: React.ReactNode;
+  onSelect?: () => void;
 }
 
 export const CardOption: React.FC<CardOptionProps> = ({
@@ -14,9 +15,15 @@ export const CardOption: React.FC<CardOptionProps> = ({
   currentValue,
   onChange,
   icon,
+  onSelect,
 }) => (
   <div
-    onClick={() => onChange(value)}
+    onClick={() => {
+      onChange(value);
+      if (onSelect) {
+        setTimeout(() => onSelect(), 250);
+      }
+    }}
     className="cursor-pointer bg-white rounded-lg border border-gray-200 p-6 flex flex-col items-center justify-center gap-4 hover:shadow-md transition-all h-full"
   >
     <div className="text-edf-blue">{icon}</div>

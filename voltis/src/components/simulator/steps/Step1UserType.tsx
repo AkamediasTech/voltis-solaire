@@ -19,6 +19,7 @@ const Step1UserType: React.FC<StepProps> = ({ data, updateData, nextStep }) => {
           currentValue={data.userType}
           onChange={(val) => updateData({ userType: val as UserType })}
           icon={<SurrogateKeyColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Locataire"
@@ -26,6 +27,7 @@ const Step1UserType: React.FC<StepProps> = ({ data, updateData, nextStep }) => {
           currentValue={data.userType}
           onChange={(val) => updateData({ userType: val as UserType })}
           icon={<HouseColorIcon size={48} />}
+          onSelect={nextStep}
         />
       </div>
 

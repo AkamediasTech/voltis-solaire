@@ -27,6 +27,7 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
           onChange={(val) => updateData({ surfaceArea: val })}
           // icon="📏"
           icon={<CottageColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="70 à 100 m²"
@@ -35,6 +36,7 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
           onChange={(val) => updateData({ surfaceArea: val })}
           // icon="📐"
           icon={<HouseColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="100 à 150 m²"
@@ -43,6 +45,7 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
           onChange={(val) => updateData({ surfaceArea: val })}
           // icon="📊"
           icon={<HouseColorIcon3 size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Plus de 150 m²"
@@ -51,6 +54,7 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
           onChange={(val) => updateData({ surfaceArea: val })}
           // icon="📈"
           icon={<BigHouseColorIcon size={68} />}
+          onSelect={nextStep}
         />
       </div>
 

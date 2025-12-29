@@ -24,6 +24,7 @@ const Step2HousingType: React.FC<StepProps> = ({
           currentValue={data.housingType}
           onChange={(val) => updateData({ housingType: val as HousingType })}
           icon={<HouseColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Appartement"
@@ -31,6 +32,7 @@ const Step2HousingType: React.FC<StepProps> = ({
           currentValue={data.housingType}
           onChange={(val) => updateData({ housingType: val as HousingType })}
           icon={<RoomKeyColorIcon size={48} />}
+          onSelect={nextStep}
         />
       </div>
 

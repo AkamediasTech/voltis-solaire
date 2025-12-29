@@ -65,7 +65,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
     hero: {
       title:
         // 'Produisez votre propre électricité <span class="text-edf-orange">verte</span>',
-        'Installez vos Panneaux Solaires <span class="text-edf-orange">nouvelle génération</span>',
+        'Installez vos panneaux solaires <span class="text-edf-orange">Nouvelle génération</span>',
       subtitle: "4.8/5 sur Trustpilot",
       description:
         "Réduisez jusqu'à <span class=\"font-bold text-white\">70%</span> de vos factures d'énergie grâce à l'autoconsommation. Profitez des aides de l'État en 2026.",

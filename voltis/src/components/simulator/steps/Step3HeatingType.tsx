@@ -26,6 +26,7 @@ const Step3HeatingType: React.FC<StepProps> = ({
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
           icon={<OilBarrelColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Gaz"
@@ -33,6 +34,7 @@ const Step3HeatingType: React.FC<StepProps> = ({
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
           icon={<CampingGasColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Électrique"
@@ -40,6 +42,7 @@ const Step3HeatingType: React.FC<StepProps> = ({
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
           icon={<LightBulbColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Autre"
@@ -47,6 +50,7 @@ const Step3HeatingType: React.FC<StepProps> = ({
           currentValue={data.heatingType}
           onChange={(val) => updateData({ heatingType: val as HeatingType })}
           icon={<FireWoodColorIcon size={48} />}
+          onSelect={nextStep}
         />
       </div>
 

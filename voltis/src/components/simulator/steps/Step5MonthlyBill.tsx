@@ -29,6 +29,7 @@ const Step5MonthlyBill: React.FC<StepProps> = ({
           // icon="💰"
           // icon={<EuroColorIcon size={36} />}
           icon={<CoinsColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="75€ à 150€"
@@ -38,6 +39,7 @@ const Step5MonthlyBill: React.FC<StepProps> = ({
           // icon="💵"
           // icon={<CoinsColorIcon size={48} />}
           icon={<EuroBillColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="150€ à 250€"
@@ -48,6 +50,7 @@ const Step5MonthlyBill: React.FC<StepProps> = ({
           // icon={<EuroBillColorIcon size={48} />}
           // icon={<EuroBillsColorIcon2 size={48} />}
           icon={<EuroBillsColorIcon size={48} />}
+          onSelect={nextStep}
         />
         <CardOptionCompact
           label="Plus de 250€"
@@ -56,6 +59,7 @@ const Step5MonthlyBill: React.FC<StepProps> = ({
           onChange={(val) => updateData({ monthlyBill: val })}
           // icon="💳"
           icon={<AtmCardColorIcon size={48} />}
+          onSelect={nextStep}
         />
       </div>
 

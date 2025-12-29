@@ -3,6 +3,37 @@ import type { StepProps } from "@types";
 import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
 import { useSimulator } from "@simulator/SimulatorContext";
 
+// Helper functions to format data for webhook
+const formatHeatingType = (heatingType: string | null): string => {
+  const mapping: Record<string, string> = {
+    FUEL_OIL: "Fioul",
+    GAS: "Gaz",
+    ELECTRIC: "Électrique",
+    OTHER: "Autre",
+  };
+  return heatingType ? mapping[heatingType] || heatingType : "";
+};
+
+const formatSurfaceArea = (surface: string | null): string => {
+  const mapping: Record<string, string> = {
+    LESS_THAN_70: "Moins_de_70_m²",
+    "70_TO_100": "70_à_100_m²",
+    "100_TO_150": "100_à_150_m²",
+    MORE_THAN_150: "Plus_de_150_m²",
+  };
+  return surface ? mapping[surface] || surface : "";
+};
+
+const formatMonthlyBill = (bill: string | null): string => {
+  const mapping: Record<string, string> = {
+    LESS_THAN_75: "Moins_de_75€",
+    "75_TO_150": "75€_à_150€",
+    "150_TO_250": "150€_à_250€",
+    MORE_THAN_250: "Plus_de_250€",
+  };
+  return bill ? mapping[bill] || bill : "";
+};
+
 const NewStepContactInfo: React.FC<StepProps> = ({
   data,
   updateData,
@@ -73,12 +104,37 @@ const NewStepContactInfo: React.FC<StepProps> = ({
     try {
       // Submit to n8n webhook if webhookUrl is provided
       if (webhookUrl) {
+        // Format data for n8n webhook with expected field names
+        const formattedData: Record<string, string> = {
+          prenom: data.firstName || "",
+          nom: data.lastName || "",
+          email: data.email || "",
+          telephone: data.phone || "",
+          codePostal: data.postalCode || "",
+          Ville: data.city || "",
+          step1: data.housingType === "HOUSE" ? "Maison" : "Appartement",
+          step2: data.userType === "OWNER" ? "Propriétaire" : "Locataire",
+          step3: formatHeatingType(data.heatingType),
+          step4: formatSurfaceArea(data.surfaceArea),
+          tranche_facture_electricite_mensuelle: formatMonthlyBill(
+            data.monthlyBill
+          ),
+          Source: "Site Web France Solaire",
+        };
+
+        if (typeof window !== "undefined") {
+          formattedData["_source_page_url"] = window.location.href;
+          formattedData["_source_url_path"] = window.location.pathname;
+          formattedData["_source_url_query"] = window.location.search;
+          // formData.append("_theme", formConfig.themeName ?? "unknown");
+        }
+
         const response = await fetch(webhookUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(formattedData),
         });
 
         if (!response.ok) {
@@ -107,12 +163,12 @@ const NewStepContactInfo: React.FC<StepProps> = ({
   return (
     <div className="space-y-6">
       <h3 className="text-xl font-semibold mb-4 text-gray-800">
-        Vos coordonnées
+        Votre simulation est prête !
       </h3>
 
       <p className="text-sm text-gray-600 mb-6">
-        Pour finaliser votre demande de simulation, merci de renseigner vos
-        coordonnées.
+        Afin de préserver la confidentialité de vos données, cette estimation
+        vous sera envoyée par SMS et E-mail.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">

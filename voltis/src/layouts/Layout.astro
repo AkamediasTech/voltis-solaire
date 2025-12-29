@@ -301,5 +301,33 @@ const {
     </main>
     <Footer />
   </div>
+  
+  <script is:inline>
+    // Smooth scroll for all anchor links
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const target = document.getElementById(targetId);
+          
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            
+            // Update URL without jumping
+            if (history.pushState) {
+              history.pushState(null, null, href);
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

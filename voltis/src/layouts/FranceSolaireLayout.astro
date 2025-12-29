@@ -8,6 +8,7 @@ import Hero from '@components/Hero.astro';
 import FaqSection from '@components/FaqSection.astro';
 import OurLabels from '@components/OurLabels.astro';
 import TestimonialsSection from '@components/TestimonialsSection.astro';
+import TestimonialsSection2 from '@components/TestimonialsSection2.astro';
 import OurStrengthsSection from '@components/OurStrengthsSection.astro';
 import StepsSection from '@components/StepsSection.astro';
 import ProductSection from '@components/ProductSection.astro';
@@ -59,15 +60,19 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
   <OurStrengthsSection />
   <SmartMonitoringSection />
   
-  {testimonials && testimonials.length > 0 && (
+  <!-- {testimonials && testimonials.length > 0 && (
     <TestimonialsSection testimonials={testimonials} />
-  )}
+  )} -->
+
+ {testimonials && testimonials.length > 0 && (
+  <TestimonialsSection2 />
+ )}
   
   {faq && faq.items && faq.items.length > 0 && (
     <FaqSection faq={faq}/>
   )}
 
-  <CallToActionSection />
+  <!-- <CallToActionSection /> -->
   <LegalDisclaimerSection />
   <CookieConsent delay={2000}/>
 </Layout>

@@ -1,0 +1,58 @@
+---
+// TestimonialsSection2.astro - Version moderne avec grille
+import { getConfig } from '../config';
+
+const config = getConfig();
+const testimonials = config?.content.testimonials || [];
+
+// Take only first 3 testimonials
+const displayedTestimonials = testimonials.slice(0, 3);
+---
+
+<section class="py-20 px-4 bg-white" id="testimonials">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-4" set:html={`Ils sont passés à l'<span class="text-edf-blue">autoconsommation</span>`}>
+      </h2>
+      <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+        Découvrez les retours d'expérience de nos clients qui ont sauté le pas de la transition énergétique.
+      </p>
+    </div>
+    
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {displayedTestimonials.map((testimonial) => (
+        <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-8 flex flex-col h-full transition-all duration-300 hover:shadow-md">
+          <!-- Star Rating -->
+          <div class="flex gap-1 mb-6">
+            {[...Array(5)].map((_, i) => (
+              <svg
+                class={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-slate-200'}`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          
+          <!-- Content -->
+          <p class="text-slate-800 text-lg leading-relaxed mb-8 font-normal flex-grow italic">
+            "{testimonial.content}"
+          </p>
+          
+          <!-- Author -->
+          <div class="mt-auto">
+            <h4 class="text-slate-900 font-bold text-lg">
+              {testimonial.name}
+            </h4>
+            <p class="text-slate-500 font-medium text-base">
+              {testimonial.role} - {testimonial.company}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

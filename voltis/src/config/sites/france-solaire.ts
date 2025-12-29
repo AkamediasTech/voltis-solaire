@@ -57,7 +57,9 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
   },
 
   api: {
-    webhookUrl: "https://n8n.example.com/webhook/france-solaire", // Replace with actual n8n webhook
+    // webhookUrl: "https://n8n.example.com/webhook/france-solaire", // Replace with actual n8n webhook
+    webhookUrl:
+      "https://techaka.app.n8n.cloud/webhook/09432390-e800-435f-8fc4-556500f618cf",
     timeout: 30000,
   },
 
@@ -267,40 +269,40 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
     },
     testimonials: [
       {
-        name: "Marie Dupont",
-        role: "Propriétaire",
-        company: "Maison à Toulouse",
+        name: "Famille Barthélémy",
+        role: "Propriétaires",
+        company: "Maison à Montauban (82)",
         content:
-          "Installation rapide et professionnelle. Ma facture d'électricité a diminué de 65% dès le premier mois. Je recommande France Solaire sans hésiter !",
+          "Nous hésitions depuis longtemps, mais l'accompagnement de France Solaire nous a convaincus. En 8 mois, notre facture a baissé de 60%. On regrette de ne pas l'avoir fait plus tôt !",
         rating: 5,
         image: "/testimonials/t4.png",
         quote:
-          "« Installation rapide et professionnelle. Ma facture a diminué de 65% dès le premier mois. »",
-        author: "Toulouse - Marie Dupont",
+          "« En 8 mois, notre facture a baissé de 60%. On regrette de ne pas l'avoir fait plus tôt ! »",
+        author: "Montauban (82) - Famille Barthélémy",
       },
       {
-        name: "Jean Martin",
-        role: "Propriétaire",
-        company: "Maison à Lyon",
+        name: "Michel Delacroix",
+        role: "Retraité",
+        company: "Maison à Villeurbanne (69)",
         content:
-          "Équipe très compétente et à l'écoute. Le suivi du projet était impeccable. Très satisfait de mon investissement.",
+          "Équipe très compétente et à l'écoute. Le suivi du projet était impeccable du début à la fin. Un investissement que je recommande à tous.",
         rating: 5,
         image: "/testimonials/t2.png",
         quote:
           "« Équipe très compétente et à l'écoute. Le suivi du projet était impeccable. »",
-        author: "Lyon - Jean Martin",
+        author: "Villeurbanne (69) - Michel D.",
       },
       {
-        name: "Sophie Bernard",
+        name: "Philippe Rouanet",
         role: "Propriétaire",
-        company: "Maison à Nantes",
+        company: "Maison à Saint-Herblain (44)",
         content:
-          "Installation solaire installée depuis 6 mois, je réalise déjà de belles économies. Le service client est réactif et professionnel.",
+          "Installation solaire installée depuis 6 mois, je réalise déjà de belles économies. Le service client est réactif et vraiment professionnel.",
         rating: 5,
         image: "/testimonials/t3.png",
         quote:
-          "« Depuis 6 mois, je réalise déjà de belles économies. Le service client est réactif. »",
-        author: "Nantes - Sophie Bernard",
+          "« Depuis 6 mois, je réalise déjà de belles économies. Service client au top ! »",
+        author: "Saint-Herblain (44) - Philippe R.",
       },
     ],
 
@@ -372,7 +374,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       },
       {
         id: "02",
-        title: "Offre transparente",
+        title: "Obtention du devis",
         description:
           "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé.",
       },
@@ -427,7 +429,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       highlightText: "optimisez vos économies",
       description: [
         "Groupe France Solaire vous équipe de panneaux photovoltaïques nouvelle génération, à la pointe de l'innovation.",
-        "Reprenez la main sur votre facture d'électricité et réalisez jusqu'à 60 % d'économies d'énergie par an<sup>(1)</sup>. Produisez et consommez votre propre énergie, toute l'année.",
+        "Reprenez la main sur votre facture d'électricité et réalisez jusqu'à 70 % d'économies d'énergie par an<sup>(1)</sup>. Produisez et consommez votre propre énergie, toute l'année.",
         "Avec nos nouveaux panneaux solaires 500Wc, vous générez davantage d'électricité verte à surface équivalente. Leur technologie avancée garantit de meilleures performances, y compris lorsque l'ensoleillement est faible.",
       ],
       ctaText: "Réaliser mon bilan solaire gratuit",
@@ -465,18 +467,18 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
         {
           title: "Nos solutions",
           links: [
-            { label: "Panneaux photovoltaïques", href: "#" },
-            { label: "Autoconsommation", href: "#" },
-            { label: "Batterie de stockage", href: "#" },
-            { label: "Borne de recharge", href: "#" },
+            { label: "Panneaux photovoltaïques", href: "#simulator" },
+            { label: "Autoconsommation", href: "#simulator" },
+            { label: "Batterie de stockage", href: "#simulator" },
+            { label: "Borne de recharge", href: "#simulator" },
           ],
         },
         {
           title: "À propos",
           links: [
-            { label: "Qui sommes-nous ?", href: "#" },
+            { label: "Qui sommes-nous ?", href: "#Products" },
             { label: "Nos réalisations", href: "#" },
-            { label: "Avis clients", href: "#" },
+            { label: "Avis clients", href: "#testimonials" },
             { label: "Recrutement", href: "#" },
           ],
         },

@@ -108,20 +108,33 @@ export const GradientPremiumButtons: React.FC<NavigationButtonsProps> = ({
 }) => (
   <div className="mt-4">
     {/* <p className="text-xs text-gray-500 mb-2">Variante 3 - Gradient Premium</p> */}
-    <div className={`flex ${showBack ? "justify-between" : "justify-end"}`}>
+    <div
+      className={`flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 ${
+        showBack ? "sm:justify-between" : "sm:justify-end"
+      }`}
+    >
       {showBack && onBack && (
         <button
           onClick={onBack}
-          className="cursor-pointer relative px-10 py-4 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 rounded-full font-bold hover:from-gray-200 hover:to-gray-300 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+          className="cursor-pointer relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 rounded-full font-bold hover:from-gray-200 hover:to-gray-300 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 w-full sm:w-auto text-center text-sm sm:text-base"
         >
           <span className="relative z-10">{backLabel}</span>
         </button>
       )}
+      {/* Version bleue - commentée */}
+      {/* <button
+        onClick={onNext}
+        disabled={disabled}
+        className="cursor-pointer relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full font-bold hover:from-blue-600 hover:to-blue-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden w-full sm:w-auto text-center text-sm sm:text-base"
+      >
+        <span className="relative z-10">{nextLabel}</span>
+        <div className="absolute inset-0 bg-white opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
+      </button> */}
+      {/* Version orange */}
       <button
         onClick={onNext}
         disabled={disabled}
-        // className="cursor-pointer relative px-10 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full font-bold hover:from-orange-600 hover:to-orange-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden"
-        className="cursor-pointer relative px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full font-bold hover:from-blue-600 hover:to-blue-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden"
+        className="cursor-pointer relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-edf-orange to-orange-500 text-white rounded-full font-bold hover:from-orange-600 hover:to-orange-500 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden w-full sm:w-auto text-center text-sm sm:text-base"
       >
         <span className="relative z-10">{nextLabel}</span>
         <div className="absolute inset-0 bg-white opacity-0 hover:opacity-20 transition-opacity duration-300"></div>

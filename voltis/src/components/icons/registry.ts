@@ -10,6 +10,7 @@ import SPBatteryChargeColorIcon from "./SPBatteryChargeColorIcon.astro";
 import GreenTrendDown from "./GreenTrendDown";
 import LossesColorIcon from "./LossesColorIcon";
 import GreenEnergyColorIcon from "./GreenEnergyColorIcon";
+import { RoomKeyColorIcon } from "./RoomKeyColorIcon";
 
 export const iconRegistry = {
   "shield-check": ShieldCheckIconV2,
@@ -21,6 +22,7 @@ export const iconRegistry = {
   "green-trend-down": GreenTrendDown,
   "losses-color": LossesColorIcon,
   "green-energy-color": GreenEnergyColorIcon,
+  "room-key-color": RoomKeyColorIcon,
 } as const;
 
 export type IconName = keyof typeof iconRegistry;

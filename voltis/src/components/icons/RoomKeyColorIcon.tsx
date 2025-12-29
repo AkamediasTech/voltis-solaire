@@ -11,8 +11,10 @@ export const RoomKeyColorIcon: React.FC<RoomKeyColorIconProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    height={size}
     viewBox="0 0 64 64"
-    className={className || `w-[${size}px] h-[${size}px]`}
+    width={size}
+    className={className}
     id="Flat"
   >
     <g>
@@ -95,3 +97,5 @@ export const RoomKeyColorIcon: React.FC<RoomKeyColorIconProps> = ({
     </g>
   </svg>
 );
+
+export default RoomKeyColorIcon;

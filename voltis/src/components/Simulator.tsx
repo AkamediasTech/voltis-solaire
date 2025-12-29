@@ -56,15 +56,15 @@ const SimulatorContent: React.FC = () => {
               prevStep={prevStep}
             />
           )}
-          {step === 3 && (
+          {/* {step === 3 && (
             <Step4SurfaceArea
               data={data}
               updateData={updateData}
               nextStep={nextStep}
               prevStep={prevStep}
             />
-          )}
-          {step === 4 && (
+          )} */}
+          {step === 3 && (
             <Step5MonthlyBill
               data={data}
               updateData={updateData}
@@ -72,7 +72,7 @@ const SimulatorContent: React.FC = () => {
               prevStep={prevStep}
             />
           )}
-          {step === 5 && (
+          {step === 4 && (
             <NewStepLocation
               data={data}
               updateData={updateData}
@@ -80,7 +80,7 @@ const SimulatorContent: React.FC = () => {
               prevStep={prevStep}
             />
           )}
-          {step === 6 && (
+          {step === 5 && (
             <NewStepContactInfo
               data={data}
               updateData={updateData}

@@ -140,43 +140,115 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       },
     ],
 
+    // faq: {
+    //   badge: "FAQ",
+    //   title: "Tout savoir sur le solaire",
+    //   ctaText: "Contacter un expert",
+    //   items: [
+    //     {
+    //       id: 1,
+    //       question: "Combien coûte une installation solaire ?",
+    //       answer:
+    //         "Le prix varie selon la taille de votre installation et vos besoins énergétiques. Comptez entre 8 000€ et 15 000€ pour une maison individuelle. Nous proposons des solutions de financement adaptées.",
+    //     },
+    //     {
+    //       id: 2,
+    //       question: "Quelle est la durée de vie des panneaux solaires ?",
+    //       answer:
+    //         "Les panneaux solaires ont une durée de vie de plus de 30 ans. Nous garantissons les nôtres pendant 25 ans avec un rendement minimal de 80%.",
+    //     },
+    //     {
+    //       id: 3,
+    //       question: "Puis-je bénéficier d'aides financières ?",
+    //       answer:
+    //         "Oui, plusieurs aides sont disponibles : prime à l'autoconsommation, TVA réduite à 10%, obligation d'achat de l'électricité par EDF. Nous vous accompagnons dans toutes vos démarches.",
+    //     },
+    //     {
+    //       id: 4,
+    //       question: "Combien de temps dure l'installation ?",
+    //       answer:
+    //         "L'installation complète prend généralement 1 à 2 jours. Le délai total du projet (étude, démarches administratives, pose) est d'environ 2 à 3 mois.",
+    //     },
+    //     {
+    //       id: 5,
+    //       question: "Que se passe-t-il les jours sans soleil ?",
+    //       answer:
+    //         "Votre installation produit de l'électricité même par temps nuageux, bien que le rendement soit réduit. Vous restez connecté au réseau électrique pour les périodes de faible production.",
+    //     },
+    //   ],
+    // },
+
     faq: {
       badge: "FAQ",
       title: "Tout savoir sur le solaire",
-      ctaText: "Contacter un expert",
+      // ctaText: "Contacter un expert",
       items: [
         {
           id: 1,
-          question: "Combien coûte une installation solaire ?",
+          question: "Que devient l'électricité non consommée ?",
           answer:
-            "Le prix varie selon la taille de votre installation et vos besoins énergétiques. Comptez entre 8 000€ et 15 000€ pour une maison individuelle. Nous proposons des solutions de financement adaptées.",
+            "Elle peut être injectée sur le réseau et revendue à un fournisseur d'énergie, ou stockée dans une batterie si votre installation en est équipée.",
         },
         {
           id: 2,
-          question: "Quelle est la durée de vie des panneaux solaires ?",
+          question:
+            "Les panneaux produisent-ils lorsqu'il n'y a pas de soleil ?",
           answer:
-            "Les panneaux solaires ont une durée de vie de plus de 30 ans. Nous garantissons les nôtres pendant 25 ans avec un rendement minimal de 80%.",
+            "Ils produisent moins par temps couvert, mais continuent de fonctionner grâce à la lumière diffuse. La production est simplement réduite.",
         },
         {
           id: 3,
-          question: "Puis-je bénéficier d'aides financières ?",
+          question:
+            "Mon logement est-il compatible avec des panneaux photovoltaïques ?",
           answer:
-            "Oui, plusieurs aides sont disponibles : prime à l'autoconsommation, TVA réduite à 10%, obligation d'achat de l'électricité par EDF. Nous vous accompagnons dans toutes vos démarches.",
+            "La majorité des maisons le sont. L'orientation, l'inclinaison du toit et l'absence d'ombre sont analysées lors d'une étude personnalisée.",
         },
         {
           id: 4,
-          question: "Combien de temps dure l'installation ?",
+          question: "Faut-il un grand toit pour installer des panneaux ?",
           answer:
-            "L'installation complète prend généralement 1 à 2 jours. Le délai total du projet (étude, démarches administratives, pose) est d'environ 2 à 3 mois.",
+            "Non. Les panneaux nouvelle génération permettent une production élevée même sur une surface limitée.",
         },
         {
           id: 5,
-          question: "Que se passe-t-il les jours sans soleil ?",
+          question: "Une autorisation est-elle nécessaire ?",
           answer:
-            "Votre installation produit de l'électricité même par temps nuageux, bien que le rendement soit réduit. Vous restez connecté au réseau électrique pour les périodes de faible production.",
+            "Une déclaration préalable de travaux peut être requise. Elle est généralement prise en charge par l'installateur.",
+        },
+        {
+          id: 6,
+          question:
+            "Les panneaux photovoltaïques nécessitent-ils de l'entretien ?",
+          answer:
+            "Très peu. Un nettoyage occasionnel suffit pour maintenir de bonnes performances.",
+        },
+        {
+          id: 7,
+          question: "Quelle est la durée de vie des panneaux ?",
+          answer:
+            "Les panneaux ont une durée de vie moyenne de 30 ans, avec des garanties de performance pouvant aller jusqu'à 25 ans.",
+        },
+        {
+          id: 8,
+          question: "Que se passe-t-il en cas de panne ?",
+          answer:
+            "Les équipements sont couverts par des garanties fabricant et l'installation est réalisée par des professionnels certifiés.",
+        },
+        {
+          id: 9,
+          question: "Les panneaux photovoltaïques sont-ils écologiques ?",
+          answer:
+            "Oui. Ils produisent une énergie renouvelable, locale et sans émission de CO₂ pendant leur fonctionnement.",
+        },
+        {
+          id: 10,
+          question: "Les panneaux augmentent-ils la valeur de mon logement ?",
+          answer:
+            "Oui. Une maison équipée de panneaux photovoltaïques est souvent mieux classée au DPE et plus attractive à la revente.",
         },
       ],
     },
+
     callToAction: {
       badge: "OFFRE EXCLUSIVE",
       title:

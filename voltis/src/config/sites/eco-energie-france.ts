@@ -500,10 +500,10 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         {
           title: "Nos solutions",
           links: [
-            { label: "Panneaux photovoltaïques", href: "#" },
+            { label: "Pompes à chaleur", href: "#" },
             { label: "Autoconsommation", href: "#" },
-            { label: "Batterie de stockage", href: "#" },
-            { label: "Borne de recharge", href: "#" },
+            // { label: "Batterie de stockage", href: "#" },
+            // { label: "Borne de recharge", href: "#" },
           ],
         },
         {
@@ -516,7 +516,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
           ],
         },
       ],
-      contactPhone: "tel:0809404005",
+      // contactPhone: "tel:0809404005",
       contactPhoneDisplay: "0 809 404 005",
       contactSchedule:
         "Service & appel gratuits.<br/>Du lundi au vendredi de 9h à 19h.",

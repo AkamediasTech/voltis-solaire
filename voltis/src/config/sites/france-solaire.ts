@@ -426,7 +426,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
           ],
         },
       ],
-      contactPhone: "tel:0809404005",
+      // contactPhone: "tel:0809404005",
       contactPhoneDisplay: "0 809 404 005",
       contactSchedule:
         "Service & appel gratuits.<br/>Du lundi au vendredi de 9h à 19h.",

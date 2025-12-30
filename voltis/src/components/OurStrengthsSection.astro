@@ -30,7 +30,7 @@ const strengthsContent = propStrengths || config?.content.strengths;
 // Hardcoded fallback
 const HARDCODED_STRENGTHS: StrengthsConfig = {
   badge: "Ce qui nous différencie",
-  title: "National par la taille,",
+  title: "National par la taille,<br/><span class='text-edf-blue'>local par l'accompagnement</span>",
   subtitle: "Des techniciens certifiés RGE interviennent partout en France.",
   strengths: [
     {
@@ -68,10 +68,11 @@ const strengths = strengthsContent || HARDCODED_STRENGTHS;
         </div>
       )}
       
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+      <!-- <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
         {strengths.title} <br/>
         <span class="text-edf-blue">local par l'accompagnement</span>
-      </h2>
+      </h2> -->
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" set:html={strengths.title} />
       
       <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
         {strengths.subtitle}

@@ -151,32 +151,36 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ],
     },
 
-    features: [
-      {
-        title: "Zéro investissement initial",
-        description:
-          "Profitez de nos solutions de financement sur mesure avec possibilité de crédit à taux préférentiel.",
-        icon: "piggy-bank",
-      },
-      {
-        title: "Installation en 48h",
-        description:
-          "De la signature du contrat à la mise en service, nos équipes certifiées interviennent rapidement.",
-        icon: "house",
-      },
-      {
-        title: "Garantie décennale",
-        description:
-          "Une couverture complète de 10 ans sur l'installation et la main d'œuvre pour votre tranquillité.",
-        icon: "shield",
-      },
-      {
-        title: "Made in Europe",
-        description:
-          "Panneaux et onduleurs de fabrication européenne pour une qualité et durabilité optimales.",
-        icon: "france-map",
-      },
-    ],
+    strengths: {
+      badge: "L'excellence à votre service",
+      title:
+        "Une couverture nationale,<br/><span class='text-edf-blue'>un service de proximité</span>",
+      subtitle:
+        "Des installations haute performance qui tiennent leurs promesses d'économies.",
+      strengths: [
+        {
+          icon: "france-map",
+          title: "Partout en France",
+          subtitle: "Couverture nationale",
+          description:
+            "Que vous soyez en ville ou à la campagne, nos équipes RGE QualiPAC interviennent dans toute la France.",
+        },
+        {
+          icon: "local",
+          title: "Équipe Locale",
+          subtitle: "Un contact près de chez vous",
+          description:
+            "De l'étude gratuite au SAV, une équipe locale dédiée vous accompagne tout au long de votre projet.",
+        },
+        {
+          icon: "guarantee",
+          title: "Aides Sécurisées",
+          subtitle: "Installation éligible garantie",
+          description:
+            "Installation certifiée RGE QualiPAC garantissant votre éligibilité aux aides MaPrimeRénov' et CEE.",
+        },
+      ],
+    },
 
     faq: {
       badge: "FAQ",

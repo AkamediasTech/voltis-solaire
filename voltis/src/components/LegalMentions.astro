@@ -1,0 +1,87 @@
+---
+import { getConfig } from '../config';
+import type { LegalConfig } from '../config/types';
+
+interface Props {
+  data?: LegalConfig;
+}
+
+const { data: propData } = Astro.props;
+const config = !propData ? getConfig() : null;
+const legalData = propData || config?.content.legal;
+
+if (!legalData) {
+  throw new Error('No legal data provided');
+}
+---
+
+<div class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Title Pill -->
+    <div class="flex justify-center mb-6">
+      <span class="bg-orange-100 text-edf-orange font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide">
+        Informations Légales
+      </span>
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-extrabold text-edf-blue text-center mb-12">
+      Mentions Légales
+    </h1>
+
+    <div class="space-y-12 text-gray-700 leading-relaxed">
+      
+      <!-- Intro -->
+      <section>
+        <p class="mb-2 italic font-medium">
+          {legalData.introText}
+        </p>
+      </section>
+
+      <!-- Section 1: Propriété -->
+      <section>
+        <h2 class="text-xl font-bold text-edf-blue mb-4 border-b pb-2">1. Propriété</h2>
+        <p class="mb-4">
+          Le présent site, accessible à l'URL <a href={legalData.siteUrl} target="_blank" rel="noopener noreferrer" class="text-edf-orange hover:underline font-bold">{legalData.siteUrl}</a>, est édité par la société <strong>{legalData.company.name}</strong>, situé au {legalData.company.address}, inscrite au R.C.S. de {legalData.company.rcs}, le numéro individuel TVA de l'éditeur est : {legalData.company.tva}.
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Dénomination sociale :</strong> {legalData.company.name}</li>
+          <li><strong>Statut de la société :</strong> {legalData.company.status}</li>
+          <li><strong>Capital social :</strong> {legalData.company.capital}</li>
+          <li><strong>Adresse électronique :</strong> <a href={`mailto:${legalData.company.email}`} class="text-edf-orange hover:underline">{legalData.company.email}</a></li>
+        </ul>
+      </section>
+
+      <!-- Section 2: Hébergement -->
+      <section>
+        <h2 class="text-xl font-bold text-edf-blue mb-4 border-b pb-2">2. Hébergement</h2>
+        <p>
+          <strong>{legalData.hosting.name}</strong><br />
+          {legalData.hosting.address}<br />
+          <a href={legalData.hosting.website} target="_blank" rel="noopener noreferrer" class="text-edf-orange hover:underline">
+            {legalData.hosting.website}
+          </a>
+        </p>
+      </section>
+
+      <!-- Section 3: Données personnelles -->
+      <section>
+        <h2 class="text-xl font-bold text-edf-blue mb-4 border-b pb-2">3. Données personnelles</h2>
+        <p>{legalData.personalDataText}</p>
+      </section>
+
+      <!-- Section 4: Propriété intellectuelle -->
+      <section>
+        <h2 class="text-xl font-bold text-edf-blue mb-4 border-b pb-2">4. Propriété intellectuelle</h2>
+        <p class="text-justify whitespace-pre-wrap">{legalData.intellectualPropertyText}</p>
+      </section>
+
+      <!-- Section 5: Contact -->
+      <section>
+        <h2 class="text-xl font-bold text-edf-blue mb-4 border-b pb-2">5. Contact</h2>
+        <p>{legalData.contactText}</p>
+      </section>
+
+    </div>
+  </div>
+</div>

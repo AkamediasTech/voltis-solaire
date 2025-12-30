@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalMentions from '../components/LegalMentions.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getConfig } from '../config';
+
+const config = getConfig();
+---
+
+<Layout title={`Mentions Légales | ${config.branding.companyName}`}>
+  <!-- <Header /> -->
+  <main>
+    <LegalMentions />
+  </main>
+  <!-- <Footer /> -->
+</Layout>

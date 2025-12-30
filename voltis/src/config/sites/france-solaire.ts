@@ -115,33 +115,6 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       ],
     },
 
-    features: [
-      {
-        title: "Installation clé en main",
-        description:
-          "De l'étude personnalisée à la mise en service, nous gérons votre projet de A à Z.",
-        icon: "house",
-      },
-      {
-        title: "Garantie 25 ans",
-        description:
-          "Panneaux solaires garantis 25 ans, onduleur garanti 10 ans minimum.",
-        icon: "shield",
-      },
-      {
-        title: "Économies immédiates",
-        description:
-          "Réduisez votre facture d'électricité dès le premier mois d'installation.",
-        icon: "piggy-bank",
-      },
-      {
-        title: "Fabrication française",
-        description:
-          "Privilégiez des équipements fabriqués en France pour une qualité optimale.",
-        icon: "france-map",
-      },
-    ],
-
     // faq: {
     //   badge: "FAQ",
     //   title: "Tout savoir sur le solaire",
@@ -251,22 +224,23 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       ],
     },
 
-    callToAction: {
-      badge: "OFFRE EXCLUSIVE",
-      title:
-        'Passez au solaire en toute confiance : demandez votre <span class="text-edf-blue">bilan solaire offert</span>',
-      subtitle:
-        "Une visite à domicile offerte, sans engagement, avec un conseiller de votre région pour :",
-      items: [
-        "évaluer votre potentiel solaire et vos besoins,",
-        "vérifier votre éligibilité + les aides disponibles,",
-        "comprendre l'autoconsommation,",
-        "recevoir une proposition personnalisée.",
-      ],
-      ctaText: "Je demande mon bilan gratuit",
-      ctaLink: "#simulator",
-      scrollToTop: true,
-    },
+    // callToAction: {
+    //   badge: "OFFRE EXCLUSIVE",
+    //   title:
+    //     'Passez au solaire en toute confiance : demandez votre <span class="text-edf-blue">bilan solaire offert</span>',
+    //   subtitle:
+    //     "Une visite à domicile offerte, sans engagement, avec un conseiller de votre région pour :",
+    //   items: [
+    //     "évaluer votre potentiel solaire et vos besoins,",
+    //     "vérifier votre éligibilité + les aides disponibles,",
+    //     "comprendre l'autoconsommation,",
+    //     "recevoir une proposition personnalisée.",
+    //   ],
+    //   ctaText: "Je demande mon bilan gratuit",
+    //   ctaLink: "#simulator",
+    //   scrollToTop: true,
+    // },
+
     testimonials: [
       {
         name: "Famille Barthélémy",
@@ -341,29 +315,29 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       },
     ],
 
-    stepsSection: {
-      title:
-        'Du diagnostic à la mise en service : <br> <span class="text-edf-blue">nos experts s\'occupent de tout </span>',
-      steps: [
-        {
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
-          title: "Une étude gratuite",
-          description:
-            "pour une installation sur-mesure par notre Conseiller Solaire à votre domicile",
-        },
-        {
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>',
-          title: "Une validation technique",
-          description:
-            "par nos experts pour confirmer la proposition du Conseiller Solaire. Elle se déroule à distance ou sur place",
-        },
-        {
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>',
-          title: "Démarches administratives prises en charge",
-          description: "pour vous simplifier la vie<sup>(4)</sup>",
-        },
-      ],
-    },
+    // stepsSection: {
+    //   title:
+    //     'Du diagnostic à la mise en service : <br> <span class="text-edf-blue">nos experts s\'occupent de tout </span>',
+    //   steps: [
+    //     {
+    //       icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+    //       title: "Une étude gratuite",
+    //       description:
+    //         "pour une installation sur-mesure par notre Conseiller Solaire à votre domicile",
+    //     },
+    //     {
+    //       icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>',
+    //       title: "Une validation technique",
+    //       description:
+    //         "par nos experts pour confirmer la proposition du Conseiller Solaire. Elle se déroule à distance ou sur place",
+    //     },
+    //     {
+    //       icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>',
+    //       title: "Démarches administratives prises en charge",
+    //       description: "pour vous simplifier la vie<sup>(4)</sup>",
+    //     },
+    //   ],
+    // },
 
     customerJourney: [
       {
@@ -386,37 +360,6 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       },
       {
         id: "04",
-        title: "Installation clé en main",
-        description:
-          "Installation soignée par des professionnels certifiés, avec une planification rapide après validation.",
-      },
-    ],
-
-    processV2Steps: [
-      {
-        number: "01",
-        icon: "clipboard",
-        title: "Conseil personnalisé offert",
-        description:
-          "Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée.",
-      },
-      {
-        number: "02",
-        icon: "send",
-        title: "Offre transparente",
-        description:
-          "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé.",
-      },
-      {
-        number: "03",
-        icon: "file-check",
-        title: "Accompagnement administratif complet",
-        description:
-          "Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z.",
-      },
-      {
-        number: "04",
-        icon: "wrench",
         title: "Installation clé en main",
         description:
           "Installation soignée par des professionnels certifiés, avec une planification rapide après validation.",
@@ -477,9 +420,9 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
           title: "À propos",
           links: [
             { label: "Qui sommes-nous ?", href: "#Products" },
-            { label: "Nos réalisations", href: "#" },
+            // { label: "Nos réalisations", href: "#" },
             { label: "Avis clients", href: "#testimonials" },
-            { label: "Recrutement", href: "#" },
+            // { label: "Recrutement", href: "#" },
           ],
         },
       ],
@@ -494,10 +437,37 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       ],
       copyright: `© ${new Date().getFullYear()} Groupe France Solaire - Tous droits réservés.`,
       legalLinks: [
-        { label: "Mentions légales", href: "#" },
+        { label: "Mentions légales", href: "/mentions-legales" },
         { label: "Politique de confidentialité", href: "#" },
         { label: "Cookies", href: "#" },
       ],
+    },
+
+    legal: {
+      introText:
+        "Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, il est précisé aux utilisateurs du site Groupe France Solaire l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.",
+      siteUrl: "https://groupe-france-solaire.fr",
+      company: {
+        name: "Groupe France Solaire",
+        address: "4 Av. Laurent Cély, 92600 Asnières-sur-Seine",
+        rcs: "BOBIGNY sous le numéro Bobigny B 891 384 810",
+        tva: "FR48891384810",
+        status: "Société par actions simplifiée unipersonnelle (SASU)",
+        capital: "1000 euros",
+        email: "dpo@groupe-france-solaire.fr",
+      },
+      hosting: {
+        name: "Hostinger",
+        address:
+          "61 Lordou Vironos Street 17 Lumiel Building, 4th floor 18. Larnaca, CY 6023, Cyprus",
+        website: "https://www.hostinger.fr/contact",
+      },
+      personalDataText:
+        "Conformément aux dispositions légales et réglementaires applicables en matière de données personnelles, vous disposez d'un droit à la limitation du traitement de vos données, d'un droit d'opposition, d'accès, de portabilité, de rectification et de suppression de vos données. Pour connaître et exercer vos droits, veuillez consulter notre politique de confidentialité.",
+      intellectualPropertyText:
+        "La structure générale du site, ainsi que les textes, graphiques, images, sons et vidéos la composant, sont la propriété de la société Groupe France Solaire. Toute représentation et/ou reproduction et/ou exploitation partielle ou totale de ce site, par quelque procédé que ce soit, sans l'autorisation préalable et par écrit de la société Groupe France Solaire est strictement interdite et serait susceptible de constituer une contrefaçon au sens des articles L 335-2 et suivants du Code de la propriété intellectuelle. Il en est de même des bases de données figurant sur ce site internet, qui sont protégées par les dispositions de la loi du 1er juillet 1998 portant transposition dans le Code de la propriété intellectuelle de la directive européenne du 11 mars 1996 relative à la protection juridique des bases de données, et dont la société Groupe France Solaire est producteur. Groupe France Solaire est également titulaire des droits sur les marques, logos ainsi que sur la charte graphique et les visuels valorisés. Toute reproduction totale ou partielle du logo, de la charte graphique et autres visuels sans le consentement de Groupe France Solaire constitue une contrefaçon pénalement sanctionnée.",
+      contactText:
+        "Pour toute demande d'information ou signalement quant au contenu du site, nous vous invitons à nous contacter par courrier postal à : Groupe France Solaire – situé au 4 Av. Laurent Cély, 92600 Asnières-sur-Seine.",
     },
   },
 });

@@ -178,8 +178,31 @@ export interface ContentConfig {
   footer?: FooterConfig;
   labels?: any; // Defined in OurLabels.astro component
   callToAction?: any; // Defined in CallToActionSection.astro component
+  legal?: LegalConfig;
   // Sections can be extended per site as needed
   [key: string]: any;
+}
+
+export interface LegalConfig {
+  introText: string;
+  siteUrl: string;
+  company: {
+    name: string;
+    address: string;
+    rcs: string;
+    tva: string;
+    status: string;
+    capital: string;
+    email: string;
+  };
+  hosting: {
+    name: string;
+    address: string;
+    website: string;
+  };
+  personalDataText: string;
+  intellectualPropertyText: string;
+  contactText: string;
 }
 
 export interface SiteConfig {

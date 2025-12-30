@@ -151,6 +151,29 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ],
     },
 
+    labels: {
+      badge: "Nos certifications",
+      title: "Une expertise certifiée",
+      subtitle:
+        "Faites confiance à des professionnels reconnus par les plus hautes instances du secteur.",
+      labels: [
+        {
+          title: "QualiPac",
+          description:
+            "Certification obligatoire pour bénéficier des aides de l'État et garantir une installation conforme.",
+          image: "/qualipac-logo-transparent.png",
+          imageAlt: "Label QualiSol - Reconnu Garant de l'Environnement",
+        },
+        {
+          title: "Qualit'EnR",
+          description:
+            "Expertise reconnue dans l'installation de panneaux photovoltaïques.",
+          image: "/QualitEnR-logo-transparent.png",
+          imageAlt: "RGE Quali PV",
+        },
+      ],
+    },
+
     strengths: {
       badge: "L'excellence à votre service",
       title:
@@ -337,37 +360,37 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
     },
 
     product: {
-      badge: "Notre technologie",
-      mainTitle: "Montez en puissance et",
-      highlightText: "optimisez vos économies",
+      badge: "Notre Technologie PAC",
+      mainTitle: "Une pompe à chaleur",
+      highlightText: "ultra-performante et silencieuse",
       description: [
-        "Groupe France Solaire vous équipe de panneaux photovoltaïques nouvelle génération, à la pointe de l'innovation.",
-        "Reprenez la main sur votre facture d'électricité et réalisez jusqu'à 60 % d'économies d'énergie par an<sup>(1)</sup>. Produisez et consommez votre propre énergie, toute l'année.",
-        "Avec nos nouveaux panneaux solaires 500Wc, vous générez davantage d'électricité verte à surface équivalente. Leur technologie avancée garantit de meilleures performances, y compris lorsque l'ensoleillement est faible.",
+        "Eco Energie France vous équipe avec des pompes à chaleur air-eau de dernière génération, certifiées RGE QualiPAC.",
+        "Divisez votre facture de chauffage par 3 et profitez d'un confort optimal toute l'année. Avec un COP jusqu'à 5, votre PAC produit 5 kWh de chaleur pour seulement 1 kWh d'électricité consommée.",
+        "Nos pompes à chaleur Inverter s'adaptent en temps réel à vos besoins, garantissant performance maximale et nuisances sonores minimales (aussi silencieuses qu'un lave-vaisselle).",
       ],
-      ctaText: "Réaliser mon bilan solaire gratuit",
-      //   image:
-      //     "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop",
-      image: "/tmp/sp-on-roof-2.png",
-      imageAlt: "Panneaux solaires",
+      ctaText: "Obtenir mon devis gratuit",
+      image:
+        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
+      imageAlt: "Pompe à chaleur air-eau",
       features: [
         {
-          icon: "weather",
-          title: "Une production optimisée, quelle que soit la météo.",
+          icon: "snowflake",
+          title: "Efficace même par grand froid",
           description:
-            "Même sous un ciel couvert, en automne ou en hiver, nos panneaux captent davantage d'énergie. Vous produisez ainsi votre propre électricité plus régulièrement, tout au long de l'année.",
+            "Nos PAC fonctionnent jusqu'à -25°C extérieur. La technologie Enhanced Vapor Injection garantit des performances optimales, même en plein hiver.",
         },
         {
           icon: "sun",
-          title: "Une production stable, même en été",
+          title: "Confort été comme hiver",
           description:
-            "Grâce à une meilleure tolérance à la chaleur, notre technologie assure un rendement plus régulier que les solutions traditionnelles.",
+            "Mode réversible disponible : chauffage en hiver, rafraîchissement en été. Une seule installation pour un confort 4 saisons.",
         },
         {
-          icon: "battery",
-          title: "Durables par conception, rassurants au quotidien",
+          // icon: "battery",
+          icon: "link",
+          title: "Garantie 7 ans & durabilité",
           description:
-            "Des panneaux conçus pour durer, une performance au rendez-vous, et une garantie à vie<sup>(2)</sup> pour plus de sérénité.",
+            "Équipements garantis 7 ans pièces et main d'œuvre. Durée de vie moyenne de 20 ans avec un entretien régulier assuré par nos équipes.",
         },
       ],
     },

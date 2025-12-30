@@ -4,9 +4,11 @@ import { getConfig } from '@config';
 import AnyWeatherColorIcon2 from './icons/AnyWeatherColorIcon2.astro';
 import SunColorIcon from './icons/SunColorIcon.astro';
 import SPBatteryChargeColorIcon from './icons/SPBatteryChargeColorIcon.astro';
+import LinkColorIcon from './icons/LinkColorIcon';
+import SnowflakeColorIcon from './icons/SnowflakeColorIcon';
 
 interface ProductFeature {
-  icon: 'weather' | 'sun' | 'battery';
+  icon: 'weather' | 'sun' | 'battery' | 'link' | 'snowflake';
   title: string;
   description: string;
 }
@@ -122,6 +124,8 @@ const product = productContent || HARDCODED_PRODUCT;
             {feature.icon === 'weather' && <AnyWeatherColorIcon2 class="w-16 h-16" />}
             {feature.icon === 'sun' && <SunColorIcon class="w-16 h-16" />}
             {feature.icon === 'battery' && <SPBatteryChargeColorIcon class="w-16 h-16" />}
+            {feature.icon === 'link' && <LinkColorIcon size={64} />}
+            {feature.icon === 'snowflake' && <SnowflakeColorIcon size={64} />}
           </div>
           <h4 class="text-lg font-bold text-gray-900 mb-4 h-auto md:h-14 flex items-center justify-center">
             {feature.title}

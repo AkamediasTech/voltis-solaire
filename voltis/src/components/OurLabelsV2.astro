@@ -1,5 +1,6 @@
 ---
-// OurLabels.astro - Composant généralisé
+// OurLabelsV2.astro - Composant généralisé avec flexbox adaptatif
+// S'adapte automatiquement à un nombre variable de cartes (1 à n)
 import { getConfig } from '@config';
 
 interface Label {
@@ -81,10 +82,10 @@ const labels = labelsContent || HARDCODED_LABELS;
       </p>
     </div>
 
-    <!-- Grille de cartes enrichies -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Conteneur Flexbox adaptatif - centré automatiquement -->
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-12 max-w-6xl mx-auto">
       {labels.labels.map( (label : Label) => (
-        <div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group">
+        <div class="bg-white p-10 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group w-full sm:w-[320px] lg:w-[300px]">
           <div class="w-50 h-24 rounded-2xl flex items-center justify-center mb-6">
             <img src={label.image} alt={label.imageAlt} loading="lazy" class="w-full h-full object-contain" />
           </div>

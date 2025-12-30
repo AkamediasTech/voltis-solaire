@@ -1,0 +1,148 @@
+---
+/**
+ * Header2.astro - Generalized header component
+ * Configurable via props or site config
+ */
+import { getConfig } from '../config';
+
+// Types defined locally in component
+export interface HeaderLogo {
+  type: 'text' | 'image';
+  // For text type
+  initials?: string;
+  companyLine1?: string;
+  companyLine2?: string;
+  // For image type
+  imageSrc?: string;
+  imageAlt?: string;
+  // Common
+  showBadge?: boolean;
+}
+
+export interface HeaderCTA {
+  textMobile: string;
+  textDesktop: string;
+  scrollToTop?: boolean;
+  link?: string;
+}
+
+export interface HeaderConfig {
+  logo: HeaderLogo;
+  cta: HeaderCTA;
+  sticky?: boolean;
+  shadow?: 'sm' | 'md' | 'lg' | 'xl';
+  backgroundColor?: string;
+}
+
+interface Props {
+  config?: HeaderConfig;
+}
+
+const { config: propConfig } = Astro.props;
+const siteConfig = getConfig();
+const header = propConfig || (siteConfig?.content?.header as HeaderConfig | undefined);
+
+// Default configuration
+const defaultConfig: HeaderConfig = {
+  logo: {
+    type: 'text',
+    initials: 'GFS',
+    companyLine1: 'Groupe',
+    companyLine2: 'France Solaire',
+    showBadge: true,
+  },
+  cta: {
+    textMobile: 'Bilan Solaire Gratuit',
+    textDesktop: 'Obtenir mon Bilan Solaire Gratuit',
+    scrollToTop: true,
+  },
+  sticky: true,
+  shadow: 'sm',
+  backgroundColor: 'white',
+};
+
+const finalConfig = header || defaultConfig;
+const stickyClass = finalConfig.sticky ? 'sticky top-0' : '';
+const shadowClass = `shadow-${finalConfig.shadow || 'sm'}`;
+---
+
+<header class={`${stickyClass} z-50 bg-${finalConfig.backgroundColor} ${shadowClass} border-b border-gray-100`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
+    <div class="flex justify-between items-center h-20">
+      
+      <!-- Logo Section -->
+      <div 
+        class="flex items-center gap-2 cursor-pointer" 
+        data-scroll-top={finalConfig.cta.scrollToTop}
+      >
+        {finalConfig.logo.type === 'text' ? (
+          <>
+            <div class="relative flex items-center justify-center">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold">
+                <span class="text-edf-orange text-lg sm:text-xl lg:text-2xl">{finalConfig.logo.initials}</span>
+              </div>
+              {finalConfig.logo.showBadge && (
+                <div class="absolute top-0.5 right-0 sm:top-1 sm:right-0">
+                  <div class="w-3 h-3 sm:w-4 sm:h-4 bg-edf-orange rounded-full border-2 border-white"></div>
+                </div>
+              )}
+            </div>
+            <div class="flex flex-col">
+              <span class="text-edf-blue font-bold text-sm sm:text-md leading-none tracking-tight uppercase">
+                {finalConfig.logo.companyLine1}
+              </span>
+              <span class="text-gray-500 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
+                {finalConfig.logo.companyLine2}
+              </span>
+            </div>
+          </>
+        ) : (
+          <div class="flex items-center">
+            <img 
+              src={finalConfig.logo.imageSrc}
+              alt={finalConfig.logo.imageAlt || siteConfig.branding.companyName}
+              class="h-12 sm:h-14 lg:h-16 w-auto object-contain"
+            />
+          </div>
+        )}
+      </div>
+
+      <!-- CTA Button -->
+      <div class="flex items-center">
+        {finalConfig.cta.link ? (
+          <a
+            href={finalConfig.cta.link}
+            class="cursor-pointer bg-edf-orange text-white px-4 md:px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold hover:bg-edf-lightBlue transition-all shadow-md transform active:scale-95 whitespace-nowrap"
+          >
+            <span class="md:hidden">{finalConfig.cta.textMobile}</span>
+            <span class="hidden md:inline">{finalConfig.cta.textDesktop}</span>
+          </a>
+        ) : (
+          <button 
+            data-scroll-top={finalConfig.cta.scrollToTop}
+            class="cursor-pointer bg-edf-orange text-white px-4 md:px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold hover:bg-edf-lightBlue transition-all shadow-md transform active:scale-95 whitespace-nowrap"
+          >
+            <span class="md:hidden">{finalConfig.cta.textMobile}</span>
+            <span class="hidden md:inline">{finalConfig.cta.textDesktop}</span>
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Handle scroll to top functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollElements = document.querySelectorAll('[data-scroll-top]');
+    
+    scrollElements.forEach(element => {
+      const shouldScroll = element.getAttribute('data-scroll-top');
+      if (shouldScroll === 'true' || shouldScroll === '') {
+        element.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,133 @@
+---
+/**
+ * HeroSplit.astro - Split hero section with content left, form right
+ * Configurable via props or site config
+ */
+import { getConfig } from '../config';
+import Simulator from './Simulator';
+
+// Types defined locally in component
+export interface HeroSplitBenefit {
+  text: string;
+}
+
+export interface HeroSplitReview {
+  avatars: string[];
+  rating: string;
+  count: string;
+}
+
+export interface HeroSplitConfig {
+  badge: string;
+  headline: string;
+  headlineHighlight: string;
+  description: string;
+  benefits: HeroSplitBenefit[];
+  ctaText?: string;
+  ctaLink?: string;
+  review?: HeroSplitReview;
+}
+
+interface Props {
+  config?: HeroSplitConfig;
+}
+
+const { config: propConfig } = Astro.props;
+const siteConfig = getConfig();
+const heroSplit = propConfig || (siteConfig?.content.heroSplit as HeroSplitConfig | undefined);
+
+if (!heroSplit) {
+  throw new Error('HeroSplit: No configuration provided. Pass config prop or define content.heroSplit in site config.');
+}
+
+// Icons SVG
+const checkCircleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+---
+
+<section class="relative flex flex-col lg:flex-row min-h-[700px]">
+  <!-- Left Side: Content (Dark) -->
+  <div class="lg:w-1/2 bg-edf-blue relative flex items-center justify-center p-8 lg:p-16 overflow-hidden">
+    <!-- Background Pattern -->
+    <div 
+      class="absolute inset-0 opacity-10"
+      style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;">
+    </div>
+    
+    <!-- Abstract Shapes -->
+    <div class="absolute top-0 left-0 w-64 h-64 bg-edf-orange/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+    <div class="relative z-10 text-white max-w-lg">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6 text-edf-orange">
+        <span class="w-2 h-2 bg-edf-orange rounded-full animate-pulse"></span>
+        {heroSplit.badge}
+      </div>
+      
+      <!-- Headline -->
+      <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+        <Fragment set:html={heroSplit.headline} />
+        <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-edf-orange to-white">
+          {heroSplit.headlineHighlight}
+        </span>
+      </h1>
+      
+      <!-- Description -->
+      <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+        {heroSplit.description}
+      </p>
+
+      <!-- Benefits List -->
+      <div class="space-y-4">
+        {heroSplit.benefits.map((benefit) => (
+          <div class="flex items-center gap-4 group">
+            <div class="w-8 h-8 rounded-full bg-edf-orange/20 flex items-center justify-center group-hover:bg-edf-orange transition-colors">
+              <span class="text-edf-orange group-hover:text-white *:w-4 *:h-4" set:html={checkCircleIcon} />
+            </div>
+            <span class="font-medium">{benefit.text}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA Link -->
+      {heroSplit.ctaText && heroSplit.ctaLink && (
+        <a 
+          href={heroSplit.ctaLink}
+          class="mt-10 inline-flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+        >
+          <span class="text-sm font-semibold border-b border-white/30 pb-0.5">{heroSplit.ctaText}</span>
+          <Fragment set:html={arrowRightIcon} />
+        </a>
+      )}
+    </div>
+  </div>
+
+  <!-- Right Side: Form (Light) -->
+  <div class="lg:w-1/2 bg-white relative flex items-center justify-center p-6 lg:p-12">
+    <div class="w-full max-w-md">
+      <Simulator client:idle webhookUrl={siteConfig.api.webhookUrl} />
+       
+      <!-- Review Snippet -->
+      {heroSplit.review && (
+        <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-4">
+          <div class="flex -space-x-2">
+            {heroSplit.review.avatars.map((avatar, i) => (
+              <img 
+                class="w-10 h-10 rounded-full border-2 border-white object-cover" 
+                src={avatar} 
+                alt={`Client ${i + 1}`}
+                loading="lazy"
+              />
+            ))}
+          </div>
+          <div class="text-sm">
+            <p class="font-bold text-gray-900">{heroSplit.review.rating}</p>
+            <p class="text-gray-500">{heroSplit.review.count}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

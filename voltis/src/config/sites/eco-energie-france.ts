@@ -62,6 +62,24 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
   },
 
   content: {
+    header: {
+      logo: {
+        type: "text" as const,
+        initials: "EEF",
+        companyLine1: "Eco Energie",
+        companyLine2: "France",
+        showBadge: true,
+      },
+      cta: {
+        textMobile: "Devis Gratuit",
+        textDesktop: "Obtenir mon Devis Gratuit",
+        scrollToTop: true,
+      },
+      sticky: true,
+      shadow: "md" as const,
+      backgroundColor: "white",
+    },
+
     hero: {
       title: "Votre transition énergétique commence ici",
       subtitle: "4.9/5 - Plus de 2000 clients satisfaits",
@@ -71,31 +89,28 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ctaLink: "#simulator",
     },
 
-    heroBento: {
-      badge: "Eco Energie France",
-      headline: "Chauffez mieux.<br/>Payez moins.",
+    heroSplit: {
+      badge: "Offre Spéciale 2026",
+      headline: "Une pompe à chaleur",
+      headlineHighlight: "Nouvelle génération",
       description:
-        "La pompe à chaleur est la solution ultime pour votre confort thermique. Remplacez votre chaudière dès aujourd'hui.",
-      formBadge: "Étude Gratuite",
-      formTitle: "Votre devis en 3 clics",
-      formSubtitle: "Vérifiez vos aides et obtenez votre estimation.",
-      productImage:
-        "https://png.pngtree.com/png-vector/20240913/ourmid/pngtree-modern-air-conditioner-outdoor-unit-isolated-on-transparent-background-png-image_13840220.png",
-      productImageAlt: "Pompe à chaleur",
-      productBadge: "PRO 2025",
-      features: [
-        {
-          icon: "flame",
-          title: "Chaud",
-          subtitle: "Hiver confort",
-        },
-        {
-          icon: "snowflake",
-          title: "Froid",
-          subtitle: "Été frais",
-        },
+        "Réduisez jusqu’à 70 % vos factures de chauffage et profitez des aides d’état pour financer votre installation. ",
+      benefits: [
+        { text: "Jusqu'à 11 500€ d'aides" },
+        { text: "30% d'économies immédiates garanties" },
+        { text: "Installation sans dégâts en 48h" },
       ],
-      partnerLogos: [],
+      ctaText: "En savoir plus sur notre technologie",
+      ctaLink: "#technology",
+      review: {
+        avatars: [
+          "https://randomuser.me/api/portraits/men/31.jpg",
+          "https://randomuser.me/api/portraits/men/32.jpg",
+          "https://randomuser.me/api/portraits/men/33.jpg",
+        ],
+        rating: "4.9/5",
+        count: "basé sur 1,204 avis",
+      },
     },
 
     featuresSection: {

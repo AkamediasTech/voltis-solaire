@@ -1,6 +1,5 @@
 ---
 // Layout.astro - Layout principal
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { getConfig } from '@config';
@@ -295,7 +294,7 @@ const {
   )}
   
   <div class="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
-    <Header />
+    <slot name="header" />
     <main class="flex-grow">
       <slot />
     </main>

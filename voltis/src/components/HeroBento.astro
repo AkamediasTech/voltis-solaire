@@ -3,6 +3,7 @@
  * HeroBento.astro - Bento grid hero section with form
  * Fully configurable via props or site config
  */
+import { Flame, FlameIcon } from 'lucide-react';
 import { getConfig } from '../config';
 import Simulator from './Simulator';
 
@@ -63,6 +64,7 @@ const icons: Record<HeroBentoFeature['icon'], string> = {
           <span class="w-2 h-2 bg-edf-orange rounded-full"></span>
           {heroBento.badge}
         </div>
+      
         <h1 class="text-4xl lg:text-6xl font-bold leading-tight" set:html={heroBento.headline}></h1>
       </div>
       
@@ -79,12 +81,19 @@ const icons: Record<HeroBentoFeature['icon'], string> = {
     <!-- Box 2: Form (Right, spans 5 cols, full height on desktop) -->
     <div class="lg:col-span-5 lg:row-span-2 bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex flex-col justify-center" id="simulator">
       <div class="mb-6">
-        <span class="text-xs font-bold tracking-widest text-edf-orange uppercase">{heroBento.formBadge}</span>
+        <!-- <span class="text-xs font-bold tracking-widest text-edf-orange uppercase">{heroBento.formBadge}</span> -->
+        <!-- Remplacer la ligne p.text-gray-500 par: -->
+        <div class="inline-flex items-center gap-2 bg-edf-orange/10 text-edf-orange px-4 py-2 rounded-full text-sm font-semibold mt-3">
+            <!-- <svg class="w-4 h-4"><Flame/></svg> -->
+             <span class="w-5 h-5 [&>svg]:w-full [&>svg]:h-full" set:html={icons.flame} />
+            <span>{heroBento.formBadge}</span>
+        </div>
         <h2 class="text-3xl font-bold text-gray-900 mt-2">{heroBento.formTitle}</h2>
         <p class="text-gray-500 mt-2">{heroBento.formSubtitle}</p>
+
       </div>
       
-      <Simulator client:idle webhookUrl={siteConfig.api.webhookUrl} />
+      <Simulator client:idle webhookUrl={siteConfig.api.webhookUrl}/>
       
       {heroBento.partnerLogos && heroBento.partnerLogos.length > 0 && (
         <div class="mt-6 flex items-center justify-center gap-4 grayscale opacity-50">

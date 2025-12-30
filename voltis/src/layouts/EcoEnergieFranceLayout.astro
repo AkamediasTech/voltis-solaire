@@ -4,7 +4,8 @@
  * Définit l'ordre et les composants utilisés pour ce site
  */
 import Layout from '@layouts/Layout.astro';
-import HeroBento from '@components/HeroBento.astro';
+import Header2 from '@components/Header2.astro';
+import HeroSplit from '@components/HeroSplit.astro';
 import FaqSection from '@components/FaqSection.astro';
 import OurLabels from '@components/OurLabels.astro';
 import TestimonialsSection from '@components/TestimonialsSection.astro';
@@ -19,6 +20,8 @@ import CookieConsent from '@components/CookieConsent.astro';
 import CustomerJourneyV3 from '@components/CustomerJourneyV3.astro';
 import ProcessV2 from '@components/ProcessV2.astro';
 import { getConfig } from '@config';
+import TestimonialsSection2 from '@components/TestimonialsSection2.astro';
+
 
 const config = getConfig();
 const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
@@ -28,17 +31,17 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
   title={`${config.branding.companyName} | Pompe à Chaleur`}
   description={heroBento?.description || hero.description.replace(/<[^>]*>/g, '')}
 >
-  <HeroBento />
+  <Header2 slot="header" />
+  <HeroSplit/>
   
   <FeaturesV2 />
   <OurLabels />
-  <StepsSection stepsSection={stepsSection} />
+  <!-- <StepsSection stepsSection={stepsSection} />
   
   <CustomerJourneyV3 
     steps={customerJourney} 
     title="Du diagnostic à la mise en service :"
-    subtitle="Notre processus"
-  />
+  /> -->
   
   {processV2Steps && processV2Steps.length > 0 && (
     <ProcessV2 steps={processV2Steps} />
@@ -48,15 +51,19 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
   <ProductSection />
   <SmartMonitoringSection />
   
-  {testimonials && testimonials.length > 0 && (
+  <!-- {testimonials && testimonials.length > 0 && (
     <TestimonialsSection testimonials={testimonials} />
-  )}
+  )} -->
+
+  {testimonials && testimonials.length > 0 && (
+  <TestimonialsSection2 />
+ )}
   
   {faq && faq.items && faq.items.length > 0 && (
     <FaqSection faq={faq}/>
   )}
 
-  <CallToActionSection />
+  <!-- <CallToActionSection /> -->
   <LegalDisclaimerSection />
   <CookieConsent delay={2000}/>
 </Layout>

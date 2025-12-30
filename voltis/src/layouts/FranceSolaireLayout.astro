@@ -4,6 +4,7 @@
  * Définit l'ordre et les composants utilisés pour ce site
  */
 import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
 import Hero from '@components/Hero.astro';
 import FaqSection from '@components/FaqSection.astro';
 import OurLabels from '@components/OurLabels.astro';
@@ -31,6 +32,7 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
   title={`${config.branding.companyName} | Installation Solaire`}
   description={hero.description.replace(/<[^>]*>/g, '')}
 >
+  <Header slot="header" />
   <Hero 
     title={hero.title}
     subtitle={hero.subtitle}

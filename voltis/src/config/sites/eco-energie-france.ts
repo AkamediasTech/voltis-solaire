@@ -71,6 +71,33 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ctaLink: "#simulator",
     },
 
+    heroBento: {
+      badge: "Eco Energie France",
+      headline: "Chauffez mieux.<br/>Payez moins.",
+      description:
+        "La pompe à chaleur est la solution ultime pour votre confort thermique. Remplacez votre chaudière dès aujourd'hui.",
+      formBadge: "Étude Gratuite",
+      formTitle: "Votre devis en 3 clics",
+      formSubtitle: "Vérifiez vos aides et obtenez votre estimation.",
+      productImage:
+        "https://png.pngtree.com/png-vector/20240913/ourmid/pngtree-modern-air-conditioner-outdoor-unit-isolated-on-transparent-background-png-image_13840220.png",
+      productImageAlt: "Pompe à chaleur",
+      productBadge: "PRO 2025",
+      features: [
+        {
+          icon: "flame",
+          title: "Chaud",
+          subtitle: "Hiver confort",
+        },
+        {
+          icon: "snowflake",
+          title: "Froid",
+          subtitle: "Été frais",
+        },
+      ],
+      partnerLogos: [],
+    },
+
     featuresSection: {
       badge: "Nos Avantages",
       title: "Pourquoi choisir",

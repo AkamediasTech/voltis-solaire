@@ -4,7 +4,7 @@
  * Définit l'ordre et les composants utilisés pour ce site
  */
 import Layout from '@layouts/Layout.astro';
-import Hero from '@components/Hero.astro';
+import HeroBento from '@components/HeroBento.astro';
 import FaqSection from '@components/FaqSection.astro';
 import OurLabels from '@components/OurLabels.astro';
 import TestimonialsSection from '@components/TestimonialsSection.astro';
@@ -21,20 +21,14 @@ import ProcessV2 from '@components/ProcessV2.astro';
 import { getConfig } from '@config';
 
 const config = getConfig();
-const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
+const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
 ---
 
 <Layout 
-  title={`${config.branding.companyName} | Installation Solaire`}
-  description={hero.description.replace(/<[^>]*>/g, '')}
+  title={`${config.branding.companyName} | Pompe à Chaleur`}
+  description={heroBento?.description || hero.description.replace(/<[^>]*>/g, '')}
 >
-  <Hero 
-    title={hero.title}
-    subtitle={hero.subtitle}
-    description={hero.description}
-    ctaText={hero.ctaText}
-    ctaLink={hero.ctaLink}
-  />
+  <HeroBento />
   
   <FeaturesV2 />
   <OurLabels />

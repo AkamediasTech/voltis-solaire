@@ -5,8 +5,8 @@ import type { Step } from '@config/types';
 
 interface Props {
   steps?: Step[];
+  badge?: string;
   title?: string;
-  subtitle?: string;
   description?: string;
 }
 
@@ -39,8 +39,8 @@ const HARDCODED_STEPS: Step[] = [
 
 const { 
   steps = HARDCODED_STEPS,
-  title = 'Du diagnostic à la mise en service :',
-  subtitle = 'Notre processus',
+  badge = 'Notre processus',
+  title = "Du diagnostic à la mise en service :   <span class='text-edf-blue'>nos experts s'occupent de tout</span>", 
   description = 'Un parcours fluide, rapide, entièrement géré pour vous.'
 } = Astro.props;
 
@@ -60,13 +60,14 @@ type IconKey = keyof typeof iconComponents;
     <!-- En-tête centré -->
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 bg-edf-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-edf-orange/20 mb-6">
-        <span class="text-edf-orange text-sm font-semibold">{subtitle}</span>
+        <span class="text-edf-orange text-sm font-semibold">{badge}</span>
       </div>
       
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      <!-- <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
         {title}<br />
         <span class="text-edf-blue">nos experts s'occupent de tout</span>
-      </h2>
+      </h2> -->
+       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4" set:html={title} />
       <p class="text-xl text-gray-600 mt-6">
         {description}
       </p>

@@ -43,9 +43,17 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
     title="Du diagnostic à la mise en service :"
   /> -->
   
-  {processV2Steps && processV2Steps.length > 0 && (
+  <!-- {processV2Steps && processV2Steps.length > 0 && (
     <ProcessV2 steps={processV2Steps} />
-  )}
+  )} -->
+
+  {processV2Steps && processV2Steps.length > 0 && (
+  <ProcessV2 
+    steps={processV2Steps} 
+    badge="Notre expertise"
+    title="Notre expertise à votre service :<br/><span class='text-edf-blue'>un processus éprouvé</span>"
+  />
+)}
 
   <OurStrengthsSection />
   <ProductSection />

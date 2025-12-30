@@ -97,8 +97,8 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         "Réduisez jusqu’à 70 % vos factures de chauffage et profitez des aides d’état pour financer votre installation. ",
       benefits: [
         { text: "Jusqu'à 11 500€ d'aides" },
-        { text: "30% d'économies immédiates garanties" },
-        { text: "Installation sans dégâts en 48h" },
+        { text: "Installation garantie par artisans RGE" },
+        { text: "25% de plus-value sur votre bien" },
       ],
       ctaText: "En savoir plus sur notre technologie",
       ctaLink: "#technology",
@@ -117,35 +117,36 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       badge: "Nos Avantages",
       title: "Pourquoi choisir",
       titleHighlight: "Eco Energie France ?",
-      subtitle: "L'excellence au service de votre indépendance énergétique.",
+      subtitle:
+        "L'excellence au service de votre confort thermique et de vos économies.",
       features: [
         {
           id: "zero-investment",
           iconName: "piggy-bank" as const,
-          title: "Zéro investissement initial",
+          title: "Jusqu'à 11 500€ d'aides de l'État",
           description:
-            "Profitez de nos solutions de financement sur mesure avec possibilité de crédit à taux préférentiel.",
+            "Bénéficiez de MaPrimeRénov' et de la prime CEE pour réduire considérablement le coût de votre pompe à chaleur.",
         },
         {
           id: "roi-rapid",
           iconName: "percentage" as const,
-          title: "Retour sur investissement rapide",
+          title: "Jusqu'à 70% d'économies sur vos factures",
           description:
-            "Rentabilisez votre installation en 7 à 10 ans grâce aux économies réalisées et aux aides publiques.",
+            "Réduisez drastiquement vos dépenses énergétiques grâce à un système de chauffage ultra-performant et écologique.",
         },
         {
           id: "eco-certified",
           iconName: "house-value" as const,
-          title: "Certification écologique",
+          title: "Installation certifiée RGE QualiPAC",
           description:
-            "Nos installations sont certifiées RGE et respectent les normes environnementales les plus strictes.",
+            "Nos techniciens sont certifiés RGE QualiPAC, garantie indispensable pour bénéficier des aides de l'État.",
         },
         {
           id: "support-premium",
           iconName: "shield-check" as const,
-          title: "Accompagnement Premium",
+          title: "Garantie constructeur 7 ans",
           description:
-            "Bénéficiez d'un accompagnement personnalisé de A à Z et d'un service client disponible 6j/7.",
+            "Profitez d'une garantie étendue sur votre équipement et d'un service après-vente réactif disponible 6j/7.",
         },
       ],
     },
@@ -398,30 +399,30 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       {
         number: "01",
         icon: "clipboard",
-        title: "Conseil personnalisé offert",
+        title: "Étude thermique gratuite",
         description:
-          "Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée.",
+          "Un expert certifié QualiPAC analyse votre logement, vos besoins en chauffage et dimensionne la pompe à chaleur idéale.",
       },
       {
         number: "02",
         icon: "send",
-        title: "Offre transparente",
+        title: "Proposition personnalisée sans engagement",
         description:
-          "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé.",
+          "Un devis sur-mesure avec simulation d'économies et détail des aides. Aucun acompte demandé avant la fin des travaux.",
       },
       {
         number: "03",
         icon: "file-check",
         title: "Accompagnement administratif complet",
         description:
-          "Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z.",
+          "Notre service dédié constitue vos dossiers MaPrimeRénov' et CEE, gère les déclarations et obtient toutes les autorisations.",
       },
       {
         number: "04",
         icon: "wrench",
-        title: "Installation clé en main",
+        title: "Installation complète de A à Z",
         description:
-          "Installation soignée par des professionnels certifiés, avec une planification rapide après validation.",
+          "Dépose de l'ancien système si besoin, pose de la PAC, raccordements, mise en route et formation. Garantie décennale incluse.",
       },
     ],
 

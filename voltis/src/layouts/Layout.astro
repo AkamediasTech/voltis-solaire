@@ -303,24 +303,56 @@ const {
   </div>
   
   <script is:inline>
-    // Smooth scroll for all anchor links
+    // Centralized scroll handling
     document.addEventListener('DOMContentLoaded', function() {
+      var HEADER_HEIGHT = 80;
+      var MOBILE_MARGIN = 32;
+      var MOBILE_OFFSET = HEADER_HEIGHT + MOBILE_MARGIN; // 112px
+      
+      function isMobile() {
+        return window.matchMedia('(max-width: 1023px)').matches;
+      }
+      
+      function scrollToSimulator() {
+        if (isMobile()) {
+          var simulator = document.getElementById('simulator');
+          if (simulator) {
+            var top = simulator.getBoundingClientRect().top + window.scrollY - MOBILE_OFFSET;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+      
+      // Handle [data-scroll-top] buttons
+      document.querySelectorAll('[data-scroll-top]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToSimulator();
+        });
+      });
+      
+      // Handle anchor links
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
+          var href = this.getAttribute('href');
           if (!href || href === '#') return;
           
           e.preventDefault();
-          const targetId = href.substring(1);
-          const target = document.getElementById(targetId);
+          var targetId = href.substring(1);
           
+          // Special handling for #simulator
+          if (targetId === 'simulator') {
+            scrollToSimulator();
+            return;
+          }
+          
+          var target = document.getElementById(targetId);
           if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
+            var top = target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+            window.scrollTo({ top: top, behavior: 'smooth' });
             
-            // Update URL without jumping
             if (history.pushState) {
               history.pushState(null, null, href);
             }

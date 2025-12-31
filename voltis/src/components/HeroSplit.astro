@@ -5,6 +5,7 @@
  */
 import { getConfig } from '../config';
 import Simulator from './Simulator';
+import GoogleReview, { type GoogleReviewConfig } from './GoogleReview.astro';
 
 // Types defined locally in component
 export interface HeroSplitBenefit {
@@ -15,6 +16,7 @@ export interface HeroSplitReview {
   avatars: string[];
   rating: string;
   count: string;
+  googleReview?: GoogleReviewConfig;
 }
 
 export interface HeroSplitConfig {
@@ -111,21 +113,33 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
        
       <!-- Review Snippet -->
       {heroSplit.review && (
-        <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-4">
-          <div class="flex -space-x-2">
-            {heroSplit.review.avatars.map((avatar, i) => (
-              <img 
-                class="w-10 h-10 rounded-full border-2 border-white object-cover" 
-                src={avatar} 
-                alt={`Client ${i + 1}`}
-                loading="lazy"
-              />
-            ))}
-          </div>
-          <div class="text-sm">
-            <p class="font-bold text-gray-900">{heroSplit.review.rating}</p>
-            <p class="text-gray-500">{heroSplit.review.count}</p>
-          </div>
+        <div class="mt-8 pt-6 border-t border-gray-100">
+          {/* Google Review if configured */}
+          {heroSplit.review.googleReview && (
+            <GoogleReview config={heroSplit.review.googleReview} />
+          )}
+          
+          {/* Legacy review with avatars (fallback) - Commented out */}
+          {/* 
+          {!heroSplit.review.googleReview && (
+            <div class="flex items-center gap-4">
+              <div class="flex -space-x-2">
+                {heroSplit.review.avatars.map((avatar, i) => (
+                  <img 
+                    class="w-10 h-10 rounded-full border-2 border-white object-cover" 
+                    src={avatar} 
+                    alt={`Client ${i + 1}`}
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+              <div class="text-sm">
+                <p class="font-bold text-gray-900">{heroSplit.review.rating}</p>
+                <p class="text-gray-500">{heroSplit.review.count}</p>
+              </div>
+            </div>
+          )}
+          */}
         </div>
       )}
     </div>

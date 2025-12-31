@@ -103,13 +103,19 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ctaText: "En savoir plus sur notre technologie",
       ctaLink: "#technology",
       review: {
-        avatars: [
-          "https://randomuser.me/api/portraits/men/31.jpg",
-          "https://randomuser.me/api/portraits/men/32.jpg",
-          "https://randomuser.me/api/portraits/men/33.jpg",
-        ],
-        rating: "4.9/5",
-        count: "basé sur 1,204 avis",
+        // avatars: [
+        //   "https://randomuser.me/api/portraits/men/31.jpg",
+        //   "https://randomuser.me/api/portraits/men/32.jpg",
+        //   "https://randomuser.me/api/portraits/men/33.jpg",
+        // ],
+        // rating: "4.9/5",
+        // count: "basé sur 1,204 avis",
+        googleReview: {
+          companyName: "Eco Energie France",
+          rating: 4.6,
+          reviewCount: 324,
+          // profileImage: "/path/to/logo.png", // Optionnel
+        },
       },
     },
 

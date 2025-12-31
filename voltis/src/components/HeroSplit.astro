@@ -92,17 +92,6 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
           </div>
         ))}
       </div>
-
-      <!-- CTA Link -->
-      {heroSplit.ctaText && heroSplit.ctaLink && (
-        <a 
-          href={heroSplit.ctaLink}
-          class="mt-10 inline-flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
-        >
-          <span class="text-sm font-semibold border-b border-white/30 pb-0.5">{heroSplit.ctaText}</span>
-          <Fragment set:html={arrowRightIcon} />
-        </a>
-      )}
     </div>
   </div>
 

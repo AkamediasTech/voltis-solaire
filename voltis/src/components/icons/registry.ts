@@ -11,6 +11,9 @@ import GreenTrendDown from "./GreenTrendDown";
 import LossesColorIcon from "./LossesColorIcon";
 import GreenEnergyColorIcon from "./GreenEnergyColorIcon";
 import { RoomKeyColorIcon } from "./RoomKeyColorIcon";
+import CourthouseColorIcon from "./CourthouseColorIcon.astro";
+import MaintenanceColorIcon from "./MaintenanceColorIcon";
+import VerifiedColorIcon from "./VerifiedColorIcon";
 
 export const iconRegistry = {
   "shield-check": ShieldCheckIconV2,
@@ -23,6 +26,9 @@ export const iconRegistry = {
   "losses-color": LossesColorIcon,
   "green-energy-color": GreenEnergyColorIcon,
   "room-key-color": RoomKeyColorIcon,
+  "courthouse-color": CourthouseColorIcon,
+  "maintenance-color": MaintenanceColorIcon,
+  "verified-blue": VerifiedColorIcon,
 } as const;
 
 export type IconName = keyof typeof iconRegistry;

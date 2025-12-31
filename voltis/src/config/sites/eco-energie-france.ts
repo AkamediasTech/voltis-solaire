@@ -93,7 +93,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
     },
 
     heroSplit: {
-      badge: "Offre Spéciale 2026",
+      badge: "Offre 2026",
       headline: "Une pompe à chaleur",
       headlineHighlight: "Nouvelle génération",
       description:
@@ -103,8 +103,6 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         { text: "Installation garantie par artisans RGE" },
         { text: "25% de plus-value sur votre bien" },
       ],
-      ctaText: "En savoir plus sur notre technologie",
-      ctaLink: "#technology",
       review: {
         // avatars: [
         //   "https://randomuser.me/api/portraits/men/31.jpg",
@@ -131,22 +129,25 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         "L'excellence au service de votre confort thermique et de vos économies.",
       features: [
         {
-          id: "zero-investment",
-          iconName: "piggy-bank" as const,
+          id: "government-aid",
+          iconName: "courthouse-color" as const,
+          iconSize: "w-12 h-12",
           title: "Jusqu'à 11 500€ d'aides de l'État",
           description:
             "Bénéficiez de MaPrimeRénov' et de la prime CEE pour réduire considérablement le coût de votre pompe à chaleur.",
         },
         {
           id: "roi-rapid",
-          iconName: "percentage" as const,
+          iconName: "losses-color" as const,
+          iconSize: "w-12 h-12",
           title: "Jusqu'à 70% d'économies sur vos factures",
           description:
             "Réduisez drastiquement vos dépenses énergétiques grâce à un système de chauffage ultra-performant et écologique.",
         },
         {
           id: "eco-certified",
-          iconName: "house-value" as const,
+          iconName: "verified-blue" as const,
+          iconSize: "w-12 h-12",
           title: "Installation certifiée RGE QualiPAC",
           description:
             "Nos techniciens sont certifiés RGE QualiPAC, garantie indispensable pour bénéficier des aides de l'État.",
@@ -154,6 +155,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         {
           id: "support-premium",
           iconName: "shield-check" as const,
+          iconSize: "w-12 h-12",
           title: "Garantie constructeur 7 ans",
           description:
             "Profitez d'une garantie étendue sur votre équipement et d'un service après-vente réactif disponible 6j/7.",
@@ -222,35 +224,62 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       items: [
         {
           id: 1,
-          question:
-            "Quel est le coût moyen d'une installation photovoltaïque ?",
+          question: "Qu'est-ce qu'une pompe à chaleur ?",
           answer:
-            "Le coût dépend de la puissance installée et de vos besoins. Comptez entre 9 000€ et 18 000€ pour une installation résidentielle complète. Nos conseillers vous proposent un devis personnalisé gratuit avec simulation de rentabilité.",
+            "Une pompe à chaleur capte les calories présentes dans l'air, l'eau ou le sol pour chauffer votre logement de manière économique et écologique.",
         },
         {
           id: 2,
-          question:
-            "Combien de temps faut-il pour rentabiliser mon installation ?",
+          question: "Une PAC est-elle adaptée à mon logement ?",
           answer:
-            "En moyenne, une installation solaire est rentabilisée en 7 à 12 ans selon votre région et votre consommation. Avec les aides de l'État et la revente du surplus, vous commencez à économiser dès la première année.",
+            "La majorité des maisons sont compatibles. Une étude personnalisée permet de vérifier l'isolation, le système de chauffage existant et les besoins du foyer.",
         },
         {
           id: 3,
-          question: "Quelles sont les aides disponibles en 2025 ?",
+          question: "Quelle est la différence entre PAC air/air et air/eau ?",
           answer:
-            "Vous pouvez bénéficier de la prime à l'autoconsommation (jusqu'à 1 500€), de la TVA réduite à 10%, et du tarif d'achat garanti par EDF OA. Notre équipe vous accompagne dans toutes vos démarches administratives.",
+            "La PAC air/air diffuse de l'air chaud, tandis que la PAC air/eau alimente un réseau de chauffage (radiateurs ou plancher chauffant).",
         },
         {
           id: 4,
-          question: "Mon toit est-il adapté aux panneaux solaires ?",
+          question: "Est-ce que la PAC fonctionne en hiver ?",
           answer:
-            "La plupart des toits sont adaptés ! Nous réalisons une étude technique gratuite pour vérifier l'orientation, l'inclinaison, l'ombrage et la solidité de votre toiture. Même avec une orientation Est-Ouest, l'installation reste rentable.",
+            "Oui. Les PAC modernes restent performantes même par températures basses.",
         },
         {
           id: 5,
-          question: "Que devient l'électricité non consommée ?",
+          question: "Quelles économies puis-je réaliser ?",
           answer:
-            "L'électricité produite mais non consommée est automatiquement revendue à EDF à un tarif garanti pendant 20 ans. Vous pouvez également opter pour une batterie de stockage pour une autonomie maximale.",
+            "Une PAC permet de réduire jusqu'à 60 à 70 % la facture de chauffage selon le logement et l'usage.",
+        },
+        {
+          id: 6,
+          question: "Quelles aides financières sont disponibles ?",
+          answer:
+            "Vous pouvez bénéficier de MaPrimeRénov', des CEE, d'une TVA réduite et parfois d'aides locales.",
+        },
+        {
+          id: 7,
+          question: "Combien coûte une pompe à chaleur ?",
+          answer:
+            "Le coût dépend du type de PAC et de la configuration du logement, mais les aides réduisent fortement l'investissement.",
+        },
+        {
+          id: 8,
+          question: "L'installation est-elle longue ?",
+          answer: "En général, l'installation dure de 1 à 3 jours.",
+        },
+        {
+          id: 9,
+          question: "La PAC nécessite-t-elle beaucoup d'entretien ?",
+          answer:
+            "Un entretien annuel est recommandé pour garantir performance et longévité.",
+        },
+        {
+          id: 10,
+          question: "Quelle est la durée de vie d'une PAC ?",
+          answer:
+            "Une pompe à chaleur a une durée de vie moyenne de 15 à 20 ans.",
         },
       ],
     },
@@ -708,8 +737,8 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
         {
           title: "Nos solutions",
           links: [
-            { label: "Pompes à chaleur", href: "#" },
-            { label: "Autoconsommation", href: "#" },
+            { label: "Pompes à chaleur", href: "#simulator" },
+            { label: "Autoconsommation", href: "#simulator" },
             // { label: "Batterie de stockage", href: "#" },
             // { label: "Borne de recharge", href: "#" },
           ],
@@ -717,10 +746,10 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
         {
           title: "À propos",
           links: [
-            { label: "Qui sommes-nous ?", href: "#" },
+            { label: "Qui sommes-nous ?", href: "#Products" },
             { label: "Nos réalisations", href: "#" },
-            { label: "Avis clients", href: "#" },
-            { label: "Recrutement", href: "#" },
+            { label: "Avis clients", href: "#testimonials" },
+            // { label: "Recrutement", href: "#" },
           ],
         },
       ],

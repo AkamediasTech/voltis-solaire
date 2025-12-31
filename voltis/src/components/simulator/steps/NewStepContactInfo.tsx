@@ -152,6 +152,15 @@ const NewStepContactInfo: React.FC<StepProps> = ({
 
       // Show success message
       setIsSuccess(true);
+
+      setIsSuccess(true);
+
+      // Ajouter le paramètre URL pour le tracking GTM/Facebook Pixel
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("form_submit", "success");
+        window.history.replaceState({}, "", url.toString());
+      }
     } catch (error) {
       console.error("Submission error:", error);
       alert("Une erreur est survenue. Veuillez réessayer.");

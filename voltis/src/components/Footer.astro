@@ -13,7 +13,7 @@ const footerContent = propFooter || config?.content.footer;
 
 // Hardcoded fallback
 const HARDCODED_FOOTER: FooterConfig = {
-  companyName: "SOLUTIONS SOLAIRES",
+  // companyName: "SOLUTIONS SOLAIRES",
   description: "Nous accompagnons les particuliers et les professionnels dans leur transition énergétique grâce à des solutions solaires performantes et durables.",
   sections: [
     {
@@ -52,6 +52,9 @@ const HARDCODED_FOOTER: FooterConfig = {
 };
 
 const footer = footerContent || HARDCODED_FOOTER;
+
+const hasLogoSlot = Astro.slots.has('logo')
+
 ---
 
 <footer class="bg-slate-900 text-white pt-16 pb-8">
@@ -61,10 +64,21 @@ const footer = footerContent || HARDCODED_FOOTER;
       <!-- Company info -->
       {footer.companyName && (
       <div class="text-center md:text-left">
-        <div class="mb-6 flex items-center gap-2 justify-center md:justify-start">
+        {/* <div class="mb-6 flex items-center gap-2 justify-center md:justify-start">
           <div class="w-8 h-8 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold border border-white/20">e</div>
           <span class="font-bold text-lg">{footer.companyName}</span>
-        </div>
+        </div> */}
+        
+        <div class="mb-6 flex items-center gap-2 justify-center md:justify-start">
+          {hasLogoSlot ? (
+            <slot name="logo" />
+          ) : (
+            ""
+          )}
+      </div>
+
+
+
         {footer.description && (
           <p class="text-slate-400 text-sm leading-relaxed mb-6">
             {footer.description}

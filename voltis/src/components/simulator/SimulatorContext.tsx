@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import type { SimulationData } from "@types";
 
 interface SimulatorContextType {
@@ -67,6 +67,16 @@ export const SimulatorProvider: React.FC<{
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
+
+  useEffect(() => {
+    if (!isSuccess && typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("form_submit")) {
+        url.searchParams.delete("form_submit");
+        window.history.replaceState({}, "", url.toString());
+      }
+    }
+  }, [isSuccess]);
 
   return (
     <SimulatorContext.Provider

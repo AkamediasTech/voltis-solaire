@@ -24,6 +24,8 @@ import { getConfig } from '@config';
 import CustomerJourneyV4 from '@components/CustomerJourneyV4.astro';
 import CustomerJourneyV5 from '@components/CustomerJourneyV5.astro';
 import Footer from '@components/Footer.astro';
+import TextLogo from '@components/logos/TextLogo.astro';
+// import { SuccessMessageSolar } from '@components/simulator/steps/SuccessMessageSolar';
 
 const config = getConfig();
 const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
@@ -42,6 +44,8 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
     ctaLink={hero.ctaLink}
   />
   
+  <!-- <SuccessMessageSolar data={{"firstName":"Dan", "postalCode": "92500", "city": "TestCity"}}/> -->
+
   <FeaturesV2 />
   
   <ProductSection />
@@ -61,7 +65,9 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
   )} -->
 
   <OurStrengthsSection />
-  <SmartMonitoringSection />
+  <SmartMonitoringSection>
+    <TextLogo text="GFS" titleFirstHalf="GROUPE" titleSecondHalf="FRANCE SOLAIRE" slot={"logo"}/>
+  </SmartMonitoringSection >
   
   <!-- {testimonials && testimonials.length > 0 && (
     <TestimonialsSection testimonials={testimonials} />
@@ -79,5 +85,22 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
   <LegalDisclaimerSection />
   <CookieConsent delay={2000}/>
 
-  <Footer />
+  <Footer>
+    <!-- <TextLogo text="GFS" titleFirstHalf="GROUPE" titleSecondHalf="FRANCE SOLAIRE" slot={"logo"}/> -->
+    <div class="flex items-center gap-2" slot="logo">
+    <div class="relative flex items-center justify-center">
+    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold">
+        <span class="text-edf-orange text-lg sm:text-xl lg:text-2xl">GFS</span>
+    </div>
+        <div class="absolute top-0.5 right-0 sm:top-1 sm:right-0">
+        <div class="w-3 h-3 sm:w-4 sm:h-4 bg-edf-orange rounded-full border-2 border-white"></div>
+        </div>
+    </div>
+    <div class="flex flex-col">
+    <span class="text-edf-orange font-bold text-sm sm:text-md leading-none tracking-tight uppercase">GROUPE</span>
+    <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">FRANCE SOLAIRE</span>
+    </div>
+</div>
+
+  </Footer>
 </Layout>

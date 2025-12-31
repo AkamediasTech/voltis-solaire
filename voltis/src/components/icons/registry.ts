@@ -14,6 +14,7 @@ import { RoomKeyColorIcon } from "./RoomKeyColorIcon";
 import CourthouseColorIcon from "./CourthouseColorIcon.astro";
 import MaintenanceColorIcon from "./MaintenanceColorIcon";
 import VerifiedColorIcon from "./VerifiedColorIcon";
+import HousePriceUpColorIcon from "./HousePriceUpColorIcon";
 
 export const iconRegistry = {
   "shield-check": ShieldCheckIconV2,
@@ -29,6 +30,7 @@ export const iconRegistry = {
   "courthouse-color": CourthouseColorIcon,
   "maintenance-color": MaintenanceColorIcon,
   "verified-blue": VerifiedColorIcon,
+  "house-price-up-color": HousePriceUpColorIcon,
 } as const;
 
 export type IconName = keyof typeof iconRegistry;

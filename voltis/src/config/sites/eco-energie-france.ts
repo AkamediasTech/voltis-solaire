@@ -748,7 +748,7 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
           links: [
             { label: "Qui sommes-nous ?", href: "#Products" },
             { label: "Nos réalisations", href: "#" },
-            { label: "Avis clients", href: "#testimonials" },
+            // { label: "Avis clients", href: "#testimonials" },
             // { label: "Recrutement", href: "#" },
           ],
         },

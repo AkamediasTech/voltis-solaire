@@ -93,7 +93,9 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
         },
         {
           id: "increase-value",
-          iconName: "trending-up" as const,
+          // iconName: "trending-up" as const,
+          iconName: "house-price-up-color" as const,
+          iconSize: "w-12 h-12",
           title: "Valorisez votre bien",
           description:
             "Une maison équipée de panneaux solaires se revend plus cher et plus vite (Valeur verte).",
@@ -101,7 +103,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
         {
           id: "green-energy",
           iconName: "green-energy-color" as const,
-          iconSize: "w-10 h-10",
+          iconSize: "w-12 h-12",
           title: "Énergie Verte",
           description:
             "Participez à la transition énergétique en produisant une énergie propre et locale.",
@@ -109,6 +111,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
         {
           id: "warranty",
           iconName: "shield-check" as const,
+          iconSize: "w-12 h-12",
           title: "Garantie Sérénité",
           description:
             "Bénéficiez d'équipements premium et d'une installation professionnelle certifiée. Garantie performance 25 ans.",

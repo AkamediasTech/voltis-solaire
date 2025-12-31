@@ -45,7 +45,8 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
   },
 
   analytics: {
-    gtmId: "GTM-XXXXXXX", // Replace with actual GTM ID
+    // gtmId: "GTM-XXXXXXX", // Replace with actual GTM ID
+    gtmId: "GTM-M9WT7W4V",
     tracking: {
       enabled: true,
       endpoints: {
@@ -435,9 +436,10 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       contactSchedule:
         "Service & appel gratuits.<br/>Du lundi au vendredi de 9h à 19h.",
       socialLinks: [
-        { platform: "facebook", url: "#" },
-        { platform: "twitter", url: "#" },
-        { platform: "linkedin", url: "#" },
+        // { platform: "facebook", url: "#" },
+        // { platform: "instagram", url: "#" },
+        // { platform: "twitter", url: "#" },
+        // { platform: "linkedin", url: "#" },
       ],
       copyright: `© ${new Date().getFullYear()} Groupe France Solaire - Tous droits réservés.`,
       legalLinks: [

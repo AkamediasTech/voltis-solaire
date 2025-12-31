@@ -47,7 +47,8 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
   },
 
   analytics: {
-    gtmId: "GTM-ECOENER", // Replace with actual GTM ID
+    // gtmId: "GTM-ECOENER", // Replace with actual GTM ID
+    gtmId: "GTM-PP7GCSBZ",
     tracking: {
       enabled: true,
       endpoints: {
@@ -179,9 +180,16 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         {
           title: "Qualit'EnR",
           description:
-            "Expertise reconnue dans l'installation de panneaux photovoltaïques.",
+            "Association nationale qui certifie la qualité et l'expertise des professionnels RGE QualiPAC.",
           image: "/QualitEnR-logo-transparent.png",
-          imageAlt: "RGE Quali PV",
+          imageAlt: "RGE Qualit'EnR",
+        },
+        {
+          title: "Éco-prêt à taux zéro",
+          description:
+            "Financez votre pompe à chaleur sans intérêt grâce à l'Éco-PTZ, cumulable avec les autres aides.",
+          image: "/taux-zero-transparent.png",
+          imageAlt: "Eco-prêt 0%",
         },
       ],
     },
@@ -738,7 +746,7 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
           title: "Nos solutions",
           links: [
             { label: "Pompes à chaleur", href: "#simulator" },
-            { label: "Autoconsommation", href: "#simulator" },
+            // { label: "Autoconsommation", href: "#simulator" },
             // { label: "Batterie de stockage", href: "#" },
             // { label: "Borne de recharge", href: "#" },
           ],
@@ -758,9 +766,9 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
       contactSchedule:
         "Service & appel gratuits.<br/>Du lundi au vendredi de 9h à 19h.",
       socialLinks: [
-        { platform: "facebook", url: "#" },
-        { platform: "twitter", url: "#" },
-        { platform: "linkedin", url: "#" },
+        // { platform: "facebook", url: "#" },
+        // { platform: "twitter", url: "#" },
+        // { platform: "linkedin", url: "#" },
       ],
       copyright: `© ${new Date().getFullYear()} Groupe France Solaire - Tous droits réservés.`,
       legalLinks: [

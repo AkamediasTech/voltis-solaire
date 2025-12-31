@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://groupe-france-solaire.fr/sitemap.xml
+Sitemap: https://eco-energie-france.fr/sitemap.xml

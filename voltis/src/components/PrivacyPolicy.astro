@@ -1,0 +1,49 @@
+---
+import { getConfig } from '../config';
+import type { PrivacyPolicyConfig } from '../config/types';
+
+interface Props {
+  data?: PrivacyPolicyConfig;
+}
+
+const { data: propData } = Astro.props;
+const config = !propData ? getConfig() : null;
+const privacyData = propData || config?.content.privacyPolicy;
+
+if (!privacyData) {
+  throw new Error('No privacy policy data provided');
+}
+---
+
+<div class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Title Pill -->
+    <div class="flex justify-center mb-6">
+      <span class="bg-orange-100 text-edf-orange font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide">
+        Protection des données
+      </span>
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-extrabold text-edf-blue text-center mb-12">
+      Politique de confidentialité
+    </h1>
+
+    <div class="space-y-12 text-gray-700 leading-relaxed">
+      
+      <!-- Intro -->
+      <section>
+        <p class="mb-2 text-justify">{privacyData.intro}</p>
+      </section>
+
+      <!-- Sections -->
+      {privacyData.sections.map((section) => (
+        <section>
+          <h2 class="text-xl font-bold text-edf-blue mb-4 border-b pb-2">{section.number}. {section.title}</h2>
+          <div class="space-y-4 text-justify whitespace-pre-wrap" set:html={section.content}></div>
+        </section>
+      ))}
+
+    </div>
+  </div>
+</div>

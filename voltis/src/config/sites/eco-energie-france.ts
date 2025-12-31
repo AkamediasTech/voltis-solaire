@@ -115,6 +115,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
           rating: 4.6,
           reviewCount: 324,
           // profileImage: "/path/to/logo.png", // Optionnel
+          profileImage: "/pac.webp",
         },
       },
     },
@@ -498,6 +499,199 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ctaText: "Je demande mon Bilan gratuit",
     },
 
+    legal: {
+      introText:
+        "Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, il est précisé aux utilisateurs du site Eco Energie France l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.",
+      siteUrl: "https://eco-energie-france.fr",
+      company: {
+        name: "Eco Energie France",
+        address: "4 Av. Laurent Cély, 92600 Asnières-sur-Seine",
+        rcs: "BOBIGNY sous le numéro Bobigny B 891 384 810",
+        tva: "FR48891384810",
+        status: "Société par actions simplifiée unipersonnelle (SASU)",
+        capital: "1000 euros",
+        email: "dpo@eco-energie-france.fr",
+      },
+      hosting: {
+        name: "Hostinger",
+        address:
+          "61 Lordou Vironos Street 17 Lumiel Building, 4th floor 18. Larnaca, CY 6023, Cyprus",
+        website: "https://www.hostinger.fr/contact",
+      },
+      personalDataText:
+        "Conformément aux dispositions légales et réglementaires applicables en matière de données personnelles, vous disposez d'un droit à la limitation du traitement de vos données, d'un droit d'opposition, d'accès, de portabilité, de rectification et de suppression de vos données. Pour connaître et exercer vos droits, veuillez consulter notre politique de confidentialité.",
+      intellectualPropertyText:
+        "La structure générale du site, ainsi que les textes, graphiques, images, sons et vidéos la composant, sont la propriété de la société Eco Energie France. Toute représentation et/ou reproduction et/ou exploitation partielle ou totale de ce site, par quelque procédé que ce soit, sans l'autorisation préalable et par écrit de la société Eco Energie France est strictement interdite et serait susceptible de constituer une contrefaçon au sens des articles L 335-2 et suivants du Code de la propriété intellectuelle. Il en est de même des bases de données figurant sur ce site internet, qui sont protégées par les dispositions de la loi du 1er juillet 1998 portant transposition dans le Code de la propriété intellectuelle de la directive européenne du 11 mars 1996 relative à la protection juridique des bases de données, et dont la société Eco Energie France est producteur. Eco Energie France est également titulaire des droits sur les marques, logos ainsi que sur la charte graphique et les visuels valorisés. Toute reproduction totale ou partielle du logo, de la charte graphique et autres visuels sans le consentement de Eco Energie France constitue une contrefaçon pénalement sanctionnée.",
+      contactText:
+        "Pour toute demande d'information ou signalement quant au contenu du site, nous vous invitons à nous contacter par courrier postal à : Eco Energie France – situé au 4 Av. Laurent Cély, 92600 Asnières-sur-Seine.",
+    },
+
+    privacyPolicy: {
+      intro:
+        "Eco Energie France accorde une grande importance à la protection de vos données personnelles. Cette politique de confidentialité vous informe de la manière dont nous collectons, utilisons et protégeons vos informations personnelles conformément au Règlement Général sur la Protection des Données (RGPD).",
+      sections: [
+        {
+          number: "1",
+          title: "Identité du responsable de traitement",
+          content: `Le responsable du traitement de vos données personnelles est :
+
+<strong>Eco Energie France</strong>
+Adresse : 4 Av. Laurent Cély, 92600 Asnières-sur-Seine
+RCS : BOBIGNY sous le numéro Bobigny B 891 384 810
+N° de TVA intracommunautaire : FR48891384810
+Email du Délégué à la Protection des Données : <a href="mailto:dpo@eco-energie-france.fr" class="text-edf-blue hover:underline">dpo@eco-energie-france.fr</a>`,
+        },
+        {
+          number: "2",
+          title: "Données collectées",
+          content: `Nous collectons différentes catégories de données personnelles dans le cadre de nos services :
+
+<strong>Données d'identification :</strong> nom, prénom, adresse postale, numéro de téléphone, adresse email
+<strong>Données relatives à votre projet :</strong> type de logement, consommation énergétique, informations sur votre installation actuelle
+<strong>Données de navigation :</strong> adresse IP, type de navigateur, pages visitées, durée de visite
+<strong>Données de géolocalisation :</strong> uniquement si vous acceptez le partage de votre localisation pour adapter nos services`,
+        },
+        {
+          number: "3",
+          title: "Finalités du traitement",
+          content: `Vos données personnelles sont collectées et traitées pour les finalités suivantes :
+
+• Traitement de vos demandes de devis et de contact
+• Gestion de votre relation client et de vos projets d'installation
+• Envoi d'informations commerciales et newsletters (avec votre consentement)
+• Amélioration de nos services et personnalisation de votre expérience
+• Respect de nos obligations légales et réglementaires
+• Prévention de la fraude et sécurisation de nos systèmes`,
+        },
+        {
+          number: "4",
+          title: "Base légale du traitement",
+          content: `Le traitement de vos données personnelles repose sur les bases légales suivantes :
+
+• <strong>Exécution d'un contrat :</strong> pour le traitement de vos demandes et la gestion de votre projet
+• <strong>Consentement :</strong> pour l'envoi de communications marketing
+• <strong>Intérêt légitime :</strong> pour l'amélioration de nos services et la sécurisation de notre site
+• <strong>Obligation légale :</strong> pour le respect de nos obligations fiscales et comptables`,
+        },
+        {
+          number: "5",
+          title: "Destinataires des données",
+          content: `Vos données personnelles peuvent être partagées avec :
+
+• Nos équipes internes (commerciaux, techniciens, service client)
+• Nos partenaires installateurs et fournisseurs d'équipements
+• Nos prestataires techniques (hébergement, maintenance du site web)
+• Les organismes publics dans le cadre du traitement des aides et primes énergétiques
+• Nos sous-traitants intervenant dans le cadre de la gestion administrative
+
+Tous nos partenaires sont contractuellement tenus de respecter la confidentialité et la sécurité de vos données.`,
+        },
+        {
+          number: "6",
+          title: "Durée de conservation",
+          content: `Vos données personnelles sont conservées pendant les durées suivantes :
+
+• <strong>Données clients :</strong> pendant toute la durée de la relation contractuelle et jusqu'à 10 ans après la fin du contrat (obligations comptables et fiscales)
+• <strong>Données prospects :</strong> 3 ans à compter du dernier contact
+• <strong>Données de navigation :</strong> 13 mois maximum
+• <strong>Consentement marketing :</strong> 3 ans, renouvelable
+
+À l'issue de ces délais, vos données seront supprimées ou anonymisées.`,
+        },
+        {
+          number: "7",
+          title: "Vos droits",
+          content: `Conformément au RGPD, vous disposez des droits suivants :
+
+• <strong>Droit d'accès :</strong> obtenir la confirmation que vos données sont traitées et en obtenir une copie
+• <strong>Droit de rectification :</strong> corriger vos données inexactes ou incomplètes
+• <strong>Droit à l'effacement :</strong> demander la suppression de vos données dans certains cas
+• <strong>Droit à la limitation :</strong> limiter le traitement de vos données dans certaines situations
+• <strong>Droit d'opposition :</strong> vous opposer au traitement de vos données pour des raisons légitimes
+• <strong>Droit à la portabilité :</strong> récupérer vos données dans un format structuré
+• <strong>Droit de retirer votre consentement :</strong> à tout moment pour les traitements basés sur le consentement
+
+Pour exercer vos droits, contactez notre Délégué à la Protection des Données : <a href="mailto:dpo@eco-energie-france.fr" class="text-edf-blue hover:underline">dpo@eco-energie-france.fr</a>`,
+        },
+        {
+          number: "8",
+          title: "Sécurité des données",
+          content: `Eco Energie France met en œuvre toutes les mesures techniques et organisationnelles appropriées pour garantir la sécurité de vos données personnelles :
+
+• Cryptage SSL/TLS pour les transmissions de données
+• Accès restreint aux données personnelles (authentification forte)
+• Sauvegarde régulière des données
+• Mise à jour régulière de nos systèmes de sécurité
+• Formation de nos équipes à la protection des données
+• Audits de sécurité réguliers
+
+En cas de violation de données susceptible de présenter un risque pour vos droits et libertés, nous vous en informerons dans les meilleurs délais conformément à la réglementation.`,
+        },
+        {
+          number: "9",
+          title: "Cookies et technologies similaires",
+          content: `Notre site utilise des cookies et technologies similaires pour :
+
+• Assurer le fonctionnement technique du site
+• Analyser l'audience et améliorer nos services (Google Analytics)
+• Personnaliser votre expérience de navigation
+• Diffuser des publicités ciblées (si vous y consentez)
+
+Vous pouvez paramétrer vos préférences en matière de cookies via le bandeau de consentement affiché lors de votre première visite. Vous pouvez également configurer votre navigateur pour refuser les cookies.
+
+Pour en savoir plus, consultez notre politique de cookies.`,
+        },
+        {
+          number: "10",
+          title: "Transfert de données hors UE",
+          content: `Vos données personnelles sont hébergées au sein de l'Union Européenne.
+
+Dans certains cas exceptionnels, vos données peuvent être transférées vers des pays hors UE, notamment pour l'utilisation de certains outils tiers (Google Analytics, services cloud). Ces transferts sont encadrés par les garanties appropriées prévues par le RGPD (clauses contractuelles types, décision d'adéquation).`,
+        },
+        {
+          number: "11",
+          title: "Profilage et décisions automatisées",
+          content: `Eco Energie France n'utilise pas de prise de décision entièrement automatisée ayant des effets juridiques ou vous affectant de manière significative.
+
+Nous pouvons utiliser des outils d'analyse pour personnaliser nos offres et communications, mais ces analyses ne donnent jamais lieu à des décisions automatisées sans intervention humaine.`,
+        },
+        {
+          number: "12",
+          title: "Modification de la politique de confidentialité",
+          content: `Eco Energie France se réserve le droit de modifier cette politique de confidentialité à tout moment pour refléter les évolutions législatives, réglementaires ou de nos pratiques.
+
+Toute modification substantielle vous sera notifiée par email ou via un bandeau d'information sur notre site. Nous vous invitons à consulter régulièrement cette page pour prendre connaissance de la version la plus récente.
+
+Date de dernière mise à jour : ${new Date().toLocaleDateString("fr-FR", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          })}`,
+        },
+        {
+          number: "13",
+          title: "Réclamation auprès de la CNIL",
+          content: `Si vous estimez que vos droits ne sont pas respectés, vous avez le droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :
+
+<strong>Commission Nationale de l'Informatique et des Libertés (CNIL)</strong>
+Adresse : 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07
+Téléphone : 01 53 73 22 22
+Site web : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="text-edf-blue hover:underline">www.cnil.fr</a>`,
+        },
+        {
+          number: "14",
+          title: "Contact",
+          content: `Pour toute question relative à cette politique de confidentialité ou à l'exercice de vos droits, vous pouvez nous contacter :
+
+<strong>Par email :</strong> <a href="mailto:dpo@eco-energie-france.fr" class="text-edf-blue hover:underline">dpo@eco-energie-france.fr</a>
+<strong>Par courrier :</strong> Eco Energie France – Délégué à la Protection des Données
+4 Av. Laurent Cély, 92600 Asnières-sur-Seine
+
+Nous nous engageons à vous répondre dans un délai maximum d'un mois à compter de la réception de votre demande.`,
+        },
+      ],
+    },
+
     footer: {
       companyName: "SOLUTIONS SOLAIRES",
       description:
@@ -533,8 +727,11 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ],
       copyright: `© ${new Date().getFullYear()} Groupe France Solaire - Tous droits réservés.`,
       legalLinks: [
-        { label: "Mentions légales", href: "#" },
-        { label: "Politique de confidentialité", href: "#" },
+        { label: "Mentions légales", href: "/mentions-legales" },
+        {
+          label: "Politique de confidentialité",
+          href: "/politique-de-confidentialite",
+        },
         { label: "Cookies", href: "#" },
       ],
     },

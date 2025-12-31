@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PrivacyPolicy from '../components/PrivacyPolicy.astro';
+import { getConfig } from '../config';
+
+const config = getConfig();
+---
+
+<Layout title={`Politique de confidentialité | ${config.branding.companyName}`}>
+  <main>
+    <PrivacyPolicy />
+  </main>
+</Layout>

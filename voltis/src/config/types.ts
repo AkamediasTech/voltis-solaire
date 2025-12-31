@@ -179,6 +179,7 @@ export interface ContentConfig {
   labels?: any; // Defined in OurLabels.astro component
   callToAction?: any; // Defined in CallToActionSection.astro component
   legal?: LegalConfig;
+  privacyPolicy?: PrivacyPolicyConfig;
   // Sections can be extended per site as needed
   [key: string]: any;
 }
@@ -203,6 +204,17 @@ export interface LegalConfig {
   personalDataText: string;
   intellectualPropertyText: string;
   contactText: string;
+}
+
+export interface PrivacyPolicySection {
+  number: string;
+  title: string;
+  content: string;
+}
+
+export interface PrivacyPolicyConfig {
+  intro: string;
+  sections: PrivacyPolicySection[];
 }
 
 export interface SiteConfig {

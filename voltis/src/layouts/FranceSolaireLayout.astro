@@ -23,6 +23,7 @@ import ProcessV2 from '@components/ProcessV2.astro';
 import { getConfig } from '@config';
 import CustomerJourneyV4 from '@components/CustomerJourneyV4.astro';
 import CustomerJourneyV5 from '@components/CustomerJourneyV5.astro';
+import Footer from '@components/Footer.astro';
 
 const config = getConfig();
 const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
@@ -77,4 +78,6 @@ const { hero, faq, testimonials, stepsSection, customerJourney, processV2Steps }
   <!-- <CallToActionSection /> -->
   <LegalDisclaimerSection />
   <CookieConsent delay={2000}/>
+
+  <Footer />
 </Layout>

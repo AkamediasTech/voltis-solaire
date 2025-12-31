@@ -1,0 +1,50 @@
+---
+// EnrLogo.astro - Logo rond pour Eco Energie France (avec background image)
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+  backgroundColor?: string;
+  showCompanyName?: boolean;
+  companyName?: string;
+}
+
+const { 
+  imageSrc = "/enr-logo-2.png",
+  imageAlt = "Eco Energie France",
+  backgroundColor = "#1e3a5f", // Bleu foncé par défaut (correspond au background de l'image)
+  showCompanyName = true,
+  companyName = "Eco Energie France"
+} = Astro.props;
+
+// Découper le nom en parties pour affichage sur 2 lignes
+const nameParts = companyName.split(' ');
+const firstPart = nameParts.slice(0, -1).join(' ') || companyName;
+const lastPart = nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
+---
+
+<div class="relative flex items-center justify-center">
+  <!-- Cercle avec background -->
+  <div 
+    class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center overflow-hidden"
+    style={`background-color: ${backgroundColor}`}
+  >
+    <img 
+      src={imageSrc} 
+      alt={imageAlt}
+      class="w-full h-full object-contain p-2 pb-4"
+    />
+  </div>
+</div>
+
+{showCompanyName && (
+  <div class="flex flex-col">
+    <span class="text-green-600 font-bold text-sm sm:text-md leading-none tracking-tight uppercase">
+      {firstPart}
+    </span>
+    {lastPart && (
+      <span class="text-gray-500 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
+        {lastPart}
+      </span>
+    )}
+  </div>
+)}

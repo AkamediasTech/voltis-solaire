@@ -1,13 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PrivacyPolicy from '../components/PrivacyPolicy.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+import LegalFooter from '../components/LegalFooter.astro';
 import { getConfig } from '../config';
 
 const config = getConfig();
 ---
 
 <Layout title={`Politique de confidentialité | ${config.branding.companyName}`}>
+  <LegalHeader slot="header" />
   <main>
     <PrivacyPolicy />
   </main>
+  <LegalFooter />
 </Layout>

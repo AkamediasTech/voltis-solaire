@@ -31,6 +31,7 @@ export interface BrandingColors {
 
 export interface BrandingConfig {
   logo: string | ImageMetadata;
+  logoComponent?: string; // Nom du composant de logo (ex: "InitialsLogo")
   companyName: string;
   colors: BrandingColors;
 }

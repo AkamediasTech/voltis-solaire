@@ -1,0 +1,45 @@
+---
+// InitialsLogo.astro - Logo avec initiales et badge
+import { getConfig } from '@config';
+
+interface Props {
+  companyName?: string;
+  showBadge?: boolean;
+}
+
+const { companyName: propName, showBadge = true } = Astro.props;
+
+const config = getConfig();
+const companyName = propName || config.branding.companyName;
+
+// Extraire les initiales du nom de la société
+const getInitials = (name: string) => {
+  const words = name.split(' ');
+  if (words.length >= 3) {
+    return words.map(w => w[0]).join('').toUpperCase();
+  }
+  return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+};
+
+const initials = getInitials(companyName);
+
+// Découper le nom en parties (avant/après dernière espace pour affichage sur 2 lignes)
+const nameParts = companyName.split(' ');
+const firstPart = nameParts.slice(0, -1).join(' ');
+const lastPart = nameParts[nameParts.length - 1];
+---
+
+<div class="relative flex items-center justify-center">
+  <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold">
+    <span class="text-edf-orange text-lg sm:text-xl lg:text-2xl">{initials}</span>
+  </div>
+  {showBadge && (
+    <div class="absolute top-0.5 right-0 sm:top-1 sm:right-0">
+      <div class="w-3 h-3 sm:w-4 sm:h-4 bg-edf-orange rounded-full border-2 border-white"></div>
+    </div>
+  )}
+</div>
+<div class="flex flex-col">
+  <span class="text-edf-blue font-bold text-sm sm:text-md leading-none tracking-tight uppercase">{firstPart}</span>
+  <span class="text-gray-500 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">{lastPart}</span>
+</div>

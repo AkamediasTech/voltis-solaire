@@ -1,17 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LegalMentions from '../components/LegalMentions.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+import LegalFooter from '../components/LegalFooter.astro';
 import { getConfig } from '../config';
 
 const config = getConfig();
 ---
 
 <Layout title={`Mentions Légales | ${config.branding.companyName}`}>
-  <!-- <Header /> -->
+  <LegalHeader slot="header" />
   <main>
     <LegalMentions />
   </main>
-  <!-- <Footer /> -->
+  <LegalFooter />
 </Layout>

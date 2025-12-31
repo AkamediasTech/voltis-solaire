@@ -21,6 +21,7 @@ import CustomerJourneyV3 from '@components/CustomerJourneyV3.astro';
 import ProcessV2 from '@components/ProcessV2.astro';
 import { getConfig } from '@config';
 import TestimonialsSection2 from '@components/TestimonialsSection2.astro';
+import Footer from '@components/Footer.astro';
 
 
 const config = getConfig();
@@ -63,9 +64,9 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
     <TestimonialsSection testimonials={testimonials} />
   )} -->
 
-  {testimonials && testimonials.length > 0 && (
+  <!-- {testimonials && testimonials.length > 0 && (
   <TestimonialsSection2 />
- )}
+ )} -->
   
   {faq && faq.items && faq.items.length > 0 && (
     <FaqSection faq={faq}/>
@@ -74,6 +75,6 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
   <!-- <CallToActionSection /> -->
   <LegalDisclaimerSection />
   <CookieConsent delay={2000}/>
-  
+
   <Footer />
 </Layout>

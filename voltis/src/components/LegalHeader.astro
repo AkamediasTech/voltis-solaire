@@ -1,0 +1,53 @@
+---
+// LegalHeader.astro 
+import { getConfig } from '@config';
+import InitialsLogo from './logos/InitialsLogo.astro';
+import EnrLogo from './logos/EnrLogo.astro';
+
+const config = getConfig();
+const { logo, logoComponent } = config.branding;
+const companyName = config.branding.companyName;
+
+// Registry : mapping nom → composant
+const logoRegistry = {
+  InitialsLogo,
+  EnrLogo
+  // other mappings here ...
+};
+
+const hasLogoSlot = Astro.slots.has('logo');
+const LogoComponent = logoComponent ? logoRegistry[logoComponent as keyof typeof logoRegistry] : null;
+
+const logoSrc = logo && typeof logo === 'string' ? logo : null;
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo Section -->
+      <a 
+        href="/" 
+        class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+      >
+        {hasLogoSlot ? (
+          <!-- Slot logo -->
+          <slot name="logo" />
+        ) : LogoComponent ? (
+          <!-- Logo component depuis la config -->
+          <LogoComponent />
+        ) : logoSrc ? (
+          <!-- Logo image depuis la config -->
+          <img 
+            src={logoSrc} 
+            alt={companyName} 
+            class="h-14 sm:h-16 w-auto object-contain"
+          />
+
+        ) : (
+          <!-- Fallback si aucun logo défini -->
+          <div class="text-slate-400 text-sm">Logo manquant</div>
+        )}
+      </a>
+    </div>
+  </div>
+</header>

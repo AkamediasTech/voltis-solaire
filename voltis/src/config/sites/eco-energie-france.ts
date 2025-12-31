@@ -13,7 +13,10 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
   },
 
   branding: {
-    logo: "", // Will be set after creating assets
+    logo: "", // when using image
+    // logo: "/enr-logo-2.png",
+    // logoComponent: "InitialsLogo", // when using LogoComponents .astro or .tsx
+    logoComponent: "EnrLogo",
     companyName: "Eco Energie France",
     colors: {
       primary: {
@@ -463,35 +466,40 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
     smartMonitoring: {
       badge: "Pilotage intelligent",
       mainTitle:
-        'Maîtrisez votre production <span class="text-primary">jour après jour</span>',
+        'Maîtrisez votre consommation  et <br> <span class="text-edf-blue"> maximisez vos économies</span>',
+      // 'Optimisez les performances de votre pompe à chaleur <span class="text-edf-blue">en temps réel</span>',
       blocks: {
         productionTracking: {
           title:
-            'Suivi intelligent de votre production solaire <br/><span class="font-medium">en temps réel</span>',
+            'Suivez les performances de votre PAC <br/><span class="font-medium">en temps réel</span>',
           description:
-            "Visualisez en direct les performances de votre installation photovoltaïque grâce à notre système de monitoring avancé. Accédez à tout moment à :",
+            "Visualisez instantanément l'efficacité de votre pompe à chaleur grâce à notre tableau de bord connecté. Accédez à tout moment à :",
           features: [
-            "Votre production instantanée en kW",
-            "Vos courbes de production journalières et mensuelles",
-            "L'historique complet de votre installation",
+            "Votre COP (Coefficient de Performance) en direct",
+            "Vos économies réalisées par jour, semaine et mois",
+            "L'historique détaillé de votre consommation énergétique",
           ],
           footerText:
-            "Un tableau de bord intuitif qui vous permet de vérifier le bon fonctionnement de vos panneaux et de mesurer précisément l'électricité que vous produisez, jour après jour.",
-          image: "/placeholder.webp",
-          imageAlt: "Suivi de production solaire - Placeholder",
+            "Un tableau de bord intuitif qui vous permet de vérifier le bon fonctionnement de votre PAC et de mesurer précisément vos économies d'énergie, jour après jour.",
+          image: "/pac.webp",
+          imageAlt: "Suivi de production solaire - PAC",
         },
         consumptionTracking: {
           title:
-            'Pilotage intelligent de votre consommation <br/><span class="font-medium">depuis votre smartphone</span>',
+            'Pilotez votre chauffage <span class="font-medium">depuis votre smartphone</span>',
           description:
-            "Suivez et analysez votre consommation électrique en temps réel grâce à l'application mobile. Accédez à :",
+            " Ajustez votre confort thermique où que vous soyez grâce à l'application mobile. Profitez de :",
           features: [
-            "Votre consommation instantanée par appareil",
-            "Des recommandations personnalisées pour réduire votre facture",
-            "L'historique détaillé de vos usages énergétiques",
+            "Réglage de la température pièce par pièce",
+            "Programmation hebdomadaire personnalisée",
+            "Conseils personnalisés pour optimiser vos réglages",
+            // "Adaptation automatique selon la météo extérieure",
+            // "Détection de présence et ajustement de température",
+            // "Mode éco-intelligent activé pendant vos heures creuses",
           ],
           footerText:
-            "Identifiez les postes de consommation élevés et ajustez vos habitudes pour maximiser vos économies d'énergie.",
+            "Économisez jusqu'à 70% sur votre facture de chauffage en suivant nos recommandations basées sur votre usage réel.",
+          // "Plus besoin d'y penser : votre pompe à chaleur anticipe vos besoins et optimise sa consommation sans effort de votre part.",
           image: "/placeholder.webp",
           imageAlt: "Suivi de consommation - Placeholder",
         },

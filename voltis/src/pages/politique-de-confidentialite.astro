@@ -4,12 +4,24 @@ import PrivacyPolicy from '../components/PrivacyPolicy.astro';
 import LegalHeader from '../components/LegalHeader.astro';
 import LegalFooter from '../components/LegalFooter.astro';
 import { getConfig } from '../config';
+import EnrLogo from '@components/logos/EnrLogo.astro';
+import GFSTextLogo from '@components/logos/GFSTextLogo.astro';
 
 const config = getConfig();
+
+const branding = config.branding;
+const logoRegistry = { GFSTextLogo, EnrLogo };
+const Logo = branding.logoComponent
+  ? logoRegistry[branding.logoComponent as keyof typeof logoRegistry]
+  : null;
+
 ---
 
 <Layout title={`Politique de confidentialité | ${config.branding.companyName}`}>
-  <LegalHeader slot="header" />
+  <!-- <LegalHeader slot="header" /> -->
+  <LegalHeader slot="header" >
+      {Logo && <Logo slot="logo" showCompanyName={true} />}
+  </LegalHeader>
   <main>
     <PrivacyPolicy />
   </main>

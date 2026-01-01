@@ -2,7 +2,7 @@ import React from "react";
 
 export const LegalDisclaimerSection: React.FC = () => {
   const disclaimers = [
-    "(1) Limite maximale évaluée à partir de données observées en 2022 chez un panel d'environ 1500 clients. Information indicative et non contractuelle, dépendant notamment des conditions d'ensoleillement réel et des choix et pratiques quotidiennes d'utilisation des équipements électriques du foyer",
+    "(1) Limite maximale évaluée à partir de données observées en 2024 chez un panel d'environ 900 clients. Information indicative et non contractuelle, dépendant notamment des conditions d'ensoleillement réel et des choix et pratiques quotidiennes d'utilisation des équipements électriques du foyer",
     "(2) Vente du surplus de production à EDF Obligation d'Achat pour les installations d'une puissance inférieure ou égale à 9kWc au tarif régulé de 4 cts d'€ /kWh",
     "(3) Information indicative et non contractuelle, dépendant notamment des conditions d'ensoleillement réel et des choix et pratiques quotidiennes d'utilisation des équipements électriques du foyer",
     "(4) Groupe France Solaire se charge de vos démarches administratives (urbanisme, financement, demande de raccordement)",

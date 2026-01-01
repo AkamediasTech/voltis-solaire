@@ -4,12 +4,27 @@ import LegalMentions from '../components/LegalMentions.astro';
 import LegalHeader from '../components/LegalHeader.astro';
 import LegalFooter from '../components/LegalFooter.astro';
 import { getConfig } from '../config';
+import InitialsLogo from '@components/logos/InitialsLogo.astro';
+import EnrLogo from '@components/logos/EnrLogo.astro';
+import GFSTextLogo from '@components/logos/GFSTextLogo.astro';
 
 const config = getConfig();
+
+
+const branding = config.branding;
+
+
+const logoRegistry = { GFSTextLogo, EnrLogo };
+const Logo = branding.logoComponent
+  ? logoRegistry[branding.logoComponent as keyof typeof logoRegistry]
+  : null;
+
 ---
 
 <Layout title={`Mentions Légales | ${config.branding.companyName}`}>
-  <LegalHeader slot="header" />
+  <LegalHeader slot="header" >
+    {Logo && <Logo slot="logo" showCompanyName={true} />}
+  </LegalHeader>
   <main>
     <LegalMentions />
   </main>

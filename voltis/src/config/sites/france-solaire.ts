@@ -14,7 +14,8 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
 
   branding: {
     logo: "", // Will be set after creating assets structure
-    logoComponent: "InitialsLogo", // Utilise le logo avec initiales
+    // logoComponent: "InitialsLogo", // Utilise le logo avec initiales
+    logoComponent: "GFSTextLogo",
     companyName: "France Solaire",
     colors: {
       primary: {

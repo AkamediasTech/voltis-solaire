@@ -54,7 +54,7 @@ const { badge, mainTitle, blocks, ctaText } = content;
 const hasLogoSlot = Astro.slots.has('logo');
 ---
 
-<section class="py-20 bg-edf-gray">
+<section class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
     
     <!-- Badge + Main Title -->
@@ -97,7 +97,7 @@ const hasLogoSlot = Astro.slots.has('logo');
           <img 
             src={blocks.productionTracking.image}
             alt={blocks.productionTracking.imageAlt}
-            class="w-full h-full object-cover max-h-[500px]"
+            class="w-full h-full object-contain max-h-[500px]"
             loading="lazy"
             width="500"
             height="500"

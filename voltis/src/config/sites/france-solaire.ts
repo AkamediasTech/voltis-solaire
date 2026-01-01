@@ -384,7 +384,7 @@ const franceSolaireConfig: SiteConfig = createSiteConfig({
       ctaText: "Réaliser mon bilan solaire gratuit",
       //   image:
       //     "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop",
-      image: "/tmp/sp-on-roof-2.jpg",
+      image: "sp-on-roof-2.jpg",
       imageAlt: "Panneaux solaires",
       features: [
         {

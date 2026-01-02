@@ -24,6 +24,8 @@ import TestimonialsSection2 from '@components/TestimonialsSection2.astro';
 import Footer from '@components/Footer.astro';
 import EnrLogo from '@components/logos/EnrLogo.astro';
 import EEFLogo from '@components/logos/EEFLogo.astro';
+import HeroSplit2 from '@components/HeroSplit2.astro';
+import HeaderSplit from '@components/Header3.astro'
 
 const config = getConfig();
 const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
@@ -34,7 +36,9 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
   description={heroBento?.description || hero.description.replace(/<[^>]*>/g, '')}
 >
   <Header2 slot="header" />
+  <!-- <HeaderSplit /> -->
   <HeroSplit/>
+  <!-- <HeroSplit2/> -->
   
   <FeaturesV2 />
   <OurLabelsV2 />
@@ -80,7 +84,7 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
   )}
 
   <!-- <CallToActionSection /> -->
-  <LegalDisclaimerSection />
+  <!-- <LegalDisclaimerSection /> -->
   <CookieConsent delay={2000}/>
 
   <!-- <Footer /> -->

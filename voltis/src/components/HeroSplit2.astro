@@ -6,6 +6,7 @@
 import { getConfig } from '../config';
 import Simulator from './Simulator';
 import GoogleReview, { type GoogleReviewConfig } from './GoogleReview.astro';
+import EEFLogo from './logos/EEFLogo.astro';
 
 // Types defined locally in component
 export interface HeroSplitBenefit {
@@ -42,6 +43,14 @@ if (!heroSplit) {
   throw new Error('HeroSplit: No configuration provided. Pass config prop or define content.heroSplit in site config.');
 }
 
+const header = siteConfig?.content?.header;
+
+const logoRegistry = { EEFLogo };
+const LogoComponent =
+  header?.logo?.type === "component"
+    ? logoRegistry[header.logo.componentName as keyof typeof logoRegistry]
+    : null;
+
 // Icons SVG
 const checkCircleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
@@ -49,7 +58,7 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
 
 <section class="relative flex flex-col lg:flex-row min-h-[700px]">
   <!-- Left Side: Content (Dark) -->
-  <div class="lg:w-1/2 bg-edf-blue relative flex items-center justify-center p-8 lg:p-16 overflow-hidden">
+  <div class="lg:w-1/2 bg-edf-blue relative flex items-center justify-start p-8 lg:p-16 lg:pl-60  overflow-hidden">
     <!-- Background Pattern -->
     <div 
       class="absolute inset-0 opacity-10"
@@ -61,19 +70,38 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
 
     <div class="relative z-10 text-white max-w-lg">
-      <!-- Badge -->
+      
+        <!-- Logo icon section -->
+        <!-- <div class="bg-white">
+        <div class="max-w-7xl mx-auto page-gutter">
+            <div class="h-20 flex items-center">
+            <div class="max-w-lg">
+                {LogoComponent ? (
+                <LogoComponent
+                    backgroundClass={header.logo.backgroundClass}
+                    showBadge={header.logo.showBadge}
+                />
+                ) : (
+                <span class="font-bold">Logo</span>
+                )}
+            </div>
+            </div>
+        </div>
+        </div> -->
+      
+        <!-- Badge -->
       <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6 text-edf-orange">
         <span class="w-2 h-2 bg-edf-orange rounded-full animate-pulse"></span>
         {heroSplit.badge}
       </div> -->
       
       <!-- Headline -->
-      <h1 class="text-[1.75rem] sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+      <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
         <Fragment set:html={heroSplit.headline} />
         <br/>
-        <!-- <span class="text-transparent bg-clip-text bg-gradient-to-r from-edf-orange to-white"> -->
-          <span class="bg-clip-text text-edf-orange">
-            {heroSplit.headlineHighlight}
+        <!-- <span class="text-transparent bg-clip-text bg-gradient-to-r from-edf-orange  to-white"> -->
+        <span class="bg-clip-text text-edf-orange">
+          {heroSplit.headlineHighlight}
         </span>
       </h1>
       
@@ -97,7 +125,7 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
   </div>
 
   <!-- Right Side: Form (Light) -->
-  <div class="lg:w-1/2 bg-white relative flex items-center justify-center p-6 lg:p-12">
+  <div class="lg:w-1/2 bg-white relative flex items-center justify-end p-6 lg:p-12 lg:pr-60">
     <div class="w-full max-w-md" id="simulator">
       <Simulator client:idle webhookUrl={siteConfig.api.webhookUrl} />
        

@@ -83,8 +83,8 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         showBadge: true,
       },
       cta: {
-        textMobile: "Devis Gratuit",
-        textDesktop: "Obtenir mon Devis Gratuit",
+        textMobile: "Etude gratuite",
+        textDesktop: "Obtenir mon étude gratuite",
         scrollToTop: true,
       },
       sticky: true,
@@ -236,7 +236,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
     faq: {
       badge: "FAQ",
       title: "Questions fréquentes",
-      ctaText: "Contacter un expert",
+      // ctaText: "Contacter un expert",
       items: [
         {
           id: 1,
@@ -423,7 +423,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         "Divisez votre facture de chauffage par 3 et profitez d'un confort optimal toute l'année. Avec un COP jusqu'à 5, votre PAC produit 5 kWh de chaleur pour seulement 1 kWh d'électricité consommée.",
         "Nos pompes à chaleur Inverter s'adaptent en temps réel à vos besoins, garantissant performance maximale et nuisances sonores minimales (aussi silencieuses qu'un lave-vaisselle).",
       ],
-      ctaText: "Obtenir mon devis gratuit",
+      ctaText: "Obtenir mon étude gratuite",
       image:
         "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
       imageAlt: "Pompe à chaleur air-eau",
@@ -545,11 +545,12 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
           footerText:
             "Économisez jusqu'à 70% sur votre facture de chauffage en suivant nos recommandations basées sur votre usage réel.",
           // "Plus besoin d'y penser : votre pompe à chaleur anticipe vos besoins et optimise sa consommation sans effort de votre part.",
-          image: "/placeholder.webp",
+          // image: "/placeholder.webp",
+          image: "app_pac.jpeg",
           imageAlt: "Suivi de consommation - Placeholder",
         },
       },
-      ctaText: "Je demande mon Bilan gratuit",
+      ctaText: "Je demande mon étude gratuite",
     },
 
     legal: {

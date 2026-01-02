@@ -1,0 +1,52 @@
+---
+import { getConfig } from "../config";
+import EEFLogo from "@components/logos/EEFLogo.astro";
+
+const siteConfig = getConfig();
+const header = siteConfig?.content?.header;
+
+const logoRegistry = { EEFLogo };
+const LogoComponent =
+  header?.logo?.type === "component"
+    ? logoRegistry[header.logo.componentName as keyof typeof logoRegistry]
+    : null;
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 px-60">
+  <div class="grid lg:grid-cols-2">
+    <!-- Left -->
+    <div class="bg-white">
+      <div class="max-w-7xl mx-auto page-gutter">
+        <div class="h-20 flex items-center">
+          <div class="max-w-lg">
+            {LogoComponent ? (
+              <LogoComponent
+                backgroundClass={header.logo.backgroundClass}
+                showBadge={header.logo.showBadge}
+              />
+            ) : (
+              <span class="font-bold">Logo</span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="bg-white">
+      <div class="max-w-7xl mx-auto page-gutter">
+        <div class="h-20 flex items-center justify-end">
+          <div class="max-w-md w-full flex justify-end">
+            <a
+              href={header?.cta?.link || "#simulator"}
+              class="cursor-pointer bg-edf-orange text-white px-4 md:px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold hover:bg-edf-lightBlue transition-all shadow-md transform active:scale-95 whitespace-nowrap"
+            >
+              <span class="md:hidden">{header?.cta?.textMobile}</span>
+              <span class="hidden md:inline">{header?.cta?.textDesktop}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -134,7 +134,7 @@ export const GradientPremiumButtons: React.FC<NavigationButtonsProps> = ({
       <button
         onClick={onNext}
         disabled={disabled}
-        className="cursor-pointer relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-edf-orange to-orange-500 text-white rounded-full font-bold hover:from-orange-600 hover:to-orange-500 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden w-full sm:w-auto text-center text-sm sm:text-base"
+        className="cursor-pointer relative px-6 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-edf-orange to-orange-500 text-white rounded-full font-bold hover:from-orange-600 hover:to-orange-500 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden w-full sm:w-auto text-center text-sm sm:text-base"
       >
         <span className="relative z-10">{nextLabel}</span>
         <div className="absolute inset-0 bg-white opacity-0 hover:opacity-20 transition-opacity duration-300"></div>

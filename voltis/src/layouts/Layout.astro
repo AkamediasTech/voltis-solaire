@@ -37,7 +37,7 @@ const {
   )}
 
   <!-- Custom Tracking System (n8n webhooks) -->
-  {config.analytics.tracking?.enabled && (
+  <!-- {config.analytics.tracking?.enabled && (
     <script is:inline define:vars={{ 
       trackingConfig: config.analytics.tracking,
       siteId: config.siteId 
@@ -147,7 +147,7 @@ const {
         window.addEventListener('load', trackPageView, { once: true });
       })();
     </script>
-  )}
+  )} -->
   
   <!-- Preload géré automatiquement par <Image> component -->
   
@@ -303,6 +303,16 @@ const {
   
   <script is:inline>
     // Centralized scroll handling
+
+    function getHeaderOffset() {
+    var header = document.querySelector('header');
+    var headerHeight = header ? header.offsetHeight : 0;
+    var margin = 16; // petite marge visuelle
+    return headerHeight + margin;
+  }
+
+
+
     document.addEventListener('DOMContentLoaded', function() {
       var HEADER_HEIGHT = 80;
       var MOBILE_MARGIN = 32;

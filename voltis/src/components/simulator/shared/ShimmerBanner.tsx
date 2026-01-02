@@ -42,7 +42,7 @@ export const ShimmerBanner: React.FC<ShimmerBannerProps> = ({
       }`}
     >
       <div
-        className={`relative overflow-hidden py-3 px-3 sm:px-6 h-16 flex items-center justify-center ${
+        className={`relative overflow-hidden py-3 px-3 sm:px-6 h-16 flex items-center gap-1 justify-center ${
           isBlue
             ? "bg-gradient-to-r from-blue-900/80 to-blue-800/90"
             : "bg-gradient-to-r from-orange-500/80 to-orange-400/90"

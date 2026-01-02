@@ -16,7 +16,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
     logo: "", // when using image
     // logo: "/enr-logo-2.png",
     // logoComponent: "InitialsLogo", // when using LogoComponents .astro or .tsx
-    logoComponent: "EnrLogo",
+    logoComponent: "EEFLogo",
     companyName: "Eco Energie France",
     colors: {
       primary: {
@@ -67,11 +67,17 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
 
   content: {
     header: {
+      // logo: {
+      //   type: "text" as const,
+      //   initials: "EEF",
+      //   companyLine1: "Eco Energie",
+      //   companyLine2: "France",
+      //   showBadge: true,
+      // },
       logo: {
-        type: "text" as const,
-        initials: "EEF",
-        companyLine1: "Eco Energie",
-        companyLine2: "France",
+        type: "component",
+        componentName: "EEFLogo",
+        backgroundClass: "bg-edf-blue",
         showBadge: true,
       },
       cta: {

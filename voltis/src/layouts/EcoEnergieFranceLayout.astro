@@ -23,7 +23,7 @@ import { getConfig } from '@config';
 import TestimonialsSection2 from '@components/TestimonialsSection2.astro';
 import Footer from '@components/Footer.astro';
 import EnrLogo from '@components/logos/EnrLogo.astro';
-
+import EEFLogo from '@components/logos/EEFLogo.astro';
 
 const config = getConfig();
 const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, processV2Steps } = config.content;
@@ -59,9 +59,13 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
 
   <OurStrengthsSection />
   <ProductSection />
-  <SmartMonitoringSection >
+  <!-- <SmartMonitoringSection >
     <EnrLogo slot="logo" />
-  </SmartMonitoringSection >
+  </SmartMonitoringSection > -->
+
+  <SmartMonitoringSection>
+    <EEFLogo slot="logo" backgroundClass="bg-edf-blue" />
+  </SmartMonitoringSection>
   
   <!-- {testimonials && testimonials.length > 0 && (
     <TestimonialsSection testimonials={testimonials} />
@@ -79,5 +83,9 @@ const { hero, heroBento, faq, testimonials, stepsSection, customerJourney, proce
   <LegalDisclaimerSection />
   <CookieConsent delay={2000}/>
 
-  <Footer />
+  <!-- <Footer /> -->
+  <Footer>
+    <EEFLogo slot="logo" backgroundClass="bg-edf-blue" />
+  </Footer>
+
 </Layout>

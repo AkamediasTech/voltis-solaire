@@ -1,0 +1,73 @@
+---
+// EEFLogo.astro - Logo Eco Energie France avec image et badge
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+  showCompanyName?: boolean;
+  companyName?: string;
+  companyLine1?: string;
+  companyLine2?: string;
+  showBadge?: boolean;
+  backgroundClass?: string;
+}
+
+import { Image } from "astro:assets";
+import EEFLogoImage from "@assets/eef-logo-transparent.png"
+
+const {
+  imageSrc = "/eef-logo-transparent.png",
+  imageAlt = "Eco Energie France",
+  showCompanyName = true,
+  companyName = "Eco Energie France",
+  companyLine1 = "Eco",
+  companyLine2 = "Energie France",
+  showBadge = true,
+//   backgroundColor = "#ffffff",
+//   backgroundClass = "bg-white",
+  backgroundClass = "bg-edf-blue",
+} = Astro.props;
+
+const nameParts = companyName.split(" ");
+const firstPart = nameParts.slice(0, -1).join(" ") || companyName;
+const lastPart = nameParts.length > 1 ? nameParts[nameParts.length - 1] : "";
+
+const line1 = companyLine1 || firstPart;
+const line2 = companyLine2 || lastPart;
+---
+
+<div class="flex items-center gap-2">
+  <div class="relative flex items-center justify-center">
+    <div class={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center overflow-hidden ${backgroundClass}`}>
+      <!-- <img
+        src={imageSrc}
+        alt={imageAlt}
+        class="w-full h-full object-contain p-2"
+      /> -->
+      <Image
+          src={EEFLogoImage}
+          alt={imageAlt}
+          widths={[48, 56, 64]}
+          sizes="(min-width: 1024px) 64px, (min-width: 640px) 56px, 48px"
+          class="w-full h-full object-contain p-2"
+        />
+    </div>
+    {showBadge && (
+      <div class="absolute top-0.5 right-0 sm:top-1 sm:right-0">
+        <div class="w-3 h-3 sm:w-4 sm:h-4 bg-edf-orange rounded-full border-2 border-white"></div>
+      </div>
+    )}
+  </div>
+
+  {showCompanyName && (
+    <div class="flex flex-col">
+      <span class="text-green-600 font-bold text-sm sm:text-md leading-none tracking-tight uppercase">
+        {line1}
+      </span>
+      {line2 && (
+        <span class="text-gray-500 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
+          {line2}
+        </span>
+      )}
+    </div>
+  )}
+</div>

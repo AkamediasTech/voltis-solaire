@@ -5,9 +5,11 @@
  */
 import { getConfig } from '../config';
 
+import EEFLogo from "@components/logos/EEFLogo.astro";
+
 // Types defined locally in component
 export interface HeaderLogo {
-  type: 'text' | 'image';
+  type: "text" | "image" | "component";
   // For text type
   initials?: string;
   companyLine1?: string;
@@ -17,6 +19,8 @@ export interface HeaderLogo {
   imageAlt?: string;
   // Common
   showBadge?: boolean;
+  componentName?: string;
+  backgroundClass?: string;
 }
 
 export interface HeaderCTA {
@@ -64,6 +68,13 @@ const defaultConfig: HeaderConfig = {
 const finalConfig = header || defaultConfig;
 const stickyClass = finalConfig.sticky ? 'sticky top-0' : '';
 const shadowClass = `shadow-${finalConfig.shadow || 'sm'}`;
+
+const logoRegistry = { EEFLogo };
+const LogoComponent =
+  finalConfig.logo.type === "component"
+    ? logoRegistry[finalConfig.logo.componentName as keyof typeof logoRegistry]
+    : null;
+    
 ---
 
 <header class={`${stickyClass} z-50 bg-${finalConfig.backgroundColor} ${shadowClass} border-b border-gray-100`}>
@@ -75,7 +86,12 @@ const shadowClass = `shadow-${finalConfig.shadow || 'sm'}`;
         class="flex items-center gap-2 cursor-pointer" 
         data-scroll-top={finalConfig.cta.scrollToTop}
       >
-        {finalConfig.logo.type === 'text' ? (
+       {finalConfig.logo.type === "component" && LogoComponent ? (
+          <LogoComponent
+            backgroundClass={finalConfig.logo.backgroundClass}
+            showBadge={finalConfig.logo.showBadge}
+          />
+        ) : finalConfig.logo.type === "text" ? (
           <>
             <div class="relative flex items-center justify-center">
               <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-edf-blue rounded-full flex items-center justify-center text-white font-bold">

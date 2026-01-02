@@ -6,11 +6,12 @@ import LegalFooter from '../components/LegalFooter.astro';
 import { getConfig } from '../config';
 import EnrLogo from '@components/logos/EnrLogo.astro';
 import GFSTextLogo from '@components/logos/GFSTextLogo.astro';
+import EEFLogo from '@components/logos/EEFLogo.astro';
 
 const config = getConfig();
 
 const branding = config.branding;
-const logoRegistry = { GFSTextLogo, EnrLogo };
+const logoRegistry = { GFSTextLogo, EEFLogo };
 const Logo = branding.logoComponent
   ? logoRegistry[branding.logoComponent as keyof typeof logoRegistry]
   : null;

@@ -27,7 +27,7 @@ export const CardOptionCompact: React.FC<CardOptionCompactProps> = ({
           setTimeout(() => onSelect(), 250);
         }
       }}
-      className={`cursor-pointer bg-white rounded-lg border-2 p-4 flex flex-col items-center justify-center gap-2 hover:shadow-md transition-all h-full relative ${
+      className={`cursor-pointer bg-white rounded-lg border-2 p-4 flex flex-col items-center justify-between gap-2 hover:shadow-md transition-all h-full relative ${
         isSelected
           ? //   ? "border-edf-orange bg-orange-50"
             "border-gray-300 bg-orange-50"

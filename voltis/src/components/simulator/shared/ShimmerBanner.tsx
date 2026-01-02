@@ -37,20 +37,20 @@ export const ShimmerBanner: React.FC<ShimmerBannerProps> = ({
 
   return (
     <div
-      className={`relative mb-3 -mx-6 md:-mx-8 rounded-lg overflow-hidden ${
+      className={`relative mb-3  rounded-lg overflow-hidden ${
         isBlue ? "bg-edf-blue" : "bg-edf-orange"
       }`}
     >
       <div
-        className={`relative overflow-hidden py-3 px-3 sm:px-6 h-16 flex items-center gap-1 justify-center ${
+        className={`relative overflow-hidden py-3 h-16 flex items-center gap-[5px] sm:gap-[8px] justify-center ${
           isBlue
             ? "bg-gradient-to-r from-blue-900/80 to-blue-800/90"
             : "bg-gradient-to-r from-orange-500/80 to-orange-400/90"
         }`}
       >
         <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-        <Zap className="w-5 h-5 mx-2 text-yellow-300 fill-current relative z-10" />
-        <p className="relative text-white font-bold text-center text-sm md:text-lg tracking-wide drop-shadow-lg z-10">
+        <Zap className="w-5 h-5 m-0 text-yellow-300 fill-current relative z-10" />
+        <p className="relative text-white font-bold text-center text-[17px] md:text-lg tracking-wide drop-shadow-lg z-10">
           {text}
         </p>
       </div>

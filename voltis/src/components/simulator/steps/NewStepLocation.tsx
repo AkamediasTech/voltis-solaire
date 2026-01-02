@@ -4,6 +4,9 @@ import { useCityAutocomplete } from "@simulator/hooks/useCityAutocomplete";
 import { GradientPremiumButtons } from "@simulator/shared/NavigationButtons";
 import { SelectCity } from "@simulator/shared/SelectCity";
 
+const TEST_POSTAL_CODE = "99999";
+const TEST_CITY = "test_ville";
+
 const NewStepLocation: React.FC<StepProps> = ({
   data,
   updateData,
@@ -22,6 +25,12 @@ const NewStepLocation: React.FC<StepProps> = ({
     const value = e.target.value.replace(/\D/g, ""); // Only digits
     if (value.length <= 5) {
       setLocalPostalCode(value);
+
+      if (value === TEST_POSTAL_CODE) {
+        updateData({ postalCode: value, city: TEST_CITY });
+        return;
+      }
+
       // Reset city when postal code changes
       if (data.city) {
         updateData({ city: "" });
@@ -38,6 +47,10 @@ const NewStepLocation: React.FC<StepProps> = ({
       nextStep();
     }
   };
+
+  const canProceed =
+    (localPostalCode === TEST_POSTAL_CODE && data.city === TEST_CITY) ||
+    (localPostalCode.length === 5 && data.city);
 
   return (
     <div className="space-y-6">
@@ -64,8 +77,16 @@ const NewStepLocation: React.FC<StepProps> = ({
         />
       </div>
 
+      {localPostalCode === TEST_POSTAL_CODE && (
+        <input
+          value={TEST_CITY}
+          readOnly
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100"
+        />
+      )}
+
       {/* City Selection */}
-      {localPostalCode.length === 5 && (
+      {localPostalCode.length === 5 && localPostalCode !== TEST_POSTAL_CODE && (
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Ville *

@@ -16,20 +16,20 @@ const formatHeatingType = (heatingType: string | null): string => {
 
 const formatSurfaceArea = (surface: string | null): string => {
   const mapping: Record<string, string> = {
-    LESS_THAN_70: "Moins_de_70_m²",
-    "70_TO_100": "70_à_100_m²",
-    "100_TO_150": "100_à_150_m²",
-    MORE_THAN_150: "Plus_de_150_m²",
+    LESS_THAN_70: "Moins de 70 m²",
+    "70_TO_100": "70 à 100_m²",
+    "100_TO_150": "100 à 150 m²",
+    MORE_THAN_150: "Plus de 150 m²",
   };
   return surface ? mapping[surface] || surface : "";
 };
 
 const formatMonthlyBill = (bill: string | null): string => {
   const mapping: Record<string, string> = {
-    LESS_THAN_75: "Moins_de_75€",
-    "75_TO_150": "75€_à_150€",
-    "150_TO_250": "150€_à_250€",
-    MORE_THAN_250: "Plus_de_250€",
+    LESS_THAN_75: "Moins de 75€",
+    "75_TO_150": "75€ à 150€",
+    "150_TO_250": "150€ à 250€",
+    MORE_THAN_250: "Plus de 250€",
   };
   return bill ? mapping[bill] || bill : "";
 };

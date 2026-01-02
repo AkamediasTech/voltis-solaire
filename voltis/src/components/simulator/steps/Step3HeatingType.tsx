@@ -16,7 +16,8 @@ const Step3HeatingType: React.FC<StepProps> = ({
 }) => {
   return (
     <div className="space-y-8">
-      <h3 className="text-xl font-semibold mb-4 text-gray-800">
+      {/* <h3 className="text-xl font-semibold mb-4 text-gray-800"> */}
+      <h3 className="text-xl font-semibold mb-4 text-black">
         Quel est votre type de chauffage actuel ?
       </h3>
       <div className="grid grid-cols-2 gap-4">

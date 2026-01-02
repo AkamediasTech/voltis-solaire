@@ -16,8 +16,8 @@ const formatHeatingType = (heatingType: string | null): string => {
 
 const formatSurfaceArea = (surface: string | null): string => {
   const mapping: Record<string, string> = {
-    LESS_THAN_70: "Moins de 70 m²",
-    "70_TO_100": "70 à 100_m²",
+    LESS_THAN_50: "Moins de 50 m²",
+    "50_TO_100": "50 à 100_m²",
     "100_TO_150": "100 à 150 m²",
     MORE_THAN_150: "Plus de 150 m²",
   };
@@ -119,7 +119,7 @@ const NewStepContactInfo: React.FC<StepProps> = ({
           tranche_facture_electricite_mensuelle: formatMonthlyBill(
             data.monthlyBill
           ),
-          Source: "Site Web France Solaire",
+          Source: "Site Web",
         };
 
         if (typeof window !== "undefined") {

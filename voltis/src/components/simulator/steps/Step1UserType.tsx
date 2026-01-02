@@ -9,7 +9,8 @@ import { SurrogateKeyColorIcon } from "@icons/SurrogateKeyColorIcon";
 const Step1UserType: React.FC<StepProps> = ({ data, updateData, nextStep }) => {
   return (
     <div className="space-y-8">
-      <h3 className="text-xl font-semibold mb-4 text-gray-800">
+      {/* <h3 className="text-xl font-semibold mb-4 text-gray-800"> */}
+      <h3 className="text-xl font-semibold mb-4 text-black">
         Êtes-vous propriétaire ou locataire ?
       </h3>
       <div className="grid grid-cols-2 gap-4">

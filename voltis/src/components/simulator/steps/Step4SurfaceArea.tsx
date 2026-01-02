@@ -16,13 +16,14 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
 }) => {
   return (
     <div className="space-y-8">
-      <h3 className="text-xl font-semibold mb-4 text-gray-800">
+      {/* <h3 className="text-xl font-semibold mb-4 text-gray-800"> */}
+      <h3 className="text-xl font-semibold mb-4 text-black">
         Quelle est la surface de votre logement ?
       </h3>
       <div className="grid grid-cols-2 gap-4">
         <CardOptionCompact
-          label="Moins de 70 m²"
-          value="LESS_THAN_70"
+          label="Moins de 50 m²"
+          value="LESS_THAN_50"
           currentValue={data.surfaceArea}
           onChange={(val) => updateData({ surfaceArea: val })}
           // icon="📏"
@@ -30,8 +31,8 @@ const Step4SurfaceArea: React.FC<StepProps> = ({
           onSelect={nextStep}
         />
         <CardOptionCompact
-          label="70 à 100 m²"
-          value="70_TO_100"
+          label="50 à 100 m²"
+          value="50_TO_100"
           currentValue={data.surfaceArea}
           onChange={(val) => updateData({ surfaceArea: val })}
           // icon="📐"

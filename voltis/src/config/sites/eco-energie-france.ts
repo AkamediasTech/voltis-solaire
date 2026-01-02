@@ -103,7 +103,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
 
     heroSplit: {
       badge: "Offre 2026",
-      headline: "Une pompe à chaleur",
+      headline: "Pompe à chaleur",
       headlineHighlight: "Nouvelle génération",
       description:
         "Réduisez jusqu’à 70 % vos factures de chauffage et profitez des aides d’état pour financer votre installation. ",
@@ -300,22 +300,6 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       ],
     },
 
-    callToAction: {
-      badge: "DÉMARREZ VOTRE PROJET",
-      title:
-        'Votre transition énergétique commence ici : <span class="text-edf-blue">étude personnalisée gratuite</span>',
-      subtitle: "Un expert certifié se déplace gratuitement chez vous pour :",
-      items: [
-        "analyser votre consommation et votre toiture,",
-        "calculer vos économies potentielles,",
-        "identifier toutes les aides financières disponibles,",
-        "vous remettre un devis détaillé sans engagement.",
-      ],
-      ctaText: "Je lance mon projet solaire",
-      ctaLink: "#simulator",
-      scrollToTop: true,
-    },
-
     testimonials: [
       {
         name: "Pierre Leroy",
@@ -355,65 +339,6 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
       },
     ],
 
-    processSteps: [
-      {
-        number: "01",
-        title: "Nous analysons votre situation",
-        description:
-          "Un conseiller France Solaire vous aide à identifier la puissance photovoltaïque adaptée à votre consommation et calcule votre potentiel d'économies.",
-        image:
-          "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop",
-      },
-      {
-        number: "02",
-        title: "Étude de faisabilité gratuite",
-        description:
-          "Nos experts évaluent votre toiture, l'ensoleillement et définissent la meilleure configuration. Zéro engagement, zéro frais.",
-        image:
-          "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop",
-      },
-      {
-        number: "03",
-        title: "Installation professionnelle",
-        description:
-          "Installation réalisée par des techniciens certifiés RGE. Respect des normes, finitions impeccables, chantier propre.",
-        image:
-          "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop",
-      },
-      {
-        number: "04",
-        title: "Suivi et garanties",
-        description:
-          "Garantie matériel 25 ans, assistance technique illimitée, application de monitoring incluse.",
-        image:
-          "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop",
-      },
-    ],
-
-    stepsSection: {
-      title:
-        'Du diagnostic à la mise en service : <br> <span class="text-edf-blue">nos experts s\'occupent de tout </span>',
-      steps: [
-        {
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
-          title: "Une étude gratuite",
-          description:
-            "pour une installation sur-mesure par notre Conseiller Solaire à votre domicile",
-        },
-        {
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>',
-          title: "Une validation technique",
-          description:
-            "par nos experts pour confirmer la proposition du Conseiller Solaire. Elle se déroule à distance ou sur place",
-        },
-        {
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-edf-orange"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>',
-          title: "Démarches administratives prises en charge",
-          description: "pour vous simplifier la vie<sup>(4)</sup>",
-        },
-      ],
-    },
-
     product: {
       badge: "Notre Technologie PAC",
       mainTitle: "Une pompe à chaleur",
@@ -424,8 +349,10 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         "Nos pompes à chaleur Inverter s'adaptent en temps réel à vos besoins, garantissant performance maximale et nuisances sonores minimales (aussi silencieuses qu'un lave-vaisselle).",
       ],
       ctaText: "Obtenir mon étude gratuite",
-      image:
-        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
+      // image:
+      //   "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
+      // image: "/pac-white.webp",
+      image: "/pac-white2.jpg",
       imageAlt: "Pompe à chaleur air-eau",
       features: [
         {
@@ -449,33 +376,6 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
         },
       ],
     },
-
-    customerJourney: [
-      {
-        id: "01",
-        title: "Conseil personnalisé offert",
-        description:
-          "Un expert vous accompagne pour définir la solution solaire la plus rentable et la mieux adaptée.",
-      },
-      {
-        id: "02",
-        title: "Offre transparente",
-        description:
-          "Un devis complet et lisible. Aucun paiement avant l'installation : vous réglez une fois le chantier finalisé.",
-      },
-      {
-        id: "03",
-        title: "Accompagnement administratif complet",
-        description:
-          "Déclarations, urbanisme, aides et primes : nous gérons tout de A à Z.",
-      },
-      {
-        id: "04",
-        title: "Installation clé en main",
-        description:
-          "Installation soignée par des professionnels certifiés, avec une planification rapide après validation.",
-      },
-    ],
 
     processV2Steps: [
       {
@@ -527,7 +427,7 @@ const ecoEnergieFranceConfig: SiteConfig = createSiteConfig({
           footerText:
             "Un tableau de bord intuitif qui vous permet de vérifier le bon fonctionnement de votre PAC et de mesurer précisément vos économies d'énergie, jour après jour.",
           image: "/pac.webp",
-          imageAlt: "Suivi de production solaire - PAC",
+          imageAlt: "Suivi de production PAC",
         },
         consumptionTracking: {
           title:
@@ -747,9 +647,9 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
     },
 
     footer: {
-      companyName: "SOLUTIONS SOLAIRES",
+      companyName: "ECO ENERGIE FRANCE",
       description:
-        "Nous accompagnons les particuliers et les professionnels dans leur transition énergétique grâce à des solutions solaires performantes et durables.",
+        "Nous accompagnons les particuliers et les professionnels dans leur transition énergétique grâce à des solutions énergétiques performantes et durables.",
       sections: [
         {
           title: "Nos solutions",
@@ -779,7 +679,7 @@ Nous nous engageons à vous répondre dans un délai maximum d'un mois à compte
         // { platform: "twitter", url: "#" },
         // { platform: "linkedin", url: "#" },
       ],
-      copyright: `© ${new Date().getFullYear()} Groupe France Solaire - Tous droits réservés.`,
+      copyright: `© ${new Date().getFullYear()} Eco Energie France - Tous droits réservés.`,
       legalLinks: [
         { label: "Mentions légales", href: "/mentions-legales" },
         {
